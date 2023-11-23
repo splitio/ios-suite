@@ -118,7 +118,6 @@
 		95670B4D2B03C64D002037AF /* Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956709F52B03C64D002037AF /* Split.swift */; };
 		95670B4E2B03C64D002037AF /* SplitChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956709F62B03C64D002037AF /* SplitChange.swift */; };
 		95670B4F2B03C64D002037AF /* SplitBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956709F72B03C64D002037AF /* SplitBase.swift */; };
-		95670B502B03C64D002037AF /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956709F82B03C64D002037AF /* Key.swift */; };
 		95670B512B03C64D002037AF /* KeySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956709F92B03C64D002037AF /* KeySelector.swift */; };
 		95670B522B03C64D002037AF /* BetweenMatcherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956709FA2B03C64D002037AF /* BetweenMatcherData.swift */; };
 		95670B532B03C64D002037AF /* MatcherCombiner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956709FB2B03C64D002037AF /* MatcherCombiner.swift */; };
@@ -244,7 +243,6 @@
 		95670BCB2B03C64E002037AF /* SplitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670A8A2B03C64D002037AF /* SplitClient.swift */; };
 		95670BCC2B03C64E002037AF /* FailHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670A8B2B03C64D002037AF /* FailHelpers.swift */; };
 		95670BCD2B03C64E002037AF /* LocalhostSplitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670A8C2B03C64D002037AF /* LocalhostSplitFactory.swift */; };
-		95670BCE2B03C64E002037AF /* SplitClientConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670A8D2B03C64D002037AF /* SplitClientConfig.swift */; };
 		95670BCF2B03C64E002037AF /* SplitLogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670A8E2B03C64D002037AF /* SplitLogLevel.swift */; };
 		95670BD02B03C64E002037AF /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670A8F2B03C64D002037AF /* SplitView.swift */; };
 		95670BD12B03C64E002037AF /* Destroyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670A902B03C64D002037AF /* Destroyable.swift */; };
@@ -323,115 +321,120 @@
 		95670C1B2B03C64E002037AF /* Split.h in Headers */ = {isa = PBXBuildFile; fileRef = 95670AE52B03C64D002037AF /* Split.h */; };
 		95670D1D2B03F13D002037AF /* SplitSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 956709742B03C5D5002037AF /* SplitSdk.framework */; };
 		95670D1E2B03F13D002037AF /* SplitSdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 956709742B03C5D5002037AF /* SplitSdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		95670DB82B03FE8F002037AF /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D392B03FE8E002037AF /* NetworkReachabilityManager.swift */; };
-		95670DB92B03FE8F002037AF /* HttpStreamRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D3A2B03FE8E002037AF /* HttpStreamRequest.swift */; };
-		95670DBA2B03FE8F002037AF /* HttpDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D3B2B03FE8E002037AF /* HttpDataRequest.swift */; };
-		95670DBB2B03FE8F002037AF /* HttpTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D3C2B03FE8E002037AF /* HttpTask.swift */; };
-		95670DBC2B03FE8F002037AF /* HttpDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D3D2B03FE8E002037AF /* HttpDataResponse.swift */; };
-		95670DBD2B03FE8F002037AF /* HttpStreamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D3E2B03FE8E002037AF /* HttpStreamResponse.swift */; };
-		95670DBE2B03FE8F002037AF /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D3F2B03FE8E002037AF /* HttpRequest.swift */; };
-		95670DBF2B03FE8F002037AF /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D402B03FE8E002037AF /* HttpResponse.swift */; };
-		95670DC02B03FE8F002037AF /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D412B03FE8E002037AF /* HttpClient.swift */; };
-		95670DC12B03FE8F002037AF /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D422B03FE8E002037AF /* HttpError.swift */; };
-		95670DC22B03FE8F002037AF /* HttpRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D432B03FE8E002037AF /* HttpRequestList.swift */; };
-		95670DC32B03FE8F002037AF /* EndpointFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D442B03FE8E002037AF /* EndpointFactory.swift */; };
-		95670DC42B03FE8F002037AF /* HttpSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D452B03FE8E002037AF /* HttpSession.swift */; };
-		95670DC52B03FE8F002037AF /* HttpRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D462B03FE8E002037AF /* HttpRequestManager.swift */; };
-		95670DC62B03FE8F002037AF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D472B03FE8E002037AF /* Endpoint.swift */; };
-		95670DC72B03FE8F002037AF /* CrashReporter.c in Sources */ = {isa = PBXBuildFile; fileRef = 95670D492B03FE8E002037AF /* CrashReporter.c */; };
-		95670DC92B03FE8F002037AF /* Logger.c in Sources */ = {isa = PBXBuildFile; fileRef = 95670D4B2B03FE8E002037AF /* Logger.c */; };
-		95670DCA2B03FE8F002037AF /* SignalHandler.c in Sources */ = {isa = PBXBuildFile; fileRef = 95670D4C2B03FE8E002037AF /* SignalHandler.c */; };
-		95670DCB2B03FE8F002037AF /* Commons.c in Sources */ = {isa = PBXBuildFile; fileRef = 95670D4D2B03FE8E002037AF /* Commons.c */; };
-		95670DCC2B03FE8F002037AF /* CrashDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D4E2B03FE8E002037AF /* CrashDetector.swift */; };
-		95670DCD2B03FE8F002037AF /* CrashReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 95670D4F2B03FE8E002037AF /* CrashReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		95670DCE2B03FE8F002037AF /* Commons.h in Headers */ = {isa = PBXBuildFile; fileRef = 95670D502B03FE8E002037AF /* Commons.h */; };
-		95670DCF2B03FE8F002037AF /* SignalHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 95670D522B03FE8E002037AF /* SignalHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		95670DD02B03FE8F002037AF /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = 95670D532B03FE8E002037AF /* Logger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		95670DD12B03FE8F002037AF /* MetricsCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D552B03FE8E002037AF /* MetricsCollector.swift */; };
-		95670DD22B03FE8F002037AF /* MetricsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D562B03FE8E002037AF /* MetricsProcessor.swift */; };
-		95670DD32B03FE8F002037AF /* MetricKitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D572B03FE8E002037AF /* MetricKitModel.swift */; };
-		95670DD42B03FE8F002037AF /* MetricsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D582B03FE8E002037AF /* MetricsParser.swift */; };
-		95670DD52B03FE8F002037AF /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D5B2B03FE8E002037AF /* CoreDataHelper.swift */; };
-		95670DD62B03FE8F002037AF /* CoreDataContextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D5C2B03FE8E002037AF /* CoreDataContextBuilder.swift */; };
-		95670DD72B03FE8F002037AF /* StorageFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D5D2B03FE8E002037AF /* StorageFacade.swift */; };
-		95670DD82B03FE8F002037AF /* split_rum_agent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95670D5E2B03FE8E002037AF /* split_rum_agent.xcdatamodeld */; };
-		95670DD92B03FE8F002037AF /* SplitDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D602B03FE8E002037AF /* SplitDatabase.swift */; };
-		95670DDA2B03FE8F002037AF /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D612B03FE8E002037AF /* DatabaseHelper.swift */; };
-		95670DDB2B03FE8F002037AF /* PersistentSessionsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D632B03FE8E002037AF /* PersistentSessionsStorage.swift */; };
-		95670DDC2B03FE8F002037AF /* SessionDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D642B03FE8E002037AF /* SessionDao.swift */; };
-		95670DDD2B03FE8F002037AF /* SessionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D652B03FE8E002037AF /* SessionEntity.swift */; };
-		95670DDE2B03FE8F002037AF /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D672B03FE8E002037AF /* Property.swift */; };
-		95670DDF2B03FE8F002037AF /* PropertyDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D682B03FE8E002037AF /* PropertyDao.swift */; };
-		95670DE02B03FE8F002037AF /* PersistentPropertyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D692B03FE8E002037AF /* PersistentPropertyStorage.swift */; };
-		95670DE12B03FE8F002037AF /* PropertyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D6A2B03FE8E002037AF /* PropertyEntity.swift */; };
-		95670DE22B03FE8F002037AF /* PropertiesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D6B2B03FE8E002037AF /* PropertiesStorage.swift */; };
-		95670DE32B03FE8F002037AF /* EventDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D6D2B03FE8E002037AF /* EventDao.swift */; };
-		95670DE42B03FE8F002037AF /* PersistentEventsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D6E2B03FE8E002037AF /* PersistentEventsStorage.swift */; };
-		95670DE52B03FE8F002037AF /* EventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D6F2B03FE8E002037AF /* EventEntity.swift */; };
-		95670DE62B03FE8F002037AF /* EventsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D702B03FE8E002037AF /* EventsStorage.swift */; };
-		95670DE72B03FE8F002037AF /* MainHangRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D722B03FE8E002037AF /* MainHangRecorder.swift */; };
-		95670DE82B03FE8F002037AF /* WatchDog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D732B03FE8E002037AF /* WatchDog.swift */; };
-		95670DE92B03FE8F002037AF /* ComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D752B03FE8E002037AF /* ComponentFactory.swift */; };
-		95670DEA2B03FE8F002037AF /* ComponentCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D762B03FE8E002037AF /* ComponentCatalog.swift */; };
-		95670DEB2B03FE8F002037AF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D782B03FE8E002037AF /* Constants.swift */; };
-		95670DEC2B03FE8F002037AF /* Bundle+Finder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D792B03FE8E002037AF /* Bundle+Finder.swift */; };
-		95670DED2B03FE8F002037AF /* Dictionary+DynamicCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D7A2B03FE8E002037AF /* Dictionary+DynamicCodable.swift */; };
-		95670DEE2B03FE8F002037AF /* Data+StringRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D7B2B03FE8E002037AF /* Data+StringRepresentation.swift */; };
-		95670DEF2B03FE8F002037AF /* ThreadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D7C2B03FE8E002037AF /* ThreadUtils.swift */; };
-		95670DF02B03FE8F002037AF /* Cipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D7D2B03FE8E002037AF /* Cipher.swift */; };
-		95670DF12B03FE8F002037AF /* ValidatorMessageLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D7F2B03FE8E002037AF /* ValidatorMessageLogger.swift */; };
-		95670DF22B03FE8F002037AF /* EventValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D802B03FE8E002037AF /* EventValidator.swift */; };
-		95670DF32B03FE8F002037AF /* ValidationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D812B03FE8E002037AF /* ValidationConfig.swift */; };
-		95670DF42B03FE8F002037AF /* AnyValueValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D822B03FE8E002037AF /* AnyValueValidator.swift */; };
-		95670DF52B03FE8F002037AF /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D832B03FE8E002037AF /* ValidationResult.swift */; };
-		95670DF62B03FE8F002037AF /* SynchronizedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D842B03FE8E002037AF /* SynchronizedList.swift */; };
-		95670DF72B03FE8F002037AF /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D852B03FE8E002037AF /* Paths.swift */; };
-		95670DF82B03FE8F002037AF /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D862B03FE8E002037AF /* Logger.swift */; };
-		95670DF92B03FE8F002037AF /* Dictionary+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D872B03FE8E002037AF /* Dictionary+JSON.swift */; };
-		95670DFA2B03FE8F002037AF /* UIViewController+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D882B03FE8E002037AF /* UIViewController+Swizzle.swift */; };
-		95670DFB2B03FE8F002037AF /* Int64+asDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D892B03FE8E002037AF /* Int64+asDouble.swift */; };
-		95670DFC2B03FE8F002037AF /* UIApplication+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D8A2B03FE8E002037AF /* UIApplication+Swizzle.swift */; };
-		95670DFD2B03FE8F002037AF /* Array+DynamicCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D8B2B03FE8E002037AF /* Array+DynamicCodable.swift */; };
-		95670DFE2B03FE8F002037AF /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D8C2B03FE8E002037AF /* Json.swift */; };
-		95670DFF2B03FE8F002037AF /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D8D2B03FE8E002037AF /* ServiceConstants.swift */; };
-		95670E002B03FE8F002037AF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D8E2B03FE8E002037AF /* Protocols.swift */; };
-		95670E012B03FE8F002037AF /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D8F2B03FE8E002037AF /* Atomic.swift */; };
-		95670E022B03FE8F002037AF /* SynchronizedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D902B03FE8E002037AF /* SynchronizedDictionary.swift */; };
-		95670E032B03FE8F002037AF /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D912B03FE8E002037AF /* Dictionary+Extensions.swift */; };
-		95670E042B03FE8F002037AF /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D922B03FE8E002037AF /* GenericError.swift */; };
-		95670E052B03FE8F002037AF /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D932B03FE8E002037AF /* NotificationHelper.swift */; };
-		95670E062B03FE8F002037AF /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D942B03FE8E002037AF /* String+Utils.swift */; };
-		95670E072B03FE8F002037AF /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D962B03FE8E002037AF /* Timer.swift */; };
-		95670E082B03FE8F002037AF /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D972B03FE8E002037AF /* Date+Utils.swift */; };
-		95670E092B03FE8F002037AF /* CastUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D982B03FE8E002037AF /* CastUtils.swift */; };
-		95670E0A2B03FE8F002037AF /* SplitRum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D9A2B03FE8E002037AF /* SplitRum.swift */; };
-		95670E0B2B03FE8F002037AF /* SessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D9B2B03FE8E002037AF /* SessionHandler.swift */; };
-		95670E0C2B03FE8F002037AF /* RumAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D9C2B03FE8E002037AF /* RumAgent.swift */; };
-		95670E0D2B03FE8F002037AF /* SplitRumConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D9D2B03FE8E002037AF /* SplitRumConfig.swift */; };
-		95670E0E2B03FE8F002037AF /* FailedSplitRumAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670D9E2B03FE8E002037AF /* FailedSplitRumAgent.swift */; };
-		95670E0F2B03FE8F002037AF /* RestClient+Reports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DA02B03FE8E002037AF /* RestClient+Reports.swift */; };
-		95670E102B03FE8F002037AF /* RestClient+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DA12B03FE8E002037AF /* RestClient+Event.swift */; };
-		95670E112B03FE8F002037AF /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DA22B03FE8E002037AF /* RestClient.swift */; };
-		95670E122B03FE8F002037AF /* DataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DA32B03FE8E002037AF /* DataResult.swift */; };
-		95670E132B03FE8F002037AF /* EventsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DA52B03FE8F002037AF /* EventsTracker.swift */; };
-		95670E142B03FE8F002037AF /* EventsRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DA62B03FE8F002037AF /* EventsRecorder.swift */; };
-		95670E152B03FE8F002037AF /* SplitSettingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DA82B03FE8F002037AF /* SplitSettingsLoader.swift */; };
-		95670E162B03FE8F002037AF /* EventFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DA92B03FE8F002037AF /* EventFactory.swift */; };
-		95670E172B03FE8F002037AF /* ReportsRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DAB2B03FE8F002037AF /* ReportsRecorder.swift */; };
-		95670E182B03FE8F002037AF /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DAC2B03FE8F002037AF /* Event.swift */; };
-		95670E192B03FE8F002037AF /* SplitIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DAD2B03FE8F002037AF /* SplitIdentity.swift */; };
-		95670E1A2B03FE8F002037AF /* EventsSubmitterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DAE2B03FE8F002037AF /* EventsSubmitterWorker.swift */; };
-		95670E1B2B03FE8F002037AF /* ErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DAF2B03FE8F002037AF /* ErrorReport.swift */; };
-		95670E1C2B03FE8F002037AF /* EventsSubmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DB02B03FE8F002037AF /* EventsSubmitter.swift */; };
-		95670E1D2B03FE8F002037AF /* MainCrashRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DB12B03FE8F002037AF /* MainCrashRecorder.swift */; };
-		95670E1E2B03FE8F002037AF /* CrashReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DB22B03FE8F002037AF /* CrashReport.swift */; };
-		95670E1F2B03FE8F002037AF /* PeriodicSubmitterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DB32B03FE8F002037AF /* PeriodicSubmitterWorker.swift */; };
-		95670E202B03FE8F002037AF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DB52B03FE8F002037AF /* Session.swift */; };
-		95670E212B03FE8F002037AF /* DeviceInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DB62B03FE8F002037AF /* DeviceInfoProvider.swift */; };
-		95670E222B03FE8F002037AF /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95670DB72B03FE8F002037AF /* Device.swift */; };
-		956B97B22B040BF100EBB411 /* SplitRumAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = 95670D322B03FE48002037AF /* SplitRumAgent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		958F97492B0415F7001F35B3 /* SplitRumAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95670D302B03FE48002037AF /* SplitRumAgent.framework */; };
-		958F974A2B0415F7001F35B3 /* SplitRumAgent.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 95670D302B03FE48002037AF /* SplitRumAgent.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		958F97CF2B0560D6001F35B3 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F974F2B0560D5001F35B3 /* NetworkReachabilityManager.swift */; };
+		958F97D02B0560D6001F35B3 /* HttpStreamRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97502B0560D5001F35B3 /* HttpStreamRequest.swift */; };
+		958F97D12B0560D6001F35B3 /* HttpDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97512B0560D5001F35B3 /* HttpDataRequest.swift */; };
+		958F97D22B0560D6001F35B3 /* HttpTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97522B0560D5001F35B3 /* HttpTask.swift */; };
+		958F97D32B0560D6001F35B3 /* HttpDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97532B0560D5001F35B3 /* HttpDataResponse.swift */; };
+		958F97D42B0560D6001F35B3 /* HttpStreamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97542B0560D5001F35B3 /* HttpStreamResponse.swift */; };
+		958F97D52B0560D6001F35B3 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97552B0560D5001F35B3 /* HttpRequest.swift */; };
+		958F97D62B0560D6001F35B3 /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97562B0560D5001F35B3 /* HttpResponse.swift */; };
+		958F97D72B0560D6001F35B3 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97572B0560D5001F35B3 /* HttpClient.swift */; };
+		958F97D82B0560D6001F35B3 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97582B0560D5001F35B3 /* HttpError.swift */; };
+		958F97D92B0560D6001F35B3 /* HttpRequestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97592B0560D5001F35B3 /* HttpRequestList.swift */; };
+		958F97DA2B0560D6001F35B3 /* EndpointFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F975A2B0560D5001F35B3 /* EndpointFactory.swift */; };
+		958F97DB2B0560D6001F35B3 /* HttpSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F975B2B0560D5001F35B3 /* HttpSession.swift */; };
+		958F97DC2B0560D6001F35B3 /* HttpRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F975C2B0560D5001F35B3 /* HttpRequestManager.swift */; };
+		958F97DD2B0560D6001F35B3 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F975D2B0560D5001F35B3 /* Endpoint.swift */; };
+		958F97DE2B0560D6001F35B3 /* CrashReporter.c in Sources */ = {isa = PBXBuildFile; fileRef = 958F975F2B0560D5001F35B3 /* CrashReporter.c */; };
+		958F97E02B0560D6001F35B3 /* Logger.c in Sources */ = {isa = PBXBuildFile; fileRef = 958F97612B0560D5001F35B3 /* Logger.c */; };
+		958F97E12B0560D6001F35B3 /* SignalHandler.c in Sources */ = {isa = PBXBuildFile; fileRef = 958F97622B0560D5001F35B3 /* SignalHandler.c */; };
+		958F97E22B0560D6001F35B3 /* Commons.c in Sources */ = {isa = PBXBuildFile; fileRef = 958F97632B0560D5001F35B3 /* Commons.c */; };
+		958F97E32B0560D6001F35B3 /* CrashDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97642B0560D5001F35B3 /* CrashDetector.swift */; };
+		958F97E42B0560D6001F35B3 /* CrashReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 958F97652B0560D5001F35B3 /* CrashReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		958F97E52B0560D6001F35B3 /* Commons.h in Headers */ = {isa = PBXBuildFile; fileRef = 958F97662B0560D5001F35B3 /* Commons.h */; };
+		958F97E62B0560D6001F35B3 /* SignalHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 958F97682B0560D5001F35B3 /* SignalHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		958F97E72B0560D6001F35B3 /* Logger.h in Headers */ = {isa = PBXBuildFile; fileRef = 958F97692B0560D5001F35B3 /* Logger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		958F97E82B0560D6001F35B3 /* MetricsCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F976B2B0560D5001F35B3 /* MetricsCollector.swift */; };
+		958F97E92B0560D6001F35B3 /* MetricsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F976C2B0560D5001F35B3 /* MetricsProcessor.swift */; };
+		958F97EA2B0560D6001F35B3 /* MetricKitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F976D2B0560D5001F35B3 /* MetricKitModel.swift */; };
+		958F97EB2B0560D6001F35B3 /* MetricsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F976E2B0560D5001F35B3 /* MetricsParser.swift */; };
+		958F97EC2B0560D6001F35B3 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97712B0560D5001F35B3 /* CoreDataHelper.swift */; };
+		958F97ED2B0560D6001F35B3 /* CoreDataContextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97722B0560D5001F35B3 /* CoreDataContextBuilder.swift */; };
+		958F97EE2B0560D6001F35B3 /* StorageFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97732B0560D5001F35B3 /* StorageFacade.swift */; };
+		958F97EF2B0560D6001F35B3 /* split_rum_agent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 958F97742B0560D5001F35B3 /* split_rum_agent.xcdatamodeld */; };
+		958F97F02B0560D6001F35B3 /* SplitDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97762B0560D5001F35B3 /* SplitDatabase.swift */; };
+		958F97F12B0560D6001F35B3 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97772B0560D5001F35B3 /* DatabaseHelper.swift */; };
+		958F97F22B0560D6001F35B3 /* PersistentSessionsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97792B0560D5001F35B3 /* PersistentSessionsStorage.swift */; };
+		958F97F32B0560D6001F35B3 /* SessionDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F977A2B0560D5001F35B3 /* SessionDao.swift */; };
+		958F97F42B0560D6001F35B3 /* SessionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F977B2B0560D5001F35B3 /* SessionEntity.swift */; };
+		958F97F52B0560D6001F35B3 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F977D2B0560D5001F35B3 /* Property.swift */; };
+		958F97F62B0560D6001F35B3 /* PropertyDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F977E2B0560D5001F35B3 /* PropertyDao.swift */; };
+		958F97F72B0560D6001F35B3 /* PersistentPropertyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F977F2B0560D5001F35B3 /* PersistentPropertyStorage.swift */; };
+		958F97F82B0560D6001F35B3 /* PropertyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97802B0560D5001F35B3 /* PropertyEntity.swift */; };
+		958F97F92B0560D6001F35B3 /* PropertiesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97812B0560D5001F35B3 /* PropertiesStorage.swift */; };
+		958F97FA2B0560D6001F35B3 /* EventDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97832B0560D6001F35B3 /* EventDao.swift */; };
+		958F97FB2B0560D6001F35B3 /* PersistentEventsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97842B0560D6001F35B3 /* PersistentEventsStorage.swift */; };
+		958F97FC2B0560D6001F35B3 /* EventEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97852B0560D6001F35B3 /* EventEntity.swift */; };
+		958F97FD2B0560D6001F35B3 /* EventsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97862B0560D6001F35B3 /* EventsStorage.swift */; };
+		958F97FE2B0560D6001F35B3 /* MainHangRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97882B0560D6001F35B3 /* MainHangRecorder.swift */; };
+		958F97FF2B0560D6001F35B3 /* WatchDog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97892B0560D6001F35B3 /* WatchDog.swift */; };
+		958F98002B0560D6001F35B3 /* ComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F978B2B0560D6001F35B3 /* ComponentFactory.swift */; };
+		958F98012B0560D6001F35B3 /* ComponentCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F978C2B0560D6001F35B3 /* ComponentCatalog.swift */; };
+		958F98022B0560D6001F35B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F978E2B0560D6001F35B3 /* Constants.swift */; };
+		958F98032B0560D6001F35B3 /* Bundle+Finder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F978F2B0560D6001F35B3 /* Bundle+Finder.swift */; };
+		958F98042B0560D6001F35B3 /* Dictionary+DynamicCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97902B0560D6001F35B3 /* Dictionary+DynamicCodable.swift */; };
+		958F98052B0560D6001F35B3 /* Data+StringRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97912B0560D6001F35B3 /* Data+StringRepresentation.swift */; };
+		958F98062B0560D6001F35B3 /* ThreadUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97922B0560D6001F35B3 /* ThreadUtils.swift */; };
+		958F98072B0560D6001F35B3 /* Cipher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97932B0560D6001F35B3 /* Cipher.swift */; };
+		958F98082B0560D6001F35B3 /* ValidatorMessageLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97952B0560D6001F35B3 /* ValidatorMessageLogger.swift */; };
+		958F98092B0560D6001F35B3 /* EventValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97962B0560D6001F35B3 /* EventValidator.swift */; };
+		958F980A2B0560D6001F35B3 /* ValidationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97972B0560D6001F35B3 /* ValidationConfig.swift */; };
+		958F980B2B0560D6001F35B3 /* AnyValueValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97982B0560D6001F35B3 /* AnyValueValidator.swift */; };
+		958F980C2B0560D6001F35B3 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97992B0560D6001F35B3 /* ValidationResult.swift */; };
+		958F980D2B0560D6001F35B3 /* SynchronizedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F979A2B0560D6001F35B3 /* SynchronizedList.swift */; };
+		958F980E2B0560D6001F35B3 /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F979B2B0560D6001F35B3 /* Paths.swift */; };
+		958F980F2B0560D6001F35B3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F979C2B0560D6001F35B3 /* Logger.swift */; };
+		958F98102B0560D6001F35B3 /* Dictionary+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F979D2B0560D6001F35B3 /* Dictionary+JSON.swift */; };
+		958F98112B0560D6001F35B3 /* UIViewController+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F979E2B0560D6001F35B3 /* UIViewController+Swizzle.swift */; };
+		958F98122B0560D6001F35B3 /* Int64+asDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F979F2B0560D6001F35B3 /* Int64+asDouble.swift */; };
+		958F98132B0560D6001F35B3 /* UIApplication+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97A02B0560D6001F35B3 /* UIApplication+Swizzle.swift */; };
+		958F98142B0560D6001F35B3 /* Array+DynamicCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97A12B0560D6001F35B3 /* Array+DynamicCodable.swift */; };
+		958F98152B0560D6001F35B3 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97A22B0560D6001F35B3 /* Json.swift */; };
+		958F98162B0560D6001F35B3 /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97A32B0560D6001F35B3 /* ServiceConstants.swift */; };
+		958F98172B0560D6001F35B3 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97A42B0560D6001F35B3 /* Protocols.swift */; };
+		958F98182B0560D6001F35B3 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97A52B0560D6001F35B3 /* Atomic.swift */; };
+		958F98192B0560D6001F35B3 /* SynchronizedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97A62B0560D6001F35B3 /* SynchronizedDictionary.swift */; };
+		958F981A2B0560D6001F35B3 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97A72B0560D6001F35B3 /* Dictionary+Extensions.swift */; };
+		958F981B2B0560D6001F35B3 /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97A82B0560D6001F35B3 /* GenericError.swift */; };
+		958F981C2B0560D6001F35B3 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97A92B0560D6001F35B3 /* NotificationHelper.swift */; };
+		958F981D2B0560D6001F35B3 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97AA2B0560D6001F35B3 /* String+Utils.swift */; };
+		958F981E2B0560D6001F35B3 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97AC2B0560D6001F35B3 /* Timer.swift */; };
+		958F981F2B0560D6001F35B3 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97AD2B0560D6001F35B3 /* Date+Utils.swift */; };
+		958F98202B0560D6001F35B3 /* CastUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97AE2B0560D6001F35B3 /* CastUtils.swift */; };
+		958F98222B0560D6001F35B3 /* SessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97B12B0560D6001F35B3 /* SessionHandler.swift */; };
+		958F98232B0560D6001F35B3 /* RumAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97B22B0560D6001F35B3 /* RumAgent.swift */; };
+		958F98242B0560D6001F35B3 /* SplitRumConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97B32B0560D6001F35B3 /* SplitRumConfig.swift */; };
+		958F98252B0560D6001F35B3 /* FailedSplitRumAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97B42B0560D6001F35B3 /* FailedSplitRumAgent.swift */; };
+		958F98262B0560D6001F35B3 /* RestClient+Reports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97B62B0560D6001F35B3 /* RestClient+Reports.swift */; };
+		958F98272B0560D6001F35B3 /* RestClient+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97B72B0560D6001F35B3 /* RestClient+Event.swift */; };
+		958F98282B0560D6001F35B3 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97B82B0560D6001F35B3 /* RestClient.swift */; };
+		958F98292B0560D6001F35B3 /* DataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97B92B0560D6001F35B3 /* DataResult.swift */; };
+		958F982A2B0560D6001F35B3 /* EventsTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97BB2B0560D6001F35B3 /* EventsTracker.swift */; };
+		958F982B2B0560D6001F35B3 /* EventsRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97BC2B0560D6001F35B3 /* EventsRecorder.swift */; };
+		958F982C2B0560D6001F35B3 /* SplitSettingsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97BE2B0560D6001F35B3 /* SplitSettingsLoader.swift */; };
+		958F982D2B0560D6001F35B3 /* EventFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97BF2B0560D6001F35B3 /* EventFactory.swift */; };
+		958F982E2B0560D6001F35B3 /* ReportsRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97C12B0560D6001F35B3 /* ReportsRecorder.swift */; };
+		958F982F2B0560D6001F35B3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97C22B0560D6001F35B3 /* Event.swift */; };
+		958F98302B0560D6001F35B3 /* SplitIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97C32B0560D6001F35B3 /* SplitIdentity.swift */; };
+		958F98312B0560D6001F35B3 /* EventsSubmitterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97C42B0560D6001F35B3 /* EventsSubmitterWorker.swift */; };
+		958F98322B0560D6001F35B3 /* ErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97C52B0560D6001F35B3 /* ErrorReport.swift */; };
+		958F98332B0560D6001F35B3 /* EventsSubmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97C62B0560D6001F35B3 /* EventsSubmitter.swift */; };
+		958F98342B0560D6001F35B3 /* MainCrashRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97C72B0560D6001F35B3 /* MainCrashRecorder.swift */; };
+		958F98352B0560D6001F35B3 /* CrashReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97C82B0560D6001F35B3 /* CrashReport.swift */; };
+		958F98362B0560D6001F35B3 /* PeriodicSubmitterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97C92B0560D6001F35B3 /* PeriodicSubmitterWorker.swift */; };
+		958F98372B0560D6001F35B3 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97CB2B0560D6001F35B3 /* Session.swift */; };
+		958F98382B0560D6001F35B3 /* DeviceInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97CC2B0560D6001F35B3 /* DeviceInfoProvider.swift */; };
+		958F98392B0560D6001F35B3 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F97CD2B0560D6001F35B3 /* Device.swift */; };
+		958F98402B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F983F2B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift */; };
+		958F98492B0E509B001F35B3 /* SplitIdentity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F98482B0E509B001F35B3 /* SplitIdentity+Extension.swift */; };
+		958F984B2B0E651B001F35B3 /* SuiteConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F984A2B0E651B001F35B3 /* SuiteConstants.swift */; };
+		958F984D2B0E8A82001F35B3 /* SplitSuiteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F984C2B0E8A82001F35B3 /* SplitSuiteConfig.swift */; };
+		958F985A2B0F9506001F35B3 /* ApiKeyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F98512B0F9506001F35B3 /* ApiKeyValidator.swift */; };
+		958F98612B0F9506001F35B3 /* KeyValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F98582B0F9506001F35B3 /* KeyValidator.swift */; };
+		958F98662B0F9E50001F35B3 /* SuiteKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F98642B0F9E48001F35B3 /* SuiteKey.swift */; };
+		958F986B2B0FC975001F35B3 /* SplitTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F986A2B0FC975001F35B3 /* SplitTypes.swift */; };
+		958F98702B0FCD3D001F35B3 /* SplitClientConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F986E2B0FCD2C001F35B3 /* SplitClientConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -449,13 +452,6 @@
 			remoteGlobalIDString = 956709732B03C5D5002037AF;
 			remoteInfo = Sdk;
 		};
-		956B97B32B0414D200EBB411 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9567068F2B03C25A002037AF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 95670D2F2B03FE48002037AF;
-			remoteInfo = SplitRumAgent;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -465,7 +461,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				958F974A2B0415F7001F35B3 /* SplitRumAgent.framework in Embed Frameworks */,
 				95670D1E2B03F13D002037AF /* SplitSdk.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -717,7 +712,6 @@
 		95670A8A2B03C64D002037AF /* SplitClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitClient.swift; sourceTree = "<group>"; };
 		95670A8B2B03C64D002037AF /* FailHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailHelpers.swift; sourceTree = "<group>"; };
 		95670A8C2B03C64D002037AF /* LocalhostSplitFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalhostSplitFactory.swift; sourceTree = "<group>"; };
-		95670A8D2B03C64D002037AF /* SplitClientConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitClientConfig.swift; sourceTree = "<group>"; };
 		95670A8E2B03C64D002037AF /* SplitLogLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitLogLevel.swift; sourceTree = "<group>"; };
 		95670A8F2B03C64D002037AF /* SplitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		95670A902B03C64D002037AF /* Destroyable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destroyable.swift; sourceTree = "<group>"; };
@@ -794,115 +788,123 @@
 		95670AE22B03C64D002037AF /* Partition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Partition.swift; sourceTree = "<group>"; };
 		95670AE32B03C64D002037AF /* Splitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Splitter.swift; sourceTree = "<group>"; };
 		95670AE52B03C64D002037AF /* Split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Split.h; sourceTree = "<group>"; };
-		95670D302B03FE48002037AF /* SplitRumAgent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SplitRumAgent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		95670D322B03FE48002037AF /* SplitRumAgent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SplitRumAgent.h; path = "../ios-rum-agent/SplitRumAgent/SplitRumAgent.h"; sourceTree = "<group>"; };
-		95670D392B03FE8E002037AF /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		95670D3A2B03FE8E002037AF /* HttpStreamRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStreamRequest.swift; sourceTree = "<group>"; };
-		95670D3B2B03FE8E002037AF /* HttpDataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpDataRequest.swift; sourceTree = "<group>"; };
-		95670D3C2B03FE8E002037AF /* HttpTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTask.swift; sourceTree = "<group>"; };
-		95670D3D2B03FE8E002037AF /* HttpDataResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpDataResponse.swift; sourceTree = "<group>"; };
-		95670D3E2B03FE8E002037AF /* HttpStreamResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStreamResponse.swift; sourceTree = "<group>"; };
-		95670D3F2B03FE8E002037AF /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
-		95670D402B03FE8E002037AF /* HttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpResponse.swift; sourceTree = "<group>"; };
-		95670D412B03FE8E002037AF /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
-		95670D422B03FE8E002037AF /* HttpError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
-		95670D432B03FE8E002037AF /* HttpRequestList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequestList.swift; sourceTree = "<group>"; };
-		95670D442B03FE8E002037AF /* EndpointFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointFactory.swift; sourceTree = "<group>"; };
-		95670D452B03FE8E002037AF /* HttpSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpSession.swift; sourceTree = "<group>"; };
-		95670D462B03FE8E002037AF /* HttpRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequestManager.swift; sourceTree = "<group>"; };
-		95670D472B03FE8E002037AF /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		95670D492B03FE8E002037AF /* CrashReporter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CrashReporter.c; sourceTree = "<group>"; };
-		95670D4B2B03FE8E002037AF /* Logger.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Logger.c; sourceTree = "<group>"; };
-		95670D4C2B03FE8E002037AF /* SignalHandler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SignalHandler.c; sourceTree = "<group>"; };
-		95670D4D2B03FE8E002037AF /* Commons.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Commons.c; sourceTree = "<group>"; };
-		95670D4E2B03FE8E002037AF /* CrashDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashDetector.swift; sourceTree = "<group>"; };
-		95670D4F2B03FE8E002037AF /* CrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashReporter.h; sourceTree = "<group>"; };
-		95670D502B03FE8E002037AF /* Commons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commons.h; sourceTree = "<group>"; };
-		95670D512B03FE8E002037AF /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		95670D522B03FE8E002037AF /* SignalHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignalHandler.h; sourceTree = "<group>"; };
-		95670D532B03FE8E002037AF /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
-		95670D552B03FE8E002037AF /* MetricsCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsCollector.swift; sourceTree = "<group>"; };
-		95670D562B03FE8E002037AF /* MetricsProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsProcessor.swift; sourceTree = "<group>"; };
-		95670D572B03FE8E002037AF /* MetricKitModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricKitModel.swift; sourceTree = "<group>"; };
-		95670D582B03FE8E002037AF /* MetricsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsParser.swift; sourceTree = "<group>"; };
-		95670D5B2B03FE8E002037AF /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
-		95670D5C2B03FE8E002037AF /* CoreDataContextBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataContextBuilder.swift; sourceTree = "<group>"; };
-		95670D5D2B03FE8E002037AF /* StorageFacade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageFacade.swift; sourceTree = "<group>"; };
-		95670D5F2B03FE8E002037AF /* split_rum_agent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = split_rum_agent.xcdatamodel; sourceTree = "<group>"; };
-		95670D602B03FE8E002037AF /* SplitDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitDatabase.swift; sourceTree = "<group>"; };
-		95670D612B03FE8E002037AF /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
-		95670D632B03FE8E002037AF /* PersistentSessionsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentSessionsStorage.swift; sourceTree = "<group>"; };
-		95670D642B03FE8E002037AF /* SessionDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDao.swift; sourceTree = "<group>"; };
-		95670D652B03FE8E002037AF /* SessionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionEntity.swift; sourceTree = "<group>"; };
-		95670D672B03FE8E002037AF /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
-		95670D682B03FE8E002037AF /* PropertyDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDao.swift; sourceTree = "<group>"; };
-		95670D692B03FE8E002037AF /* PersistentPropertyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentPropertyStorage.swift; sourceTree = "<group>"; };
-		95670D6A2B03FE8E002037AF /* PropertyEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyEntity.swift; sourceTree = "<group>"; };
-		95670D6B2B03FE8E002037AF /* PropertiesStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesStorage.swift; sourceTree = "<group>"; };
-		95670D6D2B03FE8E002037AF /* EventDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDao.swift; sourceTree = "<group>"; };
-		95670D6E2B03FE8E002037AF /* PersistentEventsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentEventsStorage.swift; sourceTree = "<group>"; };
-		95670D6F2B03FE8E002037AF /* EventEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEntity.swift; sourceTree = "<group>"; };
-		95670D702B03FE8E002037AF /* EventsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsStorage.swift; sourceTree = "<group>"; };
-		95670D722B03FE8E002037AF /* MainHangRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHangRecorder.swift; sourceTree = "<group>"; };
-		95670D732B03FE8E002037AF /* WatchDog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchDog.swift; sourceTree = "<group>"; };
-		95670D752B03FE8E002037AF /* ComponentFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentFactory.swift; sourceTree = "<group>"; };
-		95670D762B03FE8E002037AF /* ComponentCatalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentCatalog.swift; sourceTree = "<group>"; };
-		95670D782B03FE8E002037AF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		95670D792B03FE8E002037AF /* Bundle+Finder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Finder.swift"; sourceTree = "<group>"; };
-		95670D7A2B03FE8E002037AF /* Dictionary+DynamicCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+DynamicCodable.swift"; sourceTree = "<group>"; };
-		95670D7B2B03FE8E002037AF /* Data+StringRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+StringRepresentation.swift"; sourceTree = "<group>"; };
-		95670D7C2B03FE8E002037AF /* ThreadUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadUtils.swift; sourceTree = "<group>"; };
-		95670D7D2B03FE8E002037AF /* Cipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cipher.swift; sourceTree = "<group>"; };
-		95670D7F2B03FE8E002037AF /* ValidatorMessageLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorMessageLogger.swift; sourceTree = "<group>"; };
-		95670D802B03FE8E002037AF /* EventValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventValidator.swift; sourceTree = "<group>"; };
-		95670D812B03FE8E002037AF /* ValidationConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationConfig.swift; sourceTree = "<group>"; };
-		95670D822B03FE8E002037AF /* AnyValueValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyValueValidator.swift; sourceTree = "<group>"; };
-		95670D832B03FE8E002037AF /* ValidationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
-		95670D842B03FE8E002037AF /* SynchronizedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedList.swift; sourceTree = "<group>"; };
-		95670D852B03FE8E002037AF /* Paths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
-		95670D862B03FE8E002037AF /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		95670D872B03FE8E002037AF /* Dictionary+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+JSON.swift"; sourceTree = "<group>"; };
-		95670D882B03FE8E002037AF /* UIViewController+Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Swizzle.swift"; sourceTree = "<group>"; };
-		95670D892B03FE8E002037AF /* Int64+asDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int64+asDouble.swift"; sourceTree = "<group>"; };
-		95670D8A2B03FE8E002037AF /* UIApplication+Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Swizzle.swift"; sourceTree = "<group>"; };
-		95670D8B2B03FE8E002037AF /* Array+DynamicCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+DynamicCodable.swift"; sourceTree = "<group>"; };
-		95670D8C2B03FE8E002037AF /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
-		95670D8D2B03FE8E002037AF /* ServiceConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
-		95670D8E2B03FE8E002037AF /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		95670D8F2B03FE8E002037AF /* Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
-		95670D902B03FE8E002037AF /* SynchronizedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedDictionary.swift; sourceTree = "<group>"; };
-		95670D912B03FE8E002037AF /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
-		95670D922B03FE8E002037AF /* GenericError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
-		95670D932B03FE8E002037AF /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
-		95670D942B03FE8E002037AF /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
-		95670D962B03FE8E002037AF /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
-		95670D972B03FE8E002037AF /* Date+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
-		95670D982B03FE8E002037AF /* CastUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastUtils.swift; sourceTree = "<group>"; };
-		95670D9A2B03FE8E002037AF /* SplitRum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitRum.swift; sourceTree = "<group>"; };
-		95670D9B2B03FE8E002037AF /* SessionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHandler.swift; sourceTree = "<group>"; };
-		95670D9C2B03FE8E002037AF /* RumAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RumAgent.swift; sourceTree = "<group>"; };
-		95670D9D2B03FE8E002037AF /* SplitRumConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitRumConfig.swift; sourceTree = "<group>"; };
-		95670D9E2B03FE8E002037AF /* FailedSplitRumAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailedSplitRumAgent.swift; sourceTree = "<group>"; };
-		95670DA02B03FE8E002037AF /* RestClient+Reports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestClient+Reports.swift"; sourceTree = "<group>"; };
-		95670DA12B03FE8E002037AF /* RestClient+Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestClient+Event.swift"; sourceTree = "<group>"; };
-		95670DA22B03FE8E002037AF /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
-		95670DA32B03FE8E002037AF /* DataResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataResult.swift; sourceTree = "<group>"; };
-		95670DA52B03FE8F002037AF /* EventsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTracker.swift; sourceTree = "<group>"; };
-		95670DA62B03FE8F002037AF /* EventsRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsRecorder.swift; sourceTree = "<group>"; };
-		95670DA82B03FE8F002037AF /* SplitSettingsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitSettingsLoader.swift; sourceTree = "<group>"; };
-		95670DA92B03FE8F002037AF /* EventFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFactory.swift; sourceTree = "<group>"; };
-		95670DAB2B03FE8F002037AF /* ReportsRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsRecorder.swift; sourceTree = "<group>"; };
-		95670DAC2B03FE8F002037AF /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		95670DAD2B03FE8F002037AF /* SplitIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitIdentity.swift; sourceTree = "<group>"; };
-		95670DAE2B03FE8F002037AF /* EventsSubmitterWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsSubmitterWorker.swift; sourceTree = "<group>"; };
-		95670DAF2B03FE8F002037AF /* ErrorReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorReport.swift; sourceTree = "<group>"; };
-		95670DB02B03FE8F002037AF /* EventsSubmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsSubmitter.swift; sourceTree = "<group>"; };
-		95670DB12B03FE8F002037AF /* MainCrashRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCrashRecorder.swift; sourceTree = "<group>"; };
-		95670DB22B03FE8F002037AF /* CrashReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashReport.swift; sourceTree = "<group>"; };
-		95670DB32B03FE8F002037AF /* PeriodicSubmitterWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodicSubmitterWorker.swift; sourceTree = "<group>"; };
-		95670DB52B03FE8F002037AF /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		95670DB62B03FE8F002037AF /* DeviceInfoProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvider.swift; sourceTree = "<group>"; };
-		95670DB72B03FE8F002037AF /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		958F974C2B0560D5001F35B3 /* SplitRumAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitRumAgent.h; sourceTree = "<group>"; };
+		958F974F2B0560D5001F35B3 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		958F97502B0560D5001F35B3 /* HttpStreamRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStreamRequest.swift; sourceTree = "<group>"; };
+		958F97512B0560D5001F35B3 /* HttpDataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpDataRequest.swift; sourceTree = "<group>"; };
+		958F97522B0560D5001F35B3 /* HttpTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTask.swift; sourceTree = "<group>"; };
+		958F97532B0560D5001F35B3 /* HttpDataResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpDataResponse.swift; sourceTree = "<group>"; };
+		958F97542B0560D5001F35B3 /* HttpStreamResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStreamResponse.swift; sourceTree = "<group>"; };
+		958F97552B0560D5001F35B3 /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		958F97562B0560D5001F35B3 /* HttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpResponse.swift; sourceTree = "<group>"; };
+		958F97572B0560D5001F35B3 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		958F97582B0560D5001F35B3 /* HttpError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
+		958F97592B0560D5001F35B3 /* HttpRequestList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequestList.swift; sourceTree = "<group>"; };
+		958F975A2B0560D5001F35B3 /* EndpointFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndpointFactory.swift; sourceTree = "<group>"; };
+		958F975B2B0560D5001F35B3 /* HttpSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpSession.swift; sourceTree = "<group>"; };
+		958F975C2B0560D5001F35B3 /* HttpRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequestManager.swift; sourceTree = "<group>"; };
+		958F975D2B0560D5001F35B3 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		958F975F2B0560D5001F35B3 /* CrashReporter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CrashReporter.c; sourceTree = "<group>"; };
+		958F97612B0560D5001F35B3 /* Logger.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Logger.c; sourceTree = "<group>"; };
+		958F97622B0560D5001F35B3 /* SignalHandler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SignalHandler.c; sourceTree = "<group>"; };
+		958F97632B0560D5001F35B3 /* Commons.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Commons.c; sourceTree = "<group>"; };
+		958F97642B0560D5001F35B3 /* CrashDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashDetector.swift; sourceTree = "<group>"; };
+		958F97652B0560D5001F35B3 /* CrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashReporter.h; sourceTree = "<group>"; };
+		958F97662B0560D5001F35B3 /* Commons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Commons.h; sourceTree = "<group>"; };
+		958F97672B0560D5001F35B3 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		958F97682B0560D5001F35B3 /* SignalHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignalHandler.h; sourceTree = "<group>"; };
+		958F97692B0560D5001F35B3 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		958F976B2B0560D5001F35B3 /* MetricsCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsCollector.swift; sourceTree = "<group>"; };
+		958F976C2B0560D5001F35B3 /* MetricsProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsProcessor.swift; sourceTree = "<group>"; };
+		958F976D2B0560D5001F35B3 /* MetricKitModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricKitModel.swift; sourceTree = "<group>"; };
+		958F976E2B0560D5001F35B3 /* MetricsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsParser.swift; sourceTree = "<group>"; };
+		958F97712B0560D5001F35B3 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		958F97722B0560D5001F35B3 /* CoreDataContextBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataContextBuilder.swift; sourceTree = "<group>"; };
+		958F97732B0560D5001F35B3 /* StorageFacade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageFacade.swift; sourceTree = "<group>"; };
+		958F97752B0560D5001F35B3 /* split_rum_agent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = split_rum_agent.xcdatamodel; sourceTree = "<group>"; };
+		958F97762B0560D5001F35B3 /* SplitDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitDatabase.swift; sourceTree = "<group>"; };
+		958F97772B0560D5001F35B3 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		958F97792B0560D5001F35B3 /* PersistentSessionsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentSessionsStorage.swift; sourceTree = "<group>"; };
+		958F977A2B0560D5001F35B3 /* SessionDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDao.swift; sourceTree = "<group>"; };
+		958F977B2B0560D5001F35B3 /* SessionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionEntity.swift; sourceTree = "<group>"; };
+		958F977D2B0560D5001F35B3 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		958F977E2B0560D5001F35B3 /* PropertyDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyDao.swift; sourceTree = "<group>"; };
+		958F977F2B0560D5001F35B3 /* PersistentPropertyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentPropertyStorage.swift; sourceTree = "<group>"; };
+		958F97802B0560D5001F35B3 /* PropertyEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyEntity.swift; sourceTree = "<group>"; };
+		958F97812B0560D5001F35B3 /* PropertiesStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertiesStorage.swift; sourceTree = "<group>"; };
+		958F97832B0560D6001F35B3 /* EventDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDao.swift; sourceTree = "<group>"; };
+		958F97842B0560D6001F35B3 /* PersistentEventsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentEventsStorage.swift; sourceTree = "<group>"; };
+		958F97852B0560D6001F35B3 /* EventEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEntity.swift; sourceTree = "<group>"; };
+		958F97862B0560D6001F35B3 /* EventsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsStorage.swift; sourceTree = "<group>"; };
+		958F97882B0560D6001F35B3 /* MainHangRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHangRecorder.swift; sourceTree = "<group>"; };
+		958F97892B0560D6001F35B3 /* WatchDog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchDog.swift; sourceTree = "<group>"; };
+		958F978B2B0560D6001F35B3 /* ComponentFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentFactory.swift; sourceTree = "<group>"; };
+		958F978C2B0560D6001F35B3 /* ComponentCatalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentCatalog.swift; sourceTree = "<group>"; };
+		958F978E2B0560D6001F35B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		958F978F2B0560D6001F35B3 /* Bundle+Finder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Finder.swift"; sourceTree = "<group>"; };
+		958F97902B0560D6001F35B3 /* Dictionary+DynamicCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+DynamicCodable.swift"; sourceTree = "<group>"; };
+		958F97912B0560D6001F35B3 /* Data+StringRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+StringRepresentation.swift"; sourceTree = "<group>"; };
+		958F97922B0560D6001F35B3 /* ThreadUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadUtils.swift; sourceTree = "<group>"; };
+		958F97932B0560D6001F35B3 /* Cipher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cipher.swift; sourceTree = "<group>"; };
+		958F97952B0560D6001F35B3 /* ValidatorMessageLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorMessageLogger.swift; sourceTree = "<group>"; };
+		958F97962B0560D6001F35B3 /* EventValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventValidator.swift; sourceTree = "<group>"; };
+		958F97972B0560D6001F35B3 /* ValidationConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationConfig.swift; sourceTree = "<group>"; };
+		958F97982B0560D6001F35B3 /* AnyValueValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyValueValidator.swift; sourceTree = "<group>"; };
+		958F97992B0560D6001F35B3 /* ValidationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
+		958F979A2B0560D6001F35B3 /* SynchronizedList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedList.swift; sourceTree = "<group>"; };
+		958F979B2B0560D6001F35B3 /* Paths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Paths.swift; sourceTree = "<group>"; };
+		958F979C2B0560D6001F35B3 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		958F979D2B0560D6001F35B3 /* Dictionary+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+JSON.swift"; sourceTree = "<group>"; };
+		958F979E2B0560D6001F35B3 /* UIViewController+Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Swizzle.swift"; sourceTree = "<group>"; };
+		958F979F2B0560D6001F35B3 /* Int64+asDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int64+asDouble.swift"; sourceTree = "<group>"; };
+		958F97A02B0560D6001F35B3 /* UIApplication+Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Swizzle.swift"; sourceTree = "<group>"; };
+		958F97A12B0560D6001F35B3 /* Array+DynamicCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+DynamicCodable.swift"; sourceTree = "<group>"; };
+		958F97A22B0560D6001F35B3 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
+		958F97A32B0560D6001F35B3 /* ServiceConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
+		958F97A42B0560D6001F35B3 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		958F97A52B0560D6001F35B3 /* Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
+		958F97A62B0560D6001F35B3 /* SynchronizedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedDictionary.swift; sourceTree = "<group>"; };
+		958F97A72B0560D6001F35B3 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
+		958F97A82B0560D6001F35B3 /* GenericError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
+		958F97A92B0560D6001F35B3 /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
+		958F97AA2B0560D6001F35B3 /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
+		958F97AC2B0560D6001F35B3 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		958F97AD2B0560D6001F35B3 /* Date+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
+		958F97AE2B0560D6001F35B3 /* CastUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastUtils.swift; sourceTree = "<group>"; };
+		958F97B02B0560D6001F35B3 /* SplitRum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitRum.swift; sourceTree = "<group>"; };
+		958F97B12B0560D6001F35B3 /* SessionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHandler.swift; sourceTree = "<group>"; };
+		958F97B22B0560D6001F35B3 /* RumAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RumAgent.swift; sourceTree = "<group>"; };
+		958F97B32B0560D6001F35B3 /* SplitRumConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitRumConfig.swift; sourceTree = "<group>"; };
+		958F97B42B0560D6001F35B3 /* FailedSplitRumAgent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailedSplitRumAgent.swift; sourceTree = "<group>"; };
+		958F97B62B0560D6001F35B3 /* RestClient+Reports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestClient+Reports.swift"; sourceTree = "<group>"; };
+		958F97B72B0560D6001F35B3 /* RestClient+Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RestClient+Event.swift"; sourceTree = "<group>"; };
+		958F97B82B0560D6001F35B3 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
+		958F97B92B0560D6001F35B3 /* DataResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataResult.swift; sourceTree = "<group>"; };
+		958F97BB2B0560D6001F35B3 /* EventsTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTracker.swift; sourceTree = "<group>"; };
+		958F97BC2B0560D6001F35B3 /* EventsRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsRecorder.swift; sourceTree = "<group>"; };
+		958F97BE2B0560D6001F35B3 /* SplitSettingsLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitSettingsLoader.swift; sourceTree = "<group>"; };
+		958F97BF2B0560D6001F35B3 /* EventFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFactory.swift; sourceTree = "<group>"; };
+		958F97C12B0560D6001F35B3 /* ReportsRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsRecorder.swift; sourceTree = "<group>"; };
+		958F97C22B0560D6001F35B3 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		958F97C32B0560D6001F35B3 /* SplitIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitIdentity.swift; sourceTree = "<group>"; };
+		958F97C42B0560D6001F35B3 /* EventsSubmitterWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsSubmitterWorker.swift; sourceTree = "<group>"; };
+		958F97C52B0560D6001F35B3 /* ErrorReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorReport.swift; sourceTree = "<group>"; };
+		958F97C62B0560D6001F35B3 /* EventsSubmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsSubmitter.swift; sourceTree = "<group>"; };
+		958F97C72B0560D6001F35B3 /* MainCrashRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCrashRecorder.swift; sourceTree = "<group>"; };
+		958F97C82B0560D6001F35B3 /* CrashReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashReport.swift; sourceTree = "<group>"; };
+		958F97C92B0560D6001F35B3 /* PeriodicSubmitterWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodicSubmitterWorker.swift; sourceTree = "<group>"; };
+		958F97CB2B0560D6001F35B3 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		958F97CC2B0560D6001F35B3 /* DeviceInfoProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfoProvider.swift; sourceTree = "<group>"; };
+		958F97CD2B0560D6001F35B3 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		958F983F2B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSuiteSdkClient.swift; sourceTree = "<group>"; };
+		958F98482B0E509B001F35B3 /* SplitIdentity+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplitIdentity+Extension.swift"; sourceTree = "<group>"; };
+		958F984A2B0E651B001F35B3 /* SuiteConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiteConstants.swift; sourceTree = "<group>"; };
+		958F984C2B0E8A82001F35B3 /* SplitSuiteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSuiteConfig.swift; sourceTree = "<group>"; };
+		958F98512B0F9506001F35B3 /* ApiKeyValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiKeyValidator.swift; sourceTree = "<group>"; };
+		958F98582B0F9506001F35B3 /* KeyValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValidator.swift; sourceTree = "<group>"; };
+		958F98642B0F9E48001F35B3 /* SuiteKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiteKey.swift; sourceTree = "<group>"; };
+		958F986A2B0FC975001F35B3 /* SplitTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTypes.swift; sourceTree = "<group>"; };
+		958F986E2B0FCD2C001F35B3 /* SplitClientConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitClientConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -910,7 +912,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				958F97492B0415F7001F35B3 /* SplitRumAgent.framework in Frameworks */,
 				95670D1D2B03F13D002037AF /* SplitSdk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -930,13 +931,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95670D2D2B03FE48002037AF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -946,7 +940,6 @@
 				9567069A2B03C25A002037AF /* iOSSplitSuite */,
 				956706A42B03C25B002037AF /* iOSSplitSuiteTests */,
 				956709752B03C5D5002037AF /* SplitSdk */,
-				95670D312B03FE48002037AF /* SplitRumAgent */,
 				956706992B03C25A002037AF /* Products */,
 				95670D1C2B03F13D002037AF /* Frameworks */,
 			);
@@ -958,7 +951,6 @@
 				956706982B03C25A002037AF /* iOSSplitSuite.framework */,
 				956706A02B03C25B002037AF /* iOSSplitSuiteTests.xctest */,
 				956709742B03C5D5002037AF /* SplitSdk.framework */,
-				95670D302B03FE48002037AF /* SplitRumAgent.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -966,7 +958,8 @@
 		9567069A2B03C25A002037AF /* iOSSplitSuite */ = {
 			isa = PBXGroup;
 			children = (
-				956706B02B03C3EE002037AF /* Api */,
+				958F983E2B0D225A001F35B3 /* SplitSuite */,
+				958F974B2B0560D5001F35B3 /* SplitRumAgent */,
 				9567069B2B03C25A002037AF /* iOSSplitSuite.h */,
 			);
 			path = iOSSplitSuite;
@@ -985,6 +978,11 @@
 			children = (
 				956706B12B03C3FC002037AF /* SharedSplitSuite.swift */,
 				956706B32B03C405002037AF /* SplitSuite.swift */,
+				958F984C2B0E8A82001F35B3 /* SplitSuiteConfig.swift */,
+				958F983F2B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift */,
+				958F98642B0F9E48001F35B3 /* SuiteKey.swift */,
+				958F986A2B0FC975001F35B3 /* SplitTypes.swift */,
+				958F986E2B0FCD2C001F35B3 /* SplitClientConfig.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -1537,7 +1535,6 @@
 				95670A8A2B03C64D002037AF /* SplitClient.swift */,
 				95670A8B2B03C64D002037AF /* FailHelpers.swift */,
 				95670A8C2B03C64D002037AF /* LocalhostSplitFactory.swift */,
-				95670A8D2B03C64D002037AF /* SplitClientConfig.swift */,
 				95670A8E2B03C64D002037AF /* SplitLogLevel.swift */,
 				95670A8F2B03C64D002037AF /* SplitView.swift */,
 				95670A902B03C64D002037AF /* Destroyable.swift */,
@@ -1706,281 +1703,310 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		95670D312B03FE48002037AF /* SplitRumAgent */ = {
+		958F974B2B0560D5001F35B3 /* SplitRumAgent */ = {
 			isa = PBXGroup;
 			children = (
-				95670D372B03FE8E002037AF /* Agent */,
-				95670D322B03FE48002037AF /* SplitRumAgent.h */,
+				958F974C2B0560D5001F35B3 /* SplitRumAgent.h */,
+				958F974D2B0560D5001F35B3 /* Agent */,
 			);
-			path = SplitRumAgent;
-			sourceTree = "<group>";
-		};
-		95670D372B03FE8E002037AF /* Agent */ = {
-			isa = PBXGroup;
-			children = (
-				95670D382B03FE8E002037AF /* HttpClient */,
-				95670D482B03FE8E002037AF /* CrashDetection */,
-				95670D542B03FE8E002037AF /* Collector */,
-				95670D592B03FE8E002037AF /* Storage */,
-				95670D712B03FE8E002037AF /* HangDetector */,
-				95670D742B03FE8E002037AF /* Components */,
-				95670D772B03FE8E002037AF /* Common */,
-				95670D992B03FE8E002037AF /* Api */,
-				95670D9F2B03FE8E002037AF /* RestClient */,
-				95670DA42B03FE8E002037AF /* Events */,
-				95670DA72B03FE8F002037AF /* Helper */,
-				95670DAA2B03FE8F002037AF /* Reports */,
-				95670DB42B03FE8F002037AF /* Session */,
-			);
-			name = Agent;
-			path = "ios-rum-agent/SplitRumAgent/Agent";
+			name = SplitRumAgent;
+			path = "ios-rum-agent/SplitRumAgent";
 			sourceTree = SOURCE_ROOT;
 		};
-		95670D382B03FE8E002037AF /* HttpClient */ = {
+		958F974D2B0560D5001F35B3 /* Agent */ = {
 			isa = PBXGroup;
 			children = (
-				95670D392B03FE8E002037AF /* NetworkReachabilityManager.swift */,
-				95670D3A2B03FE8E002037AF /* HttpStreamRequest.swift */,
-				95670D3B2B03FE8E002037AF /* HttpDataRequest.swift */,
-				95670D3C2B03FE8E002037AF /* HttpTask.swift */,
-				95670D3D2B03FE8E002037AF /* HttpDataResponse.swift */,
-				95670D3E2B03FE8E002037AF /* HttpStreamResponse.swift */,
-				95670D3F2B03FE8E002037AF /* HttpRequest.swift */,
-				95670D402B03FE8E002037AF /* HttpResponse.swift */,
-				95670D412B03FE8E002037AF /* HttpClient.swift */,
-				95670D422B03FE8E002037AF /* HttpError.swift */,
-				95670D432B03FE8E002037AF /* HttpRequestList.swift */,
-				95670D442B03FE8E002037AF /* EndpointFactory.swift */,
-				95670D452B03FE8E002037AF /* HttpSession.swift */,
-				95670D462B03FE8E002037AF /* HttpRequestManager.swift */,
-				95670D472B03FE8E002037AF /* Endpoint.swift */,
+				958F974E2B0560D5001F35B3 /* HttpClient */,
+				958F975E2B0560D5001F35B3 /* CrashDetection */,
+				958F976A2B0560D5001F35B3 /* Collector */,
+				958F976F2B0560D5001F35B3 /* Storage */,
+				958F97872B0560D6001F35B3 /* HangDetector */,
+				958F978A2B0560D6001F35B3 /* Components */,
+				958F978D2B0560D6001F35B3 /* Common */,
+				958F97AF2B0560D6001F35B3 /* Api */,
+				958F97B52B0560D6001F35B3 /* RestClient */,
+				958F97BA2B0560D6001F35B3 /* Events */,
+				958F97BD2B0560D6001F35B3 /* Helper */,
+				958F97C02B0560D6001F35B3 /* Reports */,
+				958F97CA2B0560D6001F35B3 /* Session */,
+			);
+			path = Agent;
+			sourceTree = "<group>";
+		};
+		958F974E2B0560D5001F35B3 /* HttpClient */ = {
+			isa = PBXGroup;
+			children = (
+				958F974F2B0560D5001F35B3 /* NetworkReachabilityManager.swift */,
+				958F97502B0560D5001F35B3 /* HttpStreamRequest.swift */,
+				958F97512B0560D5001F35B3 /* HttpDataRequest.swift */,
+				958F97522B0560D5001F35B3 /* HttpTask.swift */,
+				958F97532B0560D5001F35B3 /* HttpDataResponse.swift */,
+				958F97542B0560D5001F35B3 /* HttpStreamResponse.swift */,
+				958F97552B0560D5001F35B3 /* HttpRequest.swift */,
+				958F97562B0560D5001F35B3 /* HttpResponse.swift */,
+				958F97572B0560D5001F35B3 /* HttpClient.swift */,
+				958F97582B0560D5001F35B3 /* HttpError.swift */,
+				958F97592B0560D5001F35B3 /* HttpRequestList.swift */,
+				958F975A2B0560D5001F35B3 /* EndpointFactory.swift */,
+				958F975B2B0560D5001F35B3 /* HttpSession.swift */,
+				958F975C2B0560D5001F35B3 /* HttpRequestManager.swift */,
+				958F975D2B0560D5001F35B3 /* Endpoint.swift */,
 			);
 			path = HttpClient;
 			sourceTree = "<group>";
 		};
-		95670D482B03FE8E002037AF /* CrashDetection */ = {
+		958F975E2B0560D5001F35B3 /* CrashDetection */ = {
 			isa = PBXGroup;
 			children = (
-				95670D492B03FE8E002037AF /* CrashReporter.c */,
-				95670D4B2B03FE8E002037AF /* Logger.c */,
-				95670D4C2B03FE8E002037AF /* SignalHandler.c */,
-				95670D4D2B03FE8E002037AF /* Commons.c */,
-				95670D4E2B03FE8E002037AF /* CrashDetector.swift */,
-				95670D4F2B03FE8E002037AF /* CrashReporter.h */,
-				95670D502B03FE8E002037AF /* Commons.h */,
-				95670D512B03FE8E002037AF /* module.modulemap */,
-				95670D522B03FE8E002037AF /* SignalHandler.h */,
-				95670D532B03FE8E002037AF /* Logger.h */,
+				958F975F2B0560D5001F35B3 /* CrashReporter.c */,
+				958F97612B0560D5001F35B3 /* Logger.c */,
+				958F97622B0560D5001F35B3 /* SignalHandler.c */,
+				958F97632B0560D5001F35B3 /* Commons.c */,
+				958F97642B0560D5001F35B3 /* CrashDetector.swift */,
+				958F97652B0560D5001F35B3 /* CrashReporter.h */,
+				958F97662B0560D5001F35B3 /* Commons.h */,
+				958F97672B0560D5001F35B3 /* module.modulemap */,
+				958F97682B0560D5001F35B3 /* SignalHandler.h */,
+				958F97692B0560D5001F35B3 /* Logger.h */,
 			);
 			path = CrashDetection;
 			sourceTree = "<group>";
 		};
-		95670D542B03FE8E002037AF /* Collector */ = {
+		958F976A2B0560D5001F35B3 /* Collector */ = {
 			isa = PBXGroup;
 			children = (
-				95670D552B03FE8E002037AF /* MetricsCollector.swift */,
-				95670D562B03FE8E002037AF /* MetricsProcessor.swift */,
-				95670D572B03FE8E002037AF /* MetricKitModel.swift */,
-				95670D582B03FE8E002037AF /* MetricsParser.swift */,
+				958F976B2B0560D5001F35B3 /* MetricsCollector.swift */,
+				958F976C2B0560D5001F35B3 /* MetricsProcessor.swift */,
+				958F976D2B0560D5001F35B3 /* MetricKitModel.swift */,
+				958F976E2B0560D5001F35B3 /* MetricsParser.swift */,
 			);
 			path = Collector;
 			sourceTree = "<group>";
 		};
-		95670D592B03FE8E002037AF /* Storage */ = {
+		958F976F2B0560D5001F35B3 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				95670D5A2B03FE8E002037AF /* Core */,
-				95670D622B03FE8E002037AF /* Sessions */,
-				95670D662B03FE8E002037AF /* Properties */,
-				95670D6C2B03FE8E002037AF /* Events */,
+				958F97702B0560D5001F35B3 /* Core */,
+				958F97782B0560D5001F35B3 /* Sessions */,
+				958F977C2B0560D5001F35B3 /* Properties */,
+				958F97822B0560D5001F35B3 /* Events */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		95670D5A2B03FE8E002037AF /* Core */ = {
+		958F97702B0560D5001F35B3 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				95670D5B2B03FE8E002037AF /* CoreDataHelper.swift */,
-				95670D5C2B03FE8E002037AF /* CoreDataContextBuilder.swift */,
-				95670D5D2B03FE8E002037AF /* StorageFacade.swift */,
-				95670D5E2B03FE8E002037AF /* split_rum_agent.xcdatamodeld */,
-				95670D602B03FE8E002037AF /* SplitDatabase.swift */,
-				95670D612B03FE8E002037AF /* DatabaseHelper.swift */,
+				958F97712B0560D5001F35B3 /* CoreDataHelper.swift */,
+				958F97722B0560D5001F35B3 /* CoreDataContextBuilder.swift */,
+				958F97732B0560D5001F35B3 /* StorageFacade.swift */,
+				958F97742B0560D5001F35B3 /* split_rum_agent.xcdatamodeld */,
+				958F97762B0560D5001F35B3 /* SplitDatabase.swift */,
+				958F97772B0560D5001F35B3 /* DatabaseHelper.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		95670D622B03FE8E002037AF /* Sessions */ = {
+		958F97782B0560D5001F35B3 /* Sessions */ = {
 			isa = PBXGroup;
 			children = (
-				95670D632B03FE8E002037AF /* PersistentSessionsStorage.swift */,
-				95670D642B03FE8E002037AF /* SessionDao.swift */,
-				95670D652B03FE8E002037AF /* SessionEntity.swift */,
+				958F97792B0560D5001F35B3 /* PersistentSessionsStorage.swift */,
+				958F977A2B0560D5001F35B3 /* SessionDao.swift */,
+				958F977B2B0560D5001F35B3 /* SessionEntity.swift */,
 			);
 			path = Sessions;
 			sourceTree = "<group>";
 		};
-		95670D662B03FE8E002037AF /* Properties */ = {
+		958F977C2B0560D5001F35B3 /* Properties */ = {
 			isa = PBXGroup;
 			children = (
-				95670D672B03FE8E002037AF /* Property.swift */,
-				95670D682B03FE8E002037AF /* PropertyDao.swift */,
-				95670D692B03FE8E002037AF /* PersistentPropertyStorage.swift */,
-				95670D6A2B03FE8E002037AF /* PropertyEntity.swift */,
-				95670D6B2B03FE8E002037AF /* PropertiesStorage.swift */,
+				958F977D2B0560D5001F35B3 /* Property.swift */,
+				958F977E2B0560D5001F35B3 /* PropertyDao.swift */,
+				958F977F2B0560D5001F35B3 /* PersistentPropertyStorage.swift */,
+				958F97802B0560D5001F35B3 /* PropertyEntity.swift */,
+				958F97812B0560D5001F35B3 /* PropertiesStorage.swift */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
 		};
-		95670D6C2B03FE8E002037AF /* Events */ = {
+		958F97822B0560D5001F35B3 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				95670D6D2B03FE8E002037AF /* EventDao.swift */,
-				95670D6E2B03FE8E002037AF /* PersistentEventsStorage.swift */,
-				95670D6F2B03FE8E002037AF /* EventEntity.swift */,
-				95670D702B03FE8E002037AF /* EventsStorage.swift */,
+				958F97832B0560D6001F35B3 /* EventDao.swift */,
+				958F97842B0560D6001F35B3 /* PersistentEventsStorage.swift */,
+				958F97852B0560D6001F35B3 /* EventEntity.swift */,
+				958F97862B0560D6001F35B3 /* EventsStorage.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
 		};
-		95670D712B03FE8E002037AF /* HangDetector */ = {
+		958F97872B0560D6001F35B3 /* HangDetector */ = {
 			isa = PBXGroup;
 			children = (
-				95670D722B03FE8E002037AF /* MainHangRecorder.swift */,
-				95670D732B03FE8E002037AF /* WatchDog.swift */,
+				958F97882B0560D6001F35B3 /* MainHangRecorder.swift */,
+				958F97892B0560D6001F35B3 /* WatchDog.swift */,
 			);
 			path = HangDetector;
 			sourceTree = "<group>";
 		};
-		95670D742B03FE8E002037AF /* Components */ = {
+		958F978A2B0560D6001F35B3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				95670D752B03FE8E002037AF /* ComponentFactory.swift */,
-				95670D762B03FE8E002037AF /* ComponentCatalog.swift */,
+				958F978B2B0560D6001F35B3 /* ComponentFactory.swift */,
+				958F978C2B0560D6001F35B3 /* ComponentCatalog.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
 		};
-		95670D772B03FE8E002037AF /* Common */ = {
+		958F978D2B0560D6001F35B3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				95670D782B03FE8E002037AF /* Constants.swift */,
-				95670D792B03FE8E002037AF /* Bundle+Finder.swift */,
-				95670D7A2B03FE8E002037AF /* Dictionary+DynamicCodable.swift */,
-				95670D7B2B03FE8E002037AF /* Data+StringRepresentation.swift */,
-				95670D7C2B03FE8E002037AF /* ThreadUtils.swift */,
-				95670D7D2B03FE8E002037AF /* Cipher.swift */,
-				95670D7E2B03FE8E002037AF /* Validator */,
-				95670D842B03FE8E002037AF /* SynchronizedList.swift */,
-				95670D852B03FE8E002037AF /* Paths.swift */,
-				95670D862B03FE8E002037AF /* Logger.swift */,
-				95670D872B03FE8E002037AF /* Dictionary+JSON.swift */,
-				95670D882B03FE8E002037AF /* UIViewController+Swizzle.swift */,
-				95670D892B03FE8E002037AF /* Int64+asDouble.swift */,
-				95670D8A2B03FE8E002037AF /* UIApplication+Swizzle.swift */,
-				95670D8B2B03FE8E002037AF /* Array+DynamicCodable.swift */,
-				95670D8C2B03FE8E002037AF /* Json.swift */,
-				95670D8D2B03FE8E002037AF /* ServiceConstants.swift */,
-				95670D8E2B03FE8E002037AF /* Protocols.swift */,
-				95670D8F2B03FE8E002037AF /* Atomic.swift */,
-				95670D902B03FE8E002037AF /* SynchronizedDictionary.swift */,
-				95670D912B03FE8E002037AF /* Dictionary+Extensions.swift */,
-				95670D922B03FE8E002037AF /* GenericError.swift */,
-				95670D932B03FE8E002037AF /* NotificationHelper.swift */,
-				95670D942B03FE8E002037AF /* String+Utils.swift */,
-				95670D952B03FE8E002037AF /* Submitter */,
-				95670D972B03FE8E002037AF /* Date+Utils.swift */,
-				95670D982B03FE8E002037AF /* CastUtils.swift */,
+				958F978E2B0560D6001F35B3 /* Constants.swift */,
+				958F978F2B0560D6001F35B3 /* Bundle+Finder.swift */,
+				958F97902B0560D6001F35B3 /* Dictionary+DynamicCodable.swift */,
+				958F97912B0560D6001F35B3 /* Data+StringRepresentation.swift */,
+				958F97922B0560D6001F35B3 /* ThreadUtils.swift */,
+				958F97932B0560D6001F35B3 /* Cipher.swift */,
+				958F97942B0560D6001F35B3 /* Validator */,
+				958F979A2B0560D6001F35B3 /* SynchronizedList.swift */,
+				958F979B2B0560D6001F35B3 /* Paths.swift */,
+				958F979C2B0560D6001F35B3 /* Logger.swift */,
+				958F979D2B0560D6001F35B3 /* Dictionary+JSON.swift */,
+				958F979E2B0560D6001F35B3 /* UIViewController+Swizzle.swift */,
+				958F979F2B0560D6001F35B3 /* Int64+asDouble.swift */,
+				958F97A02B0560D6001F35B3 /* UIApplication+Swizzle.swift */,
+				958F97A12B0560D6001F35B3 /* Array+DynamicCodable.swift */,
+				958F97A22B0560D6001F35B3 /* Json.swift */,
+				958F97A32B0560D6001F35B3 /* ServiceConstants.swift */,
+				958F97A42B0560D6001F35B3 /* Protocols.swift */,
+				958F97A52B0560D6001F35B3 /* Atomic.swift */,
+				958F97A62B0560D6001F35B3 /* SynchronizedDictionary.swift */,
+				958F97A72B0560D6001F35B3 /* Dictionary+Extensions.swift */,
+				958F97A82B0560D6001F35B3 /* GenericError.swift */,
+				958F97A92B0560D6001F35B3 /* NotificationHelper.swift */,
+				958F97AA2B0560D6001F35B3 /* String+Utils.swift */,
+				958F97AB2B0560D6001F35B3 /* Submitter */,
+				958F97AD2B0560D6001F35B3 /* Date+Utils.swift */,
+				958F97AE2B0560D6001F35B3 /* CastUtils.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		95670D7E2B03FE8E002037AF /* Validator */ = {
+		958F97942B0560D6001F35B3 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
-				95670D7F2B03FE8E002037AF /* ValidatorMessageLogger.swift */,
-				95670D802B03FE8E002037AF /* EventValidator.swift */,
-				95670D812B03FE8E002037AF /* ValidationConfig.swift */,
-				95670D822B03FE8E002037AF /* AnyValueValidator.swift */,
-				95670D832B03FE8E002037AF /* ValidationResult.swift */,
+				958F97952B0560D6001F35B3 /* ValidatorMessageLogger.swift */,
+				958F97962B0560D6001F35B3 /* EventValidator.swift */,
+				958F97972B0560D6001F35B3 /* ValidationConfig.swift */,
+				958F97982B0560D6001F35B3 /* AnyValueValidator.swift */,
+				958F97992B0560D6001F35B3 /* ValidationResult.swift */,
 			);
 			path = Validator;
 			sourceTree = "<group>";
 		};
-		95670D952B03FE8E002037AF /* Submitter */ = {
+		958F97AB2B0560D6001F35B3 /* Submitter */ = {
 			isa = PBXGroup;
 			children = (
-				95670D962B03FE8E002037AF /* Timer.swift */,
+				958F97AC2B0560D6001F35B3 /* Timer.swift */,
 			);
 			path = Submitter;
 			sourceTree = "<group>";
 		};
-		95670D992B03FE8E002037AF /* Api */ = {
+		958F97AF2B0560D6001F35B3 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				95670D9A2B03FE8E002037AF /* SplitRum.swift */,
-				95670D9B2B03FE8E002037AF /* SessionHandler.swift */,
-				95670D9C2B03FE8E002037AF /* RumAgent.swift */,
-				95670D9D2B03FE8E002037AF /* SplitRumConfig.swift */,
-				95670D9E2B03FE8E002037AF /* FailedSplitRumAgent.swift */,
+				958F97B02B0560D6001F35B3 /* SplitRum.swift */,
+				958F97B12B0560D6001F35B3 /* SessionHandler.swift */,
+				958F97B22B0560D6001F35B3 /* RumAgent.swift */,
+				958F97B32B0560D6001F35B3 /* SplitRumConfig.swift */,
+				958F97B42B0560D6001F35B3 /* FailedSplitRumAgent.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
 		};
-		95670D9F2B03FE8E002037AF /* RestClient */ = {
+		958F97B52B0560D6001F35B3 /* RestClient */ = {
 			isa = PBXGroup;
 			children = (
-				95670DA02B03FE8E002037AF /* RestClient+Reports.swift */,
-				95670DA12B03FE8E002037AF /* RestClient+Event.swift */,
-				95670DA22B03FE8E002037AF /* RestClient.swift */,
-				95670DA32B03FE8E002037AF /* DataResult.swift */,
+				958F97B62B0560D6001F35B3 /* RestClient+Reports.swift */,
+				958F97B72B0560D6001F35B3 /* RestClient+Event.swift */,
+				958F97B82B0560D6001F35B3 /* RestClient.swift */,
+				958F97B92B0560D6001F35B3 /* DataResult.swift */,
 			);
 			path = RestClient;
 			sourceTree = "<group>";
 		};
-		95670DA42B03FE8E002037AF /* Events */ = {
+		958F97BA2B0560D6001F35B3 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				95670DA52B03FE8F002037AF /* EventsTracker.swift */,
-				95670DA62B03FE8F002037AF /* EventsRecorder.swift */,
+				958F97BB2B0560D6001F35B3 /* EventsTracker.swift */,
+				958F97BC2B0560D6001F35B3 /* EventsRecorder.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
 		};
-		95670DA72B03FE8F002037AF /* Helper */ = {
+		958F97BD2B0560D6001F35B3 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				95670DA82B03FE8F002037AF /* SplitSettingsLoader.swift */,
-				95670DA92B03FE8F002037AF /* EventFactory.swift */,
+				958F97BE2B0560D6001F35B3 /* SplitSettingsLoader.swift */,
+				958F97BF2B0560D6001F35B3 /* EventFactory.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		95670DAA2B03FE8F002037AF /* Reports */ = {
+		958F97C02B0560D6001F35B3 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
-				95670DAB2B03FE8F002037AF /* ReportsRecorder.swift */,
-				95670DAC2B03FE8F002037AF /* Event.swift */,
-				95670DAD2B03FE8F002037AF /* SplitIdentity.swift */,
-				95670DAE2B03FE8F002037AF /* EventsSubmitterWorker.swift */,
-				95670DAF2B03FE8F002037AF /* ErrorReport.swift */,
-				95670DB02B03FE8F002037AF /* EventsSubmitter.swift */,
-				95670DB12B03FE8F002037AF /* MainCrashRecorder.swift */,
-				95670DB22B03FE8F002037AF /* CrashReport.swift */,
-				95670DB32B03FE8F002037AF /* PeriodicSubmitterWorker.swift */,
+				958F97C12B0560D6001F35B3 /* ReportsRecorder.swift */,
+				958F97C22B0560D6001F35B3 /* Event.swift */,
+				958F97C32B0560D6001F35B3 /* SplitIdentity.swift */,
+				958F97C42B0560D6001F35B3 /* EventsSubmitterWorker.swift */,
+				958F97C52B0560D6001F35B3 /* ErrorReport.swift */,
+				958F97C62B0560D6001F35B3 /* EventsSubmitter.swift */,
+				958F97C72B0560D6001F35B3 /* MainCrashRecorder.swift */,
+				958F97C82B0560D6001F35B3 /* CrashReport.swift */,
+				958F97C92B0560D6001F35B3 /* PeriodicSubmitterWorker.swift */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
 		};
-		95670DB42B03FE8F002037AF /* Session */ = {
+		958F97CA2B0560D6001F35B3 /* Session */ = {
 			isa = PBXGroup;
 			children = (
-				95670DB52B03FE8F002037AF /* Session.swift */,
-				95670DB62B03FE8F002037AF /* DeviceInfoProvider.swift */,
-				95670DB72B03FE8F002037AF /* Device.swift */,
+				958F97CB2B0560D6001F35B3 /* Session.swift */,
+				958F97CC2B0560D6001F35B3 /* DeviceInfoProvider.swift */,
+				958F97CD2B0560D6001F35B3 /* Device.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
+		};
+		958F983E2B0D225A001F35B3 /* SplitSuite */ = {
+			isa = PBXGroup;
+			children = (
+				958F98462B0D5172001F35B3 /* Common */,
+				956706B02B03C3EE002037AF /* Api */,
+			);
+			path = SplitSuite;
+			sourceTree = "<group>";
+		};
+		958F98462B0D5172001F35B3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				958F984F2B0F9506001F35B3 /* Validators */,
+				958F98482B0E509B001F35B3 /* SplitIdentity+Extension.swift */,
+				958F984A2B0E651B001F35B3 /* SuiteConstants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		958F984F2B0F9506001F35B3 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				958F98512B0F9506001F35B3 /* ApiKeyValidator.swift */,
+				958F98582B0F9506001F35B3 /* KeyValidator.swift */,
+			);
+			name = Validators;
+			path = iOSSplitSuite/SplitSuite/Common/Validators;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -1989,7 +2015,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				958F97E42B0560D6001F35B3 /* CrashReporter.h in Headers */,
+				958F97E62B0560D6001F35B3 /* SignalHandler.h in Headers */,
+				958F97E72B0560D6001F35B3 /* Logger.h in Headers */,
 				956706A72B03C25B002037AF /* iOSSplitSuite.h in Headers */,
+				958F97E52B0560D6001F35B3 /* Commons.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1998,18 +2028,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				95670C1B2B03C64E002037AF /* Split.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95670D2B2B03FE48002037AF /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				95670DCF2B03FE8F002037AF /* SignalHandler.h in Headers */,
-				956B97B22B040BF100EBB411 /* SplitRumAgent.h in Headers */,
-				95670DCD2B03FE8F002037AF /* CrashReporter.h in Headers */,
-				95670DD02B03FE8F002037AF /* Logger.h in Headers */,
-				95670DCE2B03FE8F002037AF /* Commons.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2029,7 +2047,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				956B97B42B0414D200EBB411 /* PBXTargetDependency */,
 				95670D202B03F13D002037AF /* PBXTargetDependency */,
 			);
 			name = iOSSplitSuite;
@@ -2073,24 +2090,6 @@
 			productReference = 956709742B03C5D5002037AF /* SplitSdk.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		95670D2F2B03FE48002037AF /* SplitRumAgent */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 95670D342B03FE48002037AF /* Build configuration list for PBXNativeTarget "SplitRumAgent" */;
-			buildPhases = (
-				95670D2B2B03FE48002037AF /* Headers */,
-				95670D2C2B03FE48002037AF /* Sources */,
-				95670D2D2B03FE48002037AF /* Frameworks */,
-				95670D2E2B03FE48002037AF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SplitRumAgent;
-			productName = SplitRumAgent;
-			productReference = 95670D302B03FE48002037AF /* SplitRumAgent.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2111,9 +2110,6 @@
 					956709732B03C5D5002037AF = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
-					95670D2F2B03FE48002037AF = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
 				};
 			};
 			buildConfigurationList = 956706922B03C25A002037AF /* Build configuration list for PBXProject "iOSSplitSuite" */;
@@ -2132,7 +2128,6 @@
 				956706972B03C25A002037AF /* iOSSplitSuite */,
 				9567069F2B03C25B002037AF /* iOSSplitSuiteTests */,
 				956709732B03C5D5002037AF /* SplitSdk */,
-				95670D2F2B03FE48002037AF /* SplitRumAgent */,
 			);
 		};
 /* End PBXProject section */
@@ -2160,13 +2155,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95670D2E2B03FE48002037AF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2174,8 +2162,116 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				958F97F92B0560D6001F35B3 /* PropertiesStorage.swift in Sources */,
+				958F98032B0560D6001F35B3 /* Bundle+Finder.swift in Sources */,
+				958F98382B0560D6001F35B3 /* DeviceInfoProvider.swift in Sources */,
+				958F97E12B0560D6001F35B3 /* SignalHandler.c in Sources */,
+				958F97F82B0560D6001F35B3 /* PropertyEntity.swift in Sources */,
+				958F980F2B0560D6001F35B3 /* Logger.swift in Sources */,
+				958F986B2B0FC975001F35B3 /* SplitTypes.swift in Sources */,
+				958F97F22B0560D6001F35B3 /* PersistentSessionsStorage.swift in Sources */,
+				958F97F52B0560D6001F35B3 /* Property.swift in Sources */,
+				958F982A2B0560D6001F35B3 /* EventsTracker.swift in Sources */,
+				958F98402B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift in Sources */,
+				958F97DE2B0560D6001F35B3 /* CrashReporter.c in Sources */,
+				958F97E32B0560D6001F35B3 /* CrashDetector.swift in Sources */,
+				958F98322B0560D6001F35B3 /* ErrorReport.swift in Sources */,
+				958F981F2B0560D6001F35B3 /* Date+Utils.swift in Sources */,
+				958F97D62B0560D6001F35B3 /* HttpResponse.swift in Sources */,
+				958F97FE2B0560D6001F35B3 /* MainHangRecorder.swift in Sources */,
+				958F97F32B0560D6001F35B3 /* SessionDao.swift in Sources */,
 				956706B22B03C3FC002037AF /* SharedSplitSuite.swift in Sources */,
+				958F98492B0E509B001F35B3 /* SplitIdentity+Extension.swift in Sources */,
+				958F98162B0560D6001F35B3 /* ServiceConstants.swift in Sources */,
+				958F98292B0560D6001F35B3 /* DataResult.swift in Sources */,
+				958F97F72B0560D6001F35B3 /* PersistentPropertyStorage.swift in Sources */,
+				958F981A2B0560D6001F35B3 /* Dictionary+Extensions.swift in Sources */,
+				958F97FF2B0560D6001F35B3 /* WatchDog.swift in Sources */,
+				958F98152B0560D6001F35B3 /* Json.swift in Sources */,
+				958F97FA2B0560D6001F35B3 /* EventDao.swift in Sources */,
+				958F97F42B0560D6001F35B3 /* SessionEntity.swift in Sources */,
+				958F97D12B0560D6001F35B3 /* HttpDataRequest.swift in Sources */,
+				958F97CF2B0560D6001F35B3 /* NetworkReachabilityManager.swift in Sources */,
+				958F98192B0560D6001F35B3 /* SynchronizedDictionary.swift in Sources */,
+				958F97EE2B0560D6001F35B3 /* StorageFacade.swift in Sources */,
+				958F97D82B0560D6001F35B3 /* HttpError.swift in Sources */,
+				958F97FD2B0560D6001F35B3 /* EventsStorage.swift in Sources */,
 				956706B42B03C405002037AF /* SplitSuite.swift in Sources */,
+				958F97D22B0560D6001F35B3 /* HttpTask.swift in Sources */,
+				958F980C2B0560D6001F35B3 /* ValidationResult.swift in Sources */,
+				958F982C2B0560D6001F35B3 /* SplitSettingsLoader.swift in Sources */,
+				958F98132B0560D6001F35B3 /* UIApplication+Swizzle.swift in Sources */,
+				958F98182B0560D6001F35B3 /* Atomic.swift in Sources */,
+				958F98362B0560D6001F35B3 /* PeriodicSubmitterWorker.swift in Sources */,
+				958F98062B0560D6001F35B3 /* ThreadUtils.swift in Sources */,
+				958F98302B0560D6001F35B3 /* SplitIdentity.swift in Sources */,
+				958F97F62B0560D6001F35B3 /* PropertyDao.swift in Sources */,
+				958F98262B0560D6001F35B3 /* RestClient+Reports.swift in Sources */,
+				958F981D2B0560D6001F35B3 /* String+Utils.swift in Sources */,
+				958F97EF2B0560D6001F35B3 /* split_rum_agent.xcdatamodeld in Sources */,
+				958F98272B0560D6001F35B3 /* RestClient+Event.swift in Sources */,
+				958F98172B0560D6001F35B3 /* Protocols.swift in Sources */,
+				958F97EC2B0560D6001F35B3 /* CoreDataHelper.swift in Sources */,
+				958F98612B0F9506001F35B3 /* KeyValidator.swift in Sources */,
+				958F984D2B0E8A82001F35B3 /* SplitSuiteConfig.swift in Sources */,
+				958F98202B0560D6001F35B3 /* CastUtils.swift in Sources */,
+				958F982F2B0560D6001F35B3 /* Event.swift in Sources */,
+				958F980B2B0560D6001F35B3 /* AnyValueValidator.swift in Sources */,
+				958F98022B0560D6001F35B3 /* Constants.swift in Sources */,
+				958F98222B0560D6001F35B3 /* SessionHandler.swift in Sources */,
+				958F97DC2B0560D6001F35B3 /* HttpRequestManager.swift in Sources */,
+				958F97E02B0560D6001F35B3 /* Logger.c in Sources */,
+				958F98392B0560D6001F35B3 /* Device.swift in Sources */,
+				958F98352B0560D6001F35B3 /* CrashReport.swift in Sources */,
+				958F98142B0560D6001F35B3 /* Array+DynamicCodable.swift in Sources */,
+				958F97F02B0560D6001F35B3 /* SplitDatabase.swift in Sources */,
+				958F98282B0560D6001F35B3 /* RestClient.swift in Sources */,
+				958F98052B0560D6001F35B3 /* Data+StringRepresentation.swift in Sources */,
+				958F98232B0560D6001F35B3 /* RumAgent.swift in Sources */,
+				958F98092B0560D6001F35B3 /* EventValidator.swift in Sources */,
+				958F98252B0560D6001F35B3 /* FailedSplitRumAgent.swift in Sources */,
+				958F98112B0560D6001F35B3 /* UIViewController+Swizzle.swift in Sources */,
+				958F98002B0560D6001F35B3 /* ComponentFactory.swift in Sources */,
+				958F980A2B0560D6001F35B3 /* ValidationConfig.swift in Sources */,
+				958F98372B0560D6001F35B3 /* Session.swift in Sources */,
+				958F97ED2B0560D6001F35B3 /* CoreDataContextBuilder.swift in Sources */,
+				958F980E2B0560D6001F35B3 /* Paths.swift in Sources */,
+				958F98312B0560D6001F35B3 /* EventsSubmitterWorker.swift in Sources */,
+				958F97D92B0560D6001F35B3 /* HttpRequestList.swift in Sources */,
+				958F97D52B0560D6001F35B3 /* HttpRequest.swift in Sources */,
+				958F97EA2B0560D6001F35B3 /* MetricKitModel.swift in Sources */,
+				958F98102B0560D6001F35B3 /* Dictionary+JSON.swift in Sources */,
+				958F97DB2B0560D6001F35B3 /* HttpSession.swift in Sources */,
+				958F981C2B0560D6001F35B3 /* NotificationHelper.swift in Sources */,
+				958F98332B0560D6001F35B3 /* EventsSubmitter.swift in Sources */,
+				958F97D72B0560D6001F35B3 /* HttpClient.swift in Sources */,
+				958F97D02B0560D6001F35B3 /* HttpStreamRequest.swift in Sources */,
+				958F98042B0560D6001F35B3 /* Dictionary+DynamicCodable.swift in Sources */,
+				958F97DA2B0560D6001F35B3 /* EndpointFactory.swift in Sources */,
+				958F97D42B0560D6001F35B3 /* HttpStreamResponse.swift in Sources */,
+				958F97F12B0560D6001F35B3 /* DatabaseHelper.swift in Sources */,
+				958F97DD2B0560D6001F35B3 /* Endpoint.swift in Sources */,
+				958F98012B0560D6001F35B3 /* ComponentCatalog.swift in Sources */,
+				958F97E92B0560D6001F35B3 /* MetricsProcessor.swift in Sources */,
+				958F98342B0560D6001F35B3 /* MainCrashRecorder.swift in Sources */,
+				958F985A2B0F9506001F35B3 /* ApiKeyValidator.swift in Sources */,
+				958F982E2B0560D6001F35B3 /* ReportsRecorder.swift in Sources */,
+				958F981B2B0560D6001F35B3 /* GenericError.swift in Sources */,
+				958F982D2B0560D6001F35B3 /* EventFactory.swift in Sources */,
+				958F98072B0560D6001F35B3 /* Cipher.swift in Sources */,
+				958F982B2B0560D6001F35B3 /* EventsRecorder.swift in Sources */,
+				958F97D32B0560D6001F35B3 /* HttpDataResponse.swift in Sources */,
+				958F97EB2B0560D6001F35B3 /* MetricsParser.swift in Sources */,
+				958F981E2B0560D6001F35B3 /* Timer.swift in Sources */,
+				958F98082B0560D6001F35B3 /* ValidatorMessageLogger.swift in Sources */,
+				958F980D2B0560D6001F35B3 /* SynchronizedList.swift in Sources */,
+				958F97FC2B0560D6001F35B3 /* EventEntity.swift in Sources */,
+				958F97E22B0560D6001F35B3 /* Commons.c in Sources */,
+				958F97FB2B0560D6001F35B3 /* PersistentEventsStorage.swift in Sources */,
+				958F98242B0560D6001F35B3 /* SplitRumConfig.swift in Sources */,
+				958F98122B0560D6001F35B3 /* Int64+asDouble.swift in Sources */,
+				958F97E82B0560D6001F35B3 /* MetricsCollector.swift in Sources */,
+				958F984B2B0E651B001F35B3 /* SuiteConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2194,6 +2290,7 @@
 				95670BD82B03C64E002037AF /* SplitHttpsAuthenticator.swift in Sources */,
 				95670B3F2B03C64D002037AF /* FeatureFlagsSynchronizer.swift in Sources */,
 				95670B532B03C64D002037AF /* MatcherCombiner.swift in Sources */,
+				958F98662B0F9E50001F35B3 /* SuiteKey.swift in Sources */,
 				95670BDD2B03C64E002037AF /* DefaultSplitFactory.swift in Sources */,
 				95670B0B2B03C64D002037AF /* HttpError.swift in Sources */,
 				95670BE42B03C64E002037AF /* TelemetryStorage.swift in Sources */,
@@ -2219,7 +2316,6 @@
 				95670B1A2B03C64D002037AF /* PushNotificationManager.swift in Sources */,
 				95670BEB2B03C64E002037AF /* ContainsAllOfSetMatcher.swift in Sources */,
 				95670B872B03C64E002037AF /* SplitsEncoder.swift in Sources */,
-				95670BCE2B03C64E002037AF /* SplitClientConfig.swift in Sources */,
 				95670C112B03C64E002037AF /* EvaluatorError.swift in Sources */,
 				95670C002B03C64E002037AF /* ImpressionsCountEntity.swift in Sources */,
 				95670B752B03C64D002037AF /* PersistentImpressionsCountStorage.swift in Sources */,
@@ -2311,6 +2407,7 @@
 				95670B912B03C64E002037AF /* SplitHelper.swift in Sources */,
 				95670B942B03C64E002037AF /* Base64Utils.swift in Sources */,
 				95670B5E2B03C64D002037AF /* MySegmentsDao.swift in Sources */,
+				958F98702B0FCD3D001F35B3 /* SplitClientConfig.swift in Sources */,
 				95670C062B03C64E002037AF /* SplitEventActionTask.swift in Sources */,
 				95670BEC2B03C64E002037AF /* PartOfSetMatcher.swift in Sources */,
 				95670B2F2B03C64D002037AF /* RestClient.swift in Sources */,
@@ -2355,7 +2452,6 @@
 				95670B4B2B03C64D002037AF /* Matcher.swift in Sources */,
 				95670BC52B03C64E002037AF /* DefaultSplitManager.swift in Sources */,
 				95670BCD2B03C64E002037AF /* LocalhostSplitFactory.swift in Sources */,
-				95670B502B03C64D002037AF /* Key.swift in Sources */,
 				95670BA22B03C64E002037AF /* Dictionary+Extensions.swift in Sources */,
 				95670B202B03C64D002037AF /* BackoffCounterTimer.swift in Sources */,
 				95670BC42B03C64E002037AF /* SplitFilter.swift in Sources */,
@@ -2501,115 +2597,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95670D2C2B03FE48002037AF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				95670DEA2B03FE8F002037AF /* ComponentCatalog.swift in Sources */,
-				95670DDE2B03FE8F002037AF /* Property.swift in Sources */,
-				95670E222B03FE8F002037AF /* Device.swift in Sources */,
-				95670E102B03FE8F002037AF /* RestClient+Event.swift in Sources */,
-				95670DE52B03FE8F002037AF /* EventEntity.swift in Sources */,
-				95670E192B03FE8F002037AF /* SplitIdentity.swift in Sources */,
-				95670DDA2B03FE8F002037AF /* DatabaseHelper.swift in Sources */,
-				95670DEE2B03FE8F002037AF /* Data+StringRepresentation.swift in Sources */,
-				95670E202B03FE8F002037AF /* Session.swift in Sources */,
-				95670DBB2B03FE8F002037AF /* HttpTask.swift in Sources */,
-				95670DF72B03FE8F002037AF /* Paths.swift in Sources */,
-				95670DE82B03FE8F002037AF /* WatchDog.swift in Sources */,
-				95670DB82B03FE8F002037AF /* NetworkReachabilityManager.swift in Sources */,
-				95670DEF2B03FE8F002037AF /* ThreadUtils.swift in Sources */,
-				95670E152B03FE8F002037AF /* SplitSettingsLoader.swift in Sources */,
-				95670E182B03FE8F002037AF /* Event.swift in Sources */,
-				95670E0E2B03FE8F002037AF /* FailedSplitRumAgent.swift in Sources */,
-				95670DD22B03FE8F002037AF /* MetricsProcessor.swift in Sources */,
-				95670DC12B03FE8F002037AF /* HttpError.swift in Sources */,
-				95670DB92B03FE8F002037AF /* HttpStreamRequest.swift in Sources */,
-				95670DC72B03FE8F002037AF /* CrashReporter.c in Sources */,
-				95670DF22B03FE8F002037AF /* EventValidator.swift in Sources */,
-				95670DCB2B03FE8F002037AF /* Commons.c in Sources */,
-				95670E162B03FE8F002037AF /* EventFactory.swift in Sources */,
-				95670DD52B03FE8F002037AF /* CoreDataHelper.swift in Sources */,
-				95670E1E2B03FE8F002037AF /* CrashReport.swift in Sources */,
-				95670DC62B03FE8F002037AF /* Endpoint.swift in Sources */,
-				95670DFA2B03FE8F002037AF /* UIViewController+Swizzle.swift in Sources */,
-				95670DBA2B03FE8F002037AF /* HttpDataRequest.swift in Sources */,
-				95670DD92B03FE8F002037AF /* SplitDatabase.swift in Sources */,
-				95670DF92B03FE8F002037AF /* Dictionary+JSON.swift in Sources */,
-				95670DC32B03FE8F002037AF /* EndpointFactory.swift in Sources */,
-				95670E002B03FE8F002037AF /* Protocols.swift in Sources */,
-				95670DEC2B03FE8F002037AF /* Bundle+Finder.swift in Sources */,
-				95670E082B03FE8F002037AF /* Date+Utils.swift in Sources */,
-				95670E1A2B03FE8F002037AF /* EventsSubmitterWorker.swift in Sources */,
-				95670E1C2B03FE8F002037AF /* EventsSubmitter.swift in Sources */,
-				95670DC42B03FE8F002037AF /* HttpSession.swift in Sources */,
-				95670E072B03FE8F002037AF /* Timer.swift in Sources */,
-				95670DD12B03FE8F002037AF /* MetricsCollector.swift in Sources */,
-				95670DE72B03FE8F002037AF /* MainHangRecorder.swift in Sources */,
-				95670DFD2B03FE8F002037AF /* Array+DynamicCodable.swift in Sources */,
-				95670DE02B03FE8F002037AF /* PersistentPropertyStorage.swift in Sources */,
-				95670DF62B03FE8F002037AF /* SynchronizedList.swift in Sources */,
-				95670E092B03FE8F002037AF /* CastUtils.swift in Sources */,
-				95670E052B03FE8F002037AF /* NotificationHelper.swift in Sources */,
-				95670E022B03FE8F002037AF /* SynchronizedDictionary.swift in Sources */,
-				95670E132B03FE8F002037AF /* EventsTracker.swift in Sources */,
-				95670DFB2B03FE8F002037AF /* Int64+asDouble.swift in Sources */,
-				95670DF32B03FE8F002037AF /* ValidationConfig.swift in Sources */,
-				95670E212B03FE8F002037AF /* DeviceInfoProvider.swift in Sources */,
-				95670DDF2B03FE8F002037AF /* PropertyDao.swift in Sources */,
-				95670DEB2B03FE8F002037AF /* Constants.swift in Sources */,
-				95670E0F2B03FE8F002037AF /* RestClient+Reports.swift in Sources */,
-				95670DC02B03FE8F002037AF /* HttpClient.swift in Sources */,
-				95670DF12B03FE8F002037AF /* ValidatorMessageLogger.swift in Sources */,
-				95670DF52B03FE8F002037AF /* ValidationResult.swift in Sources */,
-				95670DC92B03FE8F002037AF /* Logger.c in Sources */,
-				95670DD82B03FE8F002037AF /* split_rum_agent.xcdatamodeld in Sources */,
-				95670DDD2B03FE8F002037AF /* SessionEntity.swift in Sources */,
-				95670DF42B03FE8F002037AF /* AnyValueValidator.swift in Sources */,
-				95670DE92B03FE8F002037AF /* ComponentFactory.swift in Sources */,
-				95670E142B03FE8F002037AF /* EventsRecorder.swift in Sources */,
-				95670E1D2B03FE8F002037AF /* MainCrashRecorder.swift in Sources */,
-				95670E0B2B03FE8F002037AF /* SessionHandler.swift in Sources */,
-				95670DE32B03FE8F002037AF /* EventDao.swift in Sources */,
-				95670DBF2B03FE8F002037AF /* HttpResponse.swift in Sources */,
-				95670E032B03FE8F002037AF /* Dictionary+Extensions.swift in Sources */,
-				95670DF82B03FE8F002037AF /* Logger.swift in Sources */,
-				95670DCA2B03FE8F002037AF /* SignalHandler.c in Sources */,
-				95670DF02B03FE8F002037AF /* Cipher.swift in Sources */,
-				95670DC22B03FE8F002037AF /* HttpRequestList.swift in Sources */,
-				95670E042B03FE8F002037AF /* GenericError.swift in Sources */,
-				95670DBD2B03FE8F002037AF /* HttpStreamResponse.swift in Sources */,
-				95670DE12B03FE8F002037AF /* PropertyEntity.swift in Sources */,
-				95670E122B03FE8F002037AF /* DataResult.swift in Sources */,
-				95670DDB2B03FE8F002037AF /* PersistentSessionsStorage.swift in Sources */,
-				95670DC52B03FE8F002037AF /* HttpRequestManager.swift in Sources */,
-				95670E1F2B03FE8F002037AF /* PeriodicSubmitterWorker.swift in Sources */,
-				95670E012B03FE8F002037AF /* Atomic.swift in Sources */,
-				95670E0D2B03FE8F002037AF /* SplitRumConfig.swift in Sources */,
-				95670DE42B03FE8F002037AF /* PersistentEventsStorage.swift in Sources */,
-				95670E0A2B03FE8F002037AF /* SplitRum.swift in Sources */,
-				95670DE62B03FE8F002037AF /* EventsStorage.swift in Sources */,
-				95670DFF2B03FE8F002037AF /* ServiceConstants.swift in Sources */,
-				95670DED2B03FE8F002037AF /* Dictionary+DynamicCodable.swift in Sources */,
-				95670DD32B03FE8F002037AF /* MetricKitModel.swift in Sources */,
-				95670DD42B03FE8F002037AF /* MetricsParser.swift in Sources */,
-				95670E1B2B03FE8F002037AF /* ErrorReport.swift in Sources */,
-				95670E062B03FE8F002037AF /* String+Utils.swift in Sources */,
-				95670DD72B03FE8F002037AF /* StorageFacade.swift in Sources */,
-				95670E172B03FE8F002037AF /* ReportsRecorder.swift in Sources */,
-				95670E112B03FE8F002037AF /* RestClient.swift in Sources */,
-				95670DCC2B03FE8F002037AF /* CrashDetector.swift in Sources */,
-				95670DD62B03FE8F002037AF /* CoreDataContextBuilder.swift in Sources */,
-				95670DFE2B03FE8F002037AF /* Json.swift in Sources */,
-				95670DDC2B03FE8F002037AF /* SessionDao.swift in Sources */,
-				95670DBE2B03FE8F002037AF /* HttpRequest.swift in Sources */,
-				95670DE22B03FE8F002037AF /* PropertiesStorage.swift in Sources */,
-				95670DBC2B03FE8F002037AF /* HttpDataResponse.swift in Sources */,
-				95670DFC2B03FE8F002037AF /* UIApplication+Swizzle.swift in Sources */,
-				95670E0C2B03FE8F002037AF /* RumAgent.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2622,11 +2609,6 @@
 			isa = PBXTargetDependency;
 			target = 956709732B03C5D5002037AF /* SplitSdk */;
 			targetProxy = 95670D1F2B03F13D002037AF /* PBXContainerItemProxy */;
-		};
-		956B97B42B0414D200EBB411 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 95670D2F2B03FE48002037AF /* SplitRumAgent */;
-			targetProxy = 956B97B32B0414D200EBB411 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2869,7 +2851,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
@@ -2901,79 +2883,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
+				MACH_O_TYPE = mh_dylib;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.split.sdk;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		95670D352B03FE48002037AF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = D5VPZG3BF4;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/ios-rum-agent/SplitRumAgent/Agent/CrashHandler/**";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 1.0;
-				MODULEMAP_PRIVATE_FILE = "";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.split.SplitRumAgent;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		95670D362B03FE48002037AF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = D5VPZG3BF4;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/ios-rum-agent/SplitRumAgent/Agent/CrashHandler/**";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MARKETING_VERSION = 1.0;
-				MODULEMAP_PRIVATE_FILE = "";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.split.SplitRumAgent;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -3021,15 +2935,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		95670D342B03FE48002037AF /* Build configuration list for PBXNativeTarget "SplitRumAgent" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				95670D352B03FE48002037AF /* Debug */,
-				95670D362B03FE48002037AF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
@@ -3046,12 +2951,12 @@
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
-		95670D5E2B03FE8E002037AF /* split_rum_agent.xcdatamodeld */ = {
+		958F97742B0560D5001F35B3 /* split_rum_agent.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				95670D5F2B03FE8E002037AF /* split_rum_agent.xcdatamodel */,
+				958F97752B0560D5001F35B3 /* split_rum_agent.xcdatamodel */,
 			);
-			currentVersion = 95670D5F2B03FE8E002037AF /* split_rum_agent.xcdatamodel */;
+			currentVersion = 958F97752B0560D5001F35B3 /* split_rum_agent.xcdatamodel */;
 			path = split_rum_agent.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
