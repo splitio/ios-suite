@@ -18,10 +18,10 @@ public protocol SplitRumAgent {
     func removeIdentities()
 
     // Properties
-    var properties: [String: String] { get }
-    func setProperty(name: String, value: String)
-    func set(properties: [String: String])
-    func getValue(for property: String) -> String?
+    var properties: [String: Any] { get }
+    func setProperty(name: String, value: Any)
+    func set(properties: [String: Any])
+    func getValue(for property: String) -> Any?
     func remove(property: String)
 
     // Track
@@ -42,7 +42,6 @@ public protocol SplitRumAgent {
 }
 
 protocol SplitSuiteCoordinator: AnyObject {
-//    func getClient(key: Key, trafficType: String) -> SplitClient
     func registerClient(key: String, trafficType: String, client: SplitClient)
     func notifyDestroy(key: String, trafficType: String)
 }
