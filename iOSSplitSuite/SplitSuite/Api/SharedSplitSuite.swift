@@ -10,13 +10,6 @@ import SplitSdk
 
 public protocol SplitRumAgent {
 
-    // Identities
-    var identities: [SplitIdentity] { get }
-    func addIdentity(key: String, trafficType: String)
-    func add(identities: [SplitIdentity])
-    func removeIdentity(key: String, trafficType: String)
-    func removeIdentities()
-
     // Properties
     var properties: [String: Any] { get }
     func setProperty(name: String, value: Any)
