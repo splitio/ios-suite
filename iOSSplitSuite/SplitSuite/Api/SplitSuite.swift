@@ -9,18 +9,16 @@ import Foundation
 import SplitSdk
 
 public class SplitSuite: SharedSplitSuite {
+    
     private var clients = SynchronizedDictionary<SplitIdentity, SplitClient>()
     private var sdkFactory: SplitFactory
     private var rumAgent: RumAgent
     private let defaultTrafficType: String
     private let defaultKey: String
 
-    // TODO: Update Rum Agent public interface
-    public var properties: [String : String] {
-        return [:]
+    public var properties: [String : Any] {
+        return rumAgent.properties
     }
-
-    public var identities: [SplitIdentity] = []
 
     public var client: SplitClient {
         return sdkFactory.client
@@ -75,40 +73,28 @@ extension SplitSuite {
     }
 }
 
-// MARK: Identities
+// MARK: properties
 extension SplitSuite {
-    public func addIdentity(key: String, trafficType: String) {
-        rumAgent.addIdentity(key: key, trafficType: trafficType)
-    }
 
-    public func add(identities: [SplitIdentity]) {
-        rumAgent.add(identities: identities)
-    }
-
-    public func removeIdentity(key: String, trafficType: String) {
-        rumAgent.removeIdentity(key: key, trafficType: trafficType)
-    }
-
-    public func removeIdentities() {
-        rumAgent.clearIdentities()
-    }
-
-    public func setProperty(name: String, value: String) {
+    public func setProperty(name: String, value: Any) {
         rumAgent.setProperty(name: name, value: value)
     }
 
-    public func set(properties: [String : String]) {
+    public func set(properties: [String : Any]) {
         rumAgent.set(properties: properties)
     }
 
-    public func getValue(for property: String) -> String? {
+    public func getValue(for property: String) -> Any? {
         return rumAgent.getValue(for: property)
     }
 
     public func remove(property: String) {
         rumAgent.remove(property: property)
     }
+}
 
+// MARK: track
+extension SplitSuite {
     public func track(eventType: String, userKey: String, trafficType: String, value: Double?, properties: [String : Any]?) -> Bool {
         return rumAgent.track(eventType: eventType,
                               userKey: userKey,

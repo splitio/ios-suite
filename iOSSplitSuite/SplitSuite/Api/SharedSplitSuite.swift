@@ -10,18 +10,11 @@ import SplitSdk
 
 public protocol SplitRumAgent {
 
-    // Identities
-    var identities: [SplitIdentity] { get }
-    func addIdentity(key: String, trafficType: String)
-    func add(identities: [SplitIdentity])
-    func removeIdentity(key: String, trafficType: String)
-    func removeIdentities()
-
     // Properties
-    var properties: [String: String] { get }
-    func setProperty(name: String, value: String)
-    func set(properties: [String: String])
-    func getValue(for property: String) -> String?
+    var properties: [String: Any] { get }
+    func setProperty(name: String, value: Any)
+    func set(properties: [String: Any])
+    func getValue(for property: String) -> Any?
     func remove(property: String)
 
     // Track
