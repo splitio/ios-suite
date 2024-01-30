@@ -13,7 +13,7 @@ import XCTest
 class SplitSdkClientTests: XCTestCase {
 
     var suiteSdkClient: SplitSuiteSdkClient!
-    var coordinator: SplitClientCoordinationMock!
+    var coordinator: SplitClientCoordinatorMock!
     var client: SplitClientMock!
 
     let key = "key1"
@@ -21,7 +21,7 @@ class SplitSdkClientTests: XCTestCase {
 
 
     override func setUp() {
-        coordinator = SplitClientCoordinationMock()
+        coordinator = SplitClientCoordinatorMock()
         client = SplitClientMock()
         suiteSdkClient = SplitSuiteSdkClient(client: client,
                                              key: key,

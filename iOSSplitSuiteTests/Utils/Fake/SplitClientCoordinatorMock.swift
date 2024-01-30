@@ -1,5 +1,5 @@
 //
-//  SplitClientCoordinationMock.swift
+//  SplitClientCoordinatorMock.swift
 //  iOSSplitSuiteTests
 //
 //  Created by Javier Avrudsky on 25/01/2024.
@@ -9,7 +9,7 @@ import Foundation
 @testable import iOSSplitSuite
 import SplitSdk
 
-class SplitClientCoordinationMock: SplitSuiteCoordinator {
+class SplitClientCoordinatorMock: SplitSuiteCoordinator {
     var clients = [String: SplitClient]()
 
     var registerClientCalled = false
