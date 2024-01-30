@@ -41,7 +41,7 @@ jobs:
       run: echo "zip_name=${{ env.artifact_name }}_${{ env.version }}.zip" >> $GITHUB_ENV
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         ref: ${{ env.branch_name }}
 
@@ -49,7 +49,7 @@ jobs:
       run: ./scripts/generate_xcframework ${{ env.version }}
 
     - name: Store zip file
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.zip_name }}
         path: xcframework/${{ env.zip_name }}
@@ -78,7 +78,7 @@ jobs:
         run: echo "zip_name=${{ env.zip_file_name }}" >> $GITHUB_ENV
 
       - name: Download zip ${{ env.zip_name }}
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ${{ env.zip_name }}
           path: dist
