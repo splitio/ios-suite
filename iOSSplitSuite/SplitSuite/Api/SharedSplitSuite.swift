@@ -17,13 +17,6 @@ public protocol SplitRumAgent {
     func getValue(for property: String) -> Any?
     func remove(property: String)
 
-    // Track
-    func track(eventType: String,
-               userKey: String,
-               trafficType: String,
-               value: Double?,
-               properties: [String: Any]?) -> Bool
-
     func track(eventType: String,
                value: Double?,
                properties: [String: Any]?) -> Bool
