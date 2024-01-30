@@ -1,0 +1,10 @@
+#!/bin/zsh
+clear
+CUR_DIR=$(pwd)
+BRANCH_NAME=split_suite_0.1.0
+
+cd "${CUR_DIR}\ios-client
+git checkout ${BRANCH_NAME}
+
+cd "${CUR_DIR}\ios-rum-agent
+git checkout ${BRANCH_NAME}

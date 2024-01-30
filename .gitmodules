@@ -1,5 +1,4 @@
 [submodule "ios-client"]
-	path = ios-client
 	url = git@github.com:splitio/ios-client.git
 	branch = split_suite_0.1.0
 [submodule "ios-rum-agent"]

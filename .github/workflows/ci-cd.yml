@@ -47,6 +47,9 @@ jobs:
         token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
         submodules: 'recursive'
 
+    - name: Submodule branches
+      run: ./scripts/submodule_branch
+
     - name: Generate xcframework zip
       run: ./scripts/generate_xcframework ${{ env.version }}
 
