@@ -3,6 +3,8 @@ clear
 CUR_DIR=$(pwd)
 BRANCH_NAME=split_suite_0.1.0
 
+git submodule update --init
+
 cd "${CUR_DIR}/ios-client"
 pwd
 git branch

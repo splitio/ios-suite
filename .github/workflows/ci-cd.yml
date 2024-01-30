@@ -44,8 +44,8 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ env.branch_name }}
-        token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
-        submodules: 'recursive'
+        # token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
+        # submodules: 'recursive'
 
     - name: Submodule branches
       run: ./scripts/submodule_branch
