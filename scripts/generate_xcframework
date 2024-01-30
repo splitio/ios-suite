@@ -12,6 +12,7 @@ echo "This scrip must be run from the folder containing iOSSplitSuite.xcodeproj"
 echo "Example: ./scripts/generate_xcframework"
 echo "-----------------------------------"
 echo "\n"
+echo "\n"
 
 echo "Building Split Suite Version ${VERSION}"
 
@@ -39,7 +40,7 @@ xcodebuild build    -scheme ${SCHEMA_NAME} \
                     -configuration release \
                     SKIP_INSTALL=NO \
                     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-                    > /dev/null
+                    # > /dev/null
 
 
 XCF_NAME_PATH="${CUR_DIR}/${XCF_FOLDER}/${PRODUCT_NAME}"

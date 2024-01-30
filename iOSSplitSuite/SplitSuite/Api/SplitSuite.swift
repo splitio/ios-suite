@@ -95,19 +95,10 @@ extension SplitSuite {
 
 // MARK: track
 extension SplitSuite {
-    public func track(eventType: String, userKey: String, trafficType: String, value: Double?, properties: [String : Any]?) -> Bool {
-        return rumAgent.track(eventType: eventType,
-                              userKey: userKey,
-                              trafficType: trafficType,
-                              value: value,
-                              properties: properties)
-    }
 
     public func track(eventType: String, value: Double?, properties: [String : Any]?) -> Bool {
         // Track with agent to allow not having key and tt???
         return rumAgent.track(eventType: eventType,
-                              userKey: defaultKey,
-                              trafficType: defaultTrafficType,
                               value: value,
                               properties: properties)
     }
