@@ -5,11 +5,11 @@ BRANCH_NAME=split_suite_0.1.0
 
 cd "${CUR_DIR}/ios-client"
 pwd
-git fetch "${BRANCH_NAME}"
+git fetch origin "${BRANCH_NAME}"
 git branch -a
 git switch "${BRANCH_NAME}"
 
 cd "${CUR_DIR}/ios-rum-agent"
-git fetch "${BRANCH_NAME}"
+git fetch origin "${BRANCH_NAME}"
 git branch -a
 git switch "${BRANCH_NAME}"
