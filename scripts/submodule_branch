@@ -10,6 +10,7 @@ git fetch origin "${BRANCH_NAME}"
 git remote -v
 git branch
 git switch "${BRANCH_NAME}"
+git switch split_suite_0.1.0
 
 cd "${CUR_DIR}/ios-rum-agent"
 git fetch origin "${BRANCH_NAME}"
