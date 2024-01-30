@@ -7,7 +7,6 @@ cd "${CUR_DIR}/ios-client"
 pwd
 git branch
 git fetch origin "${BRANCH_NAME}"
-git fetch --all
 git remote -v
 git branch
 git switch "${BRANCH_NAME}"
