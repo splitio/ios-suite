@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: '14.3.1'
+        xcode-version: '15.0.1'
         
     - name: Release version
       run: ref=${{ github.head_ref }}; echo "version=$(echo ${ref#release_})" >> $GITHUB_ENV
