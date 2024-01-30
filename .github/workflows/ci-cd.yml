@@ -98,5 +98,5 @@ jobs:
         env:
           BUCKET: ${{ matrix.bucket }}
           SOURCE: dist/${{ env.zip_name }}
-          DESTINATION: rum-agent-ios/${{ env.zip_name }}
+          DESTINATION: ios-suite/${{ env.zip_name }}
           ARGS: --acl public-read --follow-symlinks --cache-control max-age=31536000,public
