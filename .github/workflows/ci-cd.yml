@@ -43,6 +43,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
+        submodules: 'true'
         ref: ${{ env.branch_name }}
 
     - name: Generate xcframework zip
