@@ -3,8 +3,8 @@ clear
 CUR_DIR=$(pwd)
 BRANCH_NAME=split_suite_0.1.0
 
-cd "${CUR_DIR}\ios-client"
+cd "${CUR_DIR}/ios-client"
 git switch ${BRANCH_NAME}
 
-cd "${CUR_DIR}\ios-rum-agent"
+cd "${CUR_DIR}/ios-rum-agent"
 git switch ${BRANCH_NAME}
