@@ -4,9 +4,12 @@ CUR_DIR=$(pwd)
 BRANCH_NAME=split_suite_0.1.0
 
 cd "${CUR_DIR}/ios-client"
+pwd
 git fetch
+git branch -a
 git switch "${BRANCH_NAME}"
 
 cd "${CUR_DIR}/ios-rum-agent"
 git fetch
+git branch -a
 git switch "${BRANCH_NAME}"
