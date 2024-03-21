@@ -14,7 +14,7 @@ FOUNDATION_EXPORT double iOSSplitSuiteVersionNumber;
 FOUNDATION_EXPORT const unsigned char iOSSplitSuiteVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <iOSSplitSuite/PublicHeader.h>
-#import <iOSSplitSuite/SignalHandler.h>
-#import <iOSSplitSuite/CrashReporter.h>
-#import <iOSSplitSuite/Logger.h>
+//#import <iOSSplitSuite/SignalHandler.h>
+//#import <iOSSplitSuite/CrashReporter.h>
+//#import <iOSSplitSuite/Logger.h>
 

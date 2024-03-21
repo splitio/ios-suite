@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SplitRumAgent
 
 extension SplitIdentity: Hashable {
     public func hash(into hasher: inout Hasher) {

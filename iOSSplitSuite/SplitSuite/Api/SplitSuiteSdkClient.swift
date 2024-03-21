@@ -4,9 +4,10 @@
 //
 //  Created by Javier Avrudsky on 21/11/2023.
 //
-import SplitSdk
+import Split
 
 class SplitSuiteSdkClient: SplitClient {
+
     private let client: SplitClient
     private let trafficType: String
     private let key: String
@@ -48,6 +49,14 @@ class SplitSuiteSdkClient: SplitClient {
 
     public func on(event: SplitEvent, execute action: @escaping SplitAction) {
         client.on(event: event, execute: action)
+    }
+
+    func on(event: Split.SplitEvent, runInBackground: Bool, execute action: @escaping Split.SplitAction) {
+        client.on(event: event, runInBackground: runInBackground, execute: action)
+    }
+
+    func on(event: Split.SplitEvent, queue: DispatchQueue, execute action: @escaping Split.SplitAction) {
+        client.on(event: event, queue: queue, execute: action)
     }
 
     public func track(trafficType: String, eventType: String) -> Bool {

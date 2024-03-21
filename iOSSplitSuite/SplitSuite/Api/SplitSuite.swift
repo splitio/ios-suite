@@ -6,13 +6,14 @@
 //
 
 import Foundation
-import SplitSdk
+import Split
+import SplitRumAgent
 
 public class SplitSuite: SharedSplitSuite {
     
     private var clients = SynchronizedDictionary<SplitIdentity, SplitClient>()
     private var sdkFactory: SplitFactory
-    private var rumAgent: RumAgent
+    private var rumAgent: InternalRumAgent
     private let defaultTrafficType: String
     private let defaultKey: String
 
@@ -38,7 +39,7 @@ public class SplitSuite: SharedSplitSuite {
 
     init(key: Key,
          trafficType: String,
-         rumAgent: RumAgent,
+         rumAgent: InternalRumAgent,
          sdkFactory: SplitFactory) {
 
         self.defaultTrafficType = trafficType
@@ -91,6 +92,10 @@ extension SplitSuite {
     public func remove(property: String) {
         rumAgent.remove(property: property)
     }
+
+    public func removeProperties() {
+        rumAgent.removeProperties()
+    }
 }
 
 // MARK: track
@@ -116,7 +121,7 @@ extension SplitSuite: SplitSuiteCoordinator {
 
     func registerClient(key: String, trafficType: String, client: SplitClient) {
         clients.setValue(client, forKey: SplitIdentity(key: key, trafficType: trafficType))
-        rumAgent.addIdentity(key: key, trafficType: trafficType)
+        rumAgent.addIdentity(key: key, trafficType: trafficType)    
     }
 
     func notifyDestroy(key: String, trafficType: String) {
@@ -124,7 +129,7 @@ extension SplitSuite: SplitSuiteCoordinator {
         rumAgent.removeIdentity(key: key, trafficType: trafficType)
     }
 
-    private func getClient(key: Key, trafficType: String) -> SplitSdk.SplitClient {
+    private func getClient(key: Key, trafficType: String) -> SplitClient {
         let userKey = key.stringRepresentation()
         if let client = clients.value(forKey: SplitIdentity(key: userKey, trafficType: trafficType)) {
             return client
