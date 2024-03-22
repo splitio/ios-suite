@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SplitSdk
+import Split
 
 public protocol SharedSplitSuiteBuilder {
 
@@ -18,15 +18,6 @@ public class SplitSuiteBuilder: SharedSplitSuiteBuilder {
     private var key: Key?
     private var matchingKey: String?
     private var bucketingKey: String?
-    private let keyValidator: KeyValidator
-    private let apiKeyValidator: ApiKeyValidator
-    private let validationLogger: ValidationMessageLogger
-
-    public init() {
-        keyValidator = MainKeyValidator()
-        apiKeyValidator = MainApiKeyValidator()
-        validationLogger = MainValidationMessageLogger()
-    }
 
     // Setters / builder
     @discardableResult
@@ -60,20 +51,6 @@ public class SplitSuiteBuilder: SharedSplitSuiteBuilder {
     }
 
     public func build() -> SplitSuite? {
-        let validationTag = "SplitSuiteBuilder.build"
-        if let errorInfo = apiKeyValidator.validate(apiKey: apiKey) {
-            validationLogger.log(errorInfo: errorInfo, tag: validationTag)
-            return nil
-        }
-
-        let matchingKey = self.matchingKey ?? key?.matchingKey
-        let bucketingKey = self.bucketingKey ?? key?.bucketingKey
-
-        if let errorInfo = keyValidator.validate(matchingKey: matchingKey, bucketingKey: bucketingKey) {
-            validationLogger.log(errorInfo: errorInfo, tag: validationTag)
-            return nil
-        }
-
         guard let apiKey = self.apiKey else {
             // Will never reach here
             return nil
@@ -92,15 +69,15 @@ public class SplitSuiteBuilder: SharedSplitSuiteBuilder {
             .setKey(key)
             .setApiKey(apiKey)
             .setConfig(suiteConfig.sdkConfig).build() else {
-            Logger.e("\(validationTag): Could not create Split Factory")
+            Logger.e("Could not create Split Factory")
             return nil
         }
-        let rumAgent = MainRumAgent()
+        let rumAgent:InternalRumAgent = SuiteRumAgent()
         do {
             try rumAgent.setup(apiKey: apiKey, config: suiteConfig.rumConfig)
             rumAgent.addIdentity(key: key.matchingKey, trafficType: defaultTrafficType)
         } catch {
-            Logger.e("\(validationTag): Could not create Split RUM: \(error.localizedDescription)")
+            Logger.e(" Could not create Split RUM: \(error.localizedDescription)")
             return nil
         }
         return SplitSuite(key: key, trafficType: defaultTrafficType, rumAgent: rumAgent, sdkFactory: sdkFactory)

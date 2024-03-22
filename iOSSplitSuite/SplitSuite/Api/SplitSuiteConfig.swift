@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import SplitSdk
+import Split
+import SplitRumAgent
 
 public class SplitSuiteConfig {
     private (set) var logLevel: SplitLogLevel = .none
@@ -61,7 +62,13 @@ public class SplitSuiteConfig {
     }
 
     private func applyLogLevel() {
-        rumConfig = rumConfig.logLevel(self.logLevel)
+        rumConfig = rumConfig.logLevel(SplitRumAgent.SplitLogLevel.fromSuiteLevel(self.logLevel))
         sdkConfig.logLevel = self.logLevel
+    }
+}
+
+extension SplitRumAgent.SplitLogLevel {
+    static func fromSuiteLevel(_ level: SplitLogLevel) -> SplitRumAgent.SplitLogLevel {
+        return SplitRumAgent.SplitLogLevel(rawValue: level.rawValue) ?? .none
     }
 }

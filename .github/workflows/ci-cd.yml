@@ -1,0 +1,107 @@
+name: Build xcframework
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+      - dev_test
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build:
+    if:  startsWith(github.head_ref, 'release_') && github.event.pull_request.merged == true
+    runs-on: macos-13
+    outputs:
+      zip_file_name: ${{ steps.zip_file.outputs.zip_file_name }}
+
+    steps:
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '15.0.1'
+        
+    - name: Release version
+      run: ref=${{ github.head_ref }}; echo "version=$(echo ${ref#release_})" >> $GITHUB_ENV
+      
+    - name: Computing branch name
+      run: ref=${{ github.head_ref }}; echo "branch_name=$(echo ${ref})" >> $GITHUB_ENV
+
+    - name: Artifact name
+      run: echo "artifact_name=iOSSplitSuite" >> $GITHUB_ENV
+
+    - name: Zip name
+      run: echo "zip_name=${{ env.artifact_name }}_${{ env.version }}.zip" >> $GITHUB_ENV
+
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.branch_name }}
+        # token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
+        # submodules: 'recursive'
+
+    - name: Submodule branches
+      run: ./scripts/submodule_branch
+
+    - name: Generate xcframework zip
+      run: ./scripts/generate_xcframework ${{ env.version }}
+
+    - name: Store zip file
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.zip_name }}
+        path: xcframework/${{ env.zip_name }}
+        retention-days: 1
+
+    - id: zip_file
+      name: Setting output zip name
+      run: echo "zip_file_name=${{ env.zip_name }}" >> "$GITHUB_OUTPUT"
+
+  upload-prod:
+    name: Upload assets
+    runs-on: ubuntu-latest
+    needs: build
+    strategy:
+      matrix:
+        environment:
+          - prod
+        include:
+          - environment: prod
+            account_id: "825951051969"
+            bucket: split-public
+
+    steps:
+      - env:
+          zip_file_name: ${{ needs.build.outputs.zip_file_name }}
+        run: echo "zip_name=${{ env.zip_file_name }}" >> $GITHUB_ENV
+
+      - name: Download zip ${{ env.zip_name }}
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.zip_name }}
+          path: dist
+
+      - name: Display structure of assets
+        run: ls -R
+        working-directory: dist
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ matrix.account_id }}:role/gha-public-assets-role
+          aws-region: us-east-1
+
+      - name: "Upload dist/${{ env.zip_name }} to S3"
+        run: aws s3 cp $SOURCE s3://$BUCKET/$DESTINATION $ARGS
+        env:
+          BUCKET: ${{ matrix.bucket }}
+          SOURCE: dist/${{ env.zip_name }}
+          DESTINATION: ios-suite/${{ env.zip_name }}
+          ARGS: --acl public-read --follow-symlinks --cache-control max-age=31536000,public
