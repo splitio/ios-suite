@@ -7,8 +7,10 @@
 
 import Foundation
 import Split
+import SplitRumAgent
 
 public typealias SplitClientConfig = Split.SplitClientConfig
+public typealias SplitRumConfig = SplitRumAgent.SplitRumConfig
 public typealias Key = Split.Key
 public typealias ServiceEndpoints = Split.ServiceEndpoints
 public typealias SplitFactory = Split.SplitFactory
