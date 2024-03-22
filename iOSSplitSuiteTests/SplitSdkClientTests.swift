@@ -1,5 +1,5 @@
 //
-//  SplitSdkClient.swift
+//  SplitClient.swift
 //  iOSSplitSuiteTests
 //
 //  Created by Javier Avrudsky on 25/01/2024.
@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import iOSSplitSuite
 
-class SplitSdkClientTests: XCTestCase {
+class SplitClientTests: XCTestCase {
 
     var suiteSdkClient: SplitSuiteSdkClient!
     var coordinator: SplitClientCoordinatorMock!

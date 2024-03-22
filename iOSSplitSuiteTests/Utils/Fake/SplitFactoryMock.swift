@@ -6,7 +6,7 @@
 //
 
 @testable import iOSSplitSuite
-@testable import SplitSdk
+@testable import Split
 
 // Assuming SplitClient, SplitManager, Key, and UserConsent are defined elsewhere
 // and conform to their respective protocols/interfaces
