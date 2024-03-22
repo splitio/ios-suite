@@ -46,6 +46,7 @@ protocol SplitSuiteCoordinator: AnyObject {
 }
 
 public protocol SharedSplitSuite: SplitFactory, RumAgent {
+    static func builder() -> SharedSplitSuiteBuilder
     func client(key: Key, trafficType: String) -> SplitClient
 }
 

@@ -4,6 +4,7 @@
 //
 //  Created by Javier Avrudsky on 21/11/2023.
 //
+import Foundation
 import Split
 
 class SplitSuiteSdkClient: SplitClient {

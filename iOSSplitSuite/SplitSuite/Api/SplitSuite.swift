@@ -48,6 +48,10 @@ public class SplitSuite: SharedSplitSuite {
         self.sdkFactory = sdkFactory
         self.rumAgent = rumAgent
     }
+
+    public static func builder() -> SharedSplitSuiteBuilder {
+        return SplitSuiteBuilder()
+    }
 }
 
 // MARK: SDK Factory
