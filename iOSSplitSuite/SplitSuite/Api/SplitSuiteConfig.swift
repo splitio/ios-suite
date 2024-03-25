@@ -7,6 +7,7 @@
 
 import Foundation
 import SplitRumAgent
+import Split
 
 public class SplitSuiteConfig {
     private (set) var logLevel: SplitLogLevel = .none
