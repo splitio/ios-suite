@@ -27,7 +27,7 @@ xcodebuild build    -scheme ${SCHEMA_NAME} \
                     -configuration release \
                     SKIP_INSTALL=NO \
                     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-                    # > /dev/null
+                    > /dev/null
 
 
 #read -s -k "?Press any key to continue."
@@ -39,7 +39,7 @@ xcodebuild build    -scheme ${SCHEMA_NAME} \
                     -configuration release \
                     SKIP_INSTALL=NO \
                     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-                    # > /dev/null
+                    > /dev/null
 
 
 XCF_NAME_PATH="${CUR_DIR}/${XCF_FOLDER}/${PRODUCT_NAME}"
@@ -59,7 +59,7 @@ xcodebuild  -create-xcframework \
             -framework "${CUR_DIR}/${BUILD_FOLDER}/Build/Products/Release-iphonesimulator/${PRODUCT_NAME}.framework" \
             -debug-symbols "${CUR_DIR}/${BUILD_FOLDER}/Build/Products/Release-iphonesimulator/${PRODUCT_NAME}.framework.dSYM" \
             -output "${XCF_PATH}" \
-            > /dev/null
+            # > /dev/null
 
 echo "Zipping file"
 cd "${XCF_FOLDER}"
