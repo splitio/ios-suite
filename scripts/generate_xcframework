@@ -27,7 +27,8 @@ xcodebuild build    -scheme ${SCHEMA_NAME} \
                     -configuration release \
                     SKIP_INSTALL=NO \
                     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-                    > /dev/null
+                    # > /dev/null
+
 
 #read -s -k "?Press any key to continue."
 
@@ -38,7 +39,7 @@ xcodebuild build    -scheme ${SCHEMA_NAME} \
                     -configuration release \
                     SKIP_INSTALL=NO \
                     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-                    > /dev/null
+                    # > /dev/null
 
 
 XCF_NAME_PATH="${CUR_DIR}/${XCF_FOLDER}/${PRODUCT_NAME}"
