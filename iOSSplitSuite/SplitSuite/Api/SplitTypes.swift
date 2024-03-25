@@ -6,15 +6,17 @@
 //
 
 import Foundation
-import SplitSdk
+import Split
+import SplitRumAgent
 
-public typealias SplitClientConfig = SplitSdk.SplitClientConfig
-public typealias Key = SplitSdk.Key
-public typealias ServiceEndpoints = SplitSdk.ServiceEndpoints
-public typealias SplitFactory = SplitSdk.SplitFactory
-public typealias SplitFactoryBuilder = SplitSdk.SplitFactoryBuilder
-public typealias DefaultSplitFactoryBuilder = SplitSdk.DefaultSplitFactoryBuilder
-public typealias SplitEvent = SplitSdk.SplitEvent
+public typealias SplitClientConfig = Split.SplitClientConfig
+public typealias SplitRumConfig = SplitRumAgent.SplitRumConfig
+public typealias Key = Split.Key
+public typealias ServiceEndpoints = Split.ServiceEndpoints
+public typealias SplitFactory = Split.SplitFactory
+public typealias SplitFactoryBuilder = Split.SplitFactoryBuilder
+public typealias DefaultSplitFactoryBuilder = Split.DefaultSplitFactoryBuilder
+public typealias SplitEvent = Split.SplitEvent
 
 
-public typealias SplitLogLevel = SplitSdk.SplitLogLevel
+public typealias SplitLogLevel = Split.SplitLogLevel

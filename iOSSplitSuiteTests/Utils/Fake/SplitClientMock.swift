@@ -1,7 +1,7 @@
 // SplitClientMock.swift
 
 import Foundation
-@testable import SplitSdk
+@testable import Split
 
 public class SplitClientMock: SplitClient {
 
@@ -91,6 +91,14 @@ public class SplitClientMock: SplitClient {
         // Dummy implementation
     }
 
+    public func on(event: SplitEvent, runInBackground: Bool, execute action: @escaping SplitAction) {
+        recordCall(#function)
+    }
+
+    public func on(event: SplitEvent, queue: DispatchQueue, execute action: @escaping SplitAction) {
+        recordCall(#function)
+    }
+
     public func track(trafficType: String, eventType: String, properties: [String : Any]?) -> Bool {
         recordCall(#function)
         return true
@@ -142,12 +150,12 @@ public class SplitClientMock: SplitClient {
         return [:]
     }
 
-    public func getTreatmentsWithConfigByFlagSet(_ flagSet: String, attributes: [String : Any]?) -> [String : SplitSdk.SplitResult] {
+    public func getTreatmentsWithConfigByFlagSet(_ flagSet: String, attributes: [String : Any]?) -> [String : SplitResult] {
         recordCall(#function)
         return [:]
     }
 
-    public func getTreatmentsWithConfigByFlagSets(_ flagSets: [String], attributes: [String : Any]?) -> [String : SplitSdk.SplitResult] {
+    public func getTreatmentsWithConfigByFlagSets(_ flagSets: [String], attributes: [String : Any]?) -> [String : SplitResult] {
         recordCall(#function)
         return [:]
     }

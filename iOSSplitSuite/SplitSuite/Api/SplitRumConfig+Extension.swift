@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SplitRumAgent
 
 extension ServiceEndpoints {
     func asSplitServiceEndpoints() -> SplitServiceEndpoints {

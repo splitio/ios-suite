@@ -8,11 +8,9 @@ BUILD_FOLDER=SplitBuild
 XCF_FOLDER=xcframework
 
 echo "-----------------------------------"
-echo "This scrip must be run from the folder containing iOSSplitSuite.xcodeproj"
+echo "This script must be run from the folder containing iOSSplitSuite.xcodeproj"
 echo "Example: ./scripts/generate_xcframework"
 echo "-----------------------------------"
-echo "\n"
-echo "\n"
 
 echo "Building Split Suite Version ${VERSION}"
 
@@ -40,7 +38,7 @@ xcodebuild build    -scheme ${SCHEMA_NAME} \
                     -configuration release \
                     SKIP_INSTALL=NO \
                     BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-                    # > /dev/null
+                    > /dev/null
 
 
 XCF_NAME_PATH="${CUR_DIR}/${XCF_FOLDER}/${PRODUCT_NAME}"
@@ -62,9 +60,6 @@ xcodebuild  -create-xcframework \
             -output "${XCF_PATH}" \
             > /dev/null
 
-echo "Removing build folder"
-rm -rf "${CUR_DIR}/${BUILD_FOLDER}"
-
 echo "Zipping file"
 cd "${XCF_FOLDER}"
 zip -vrqD "${ZIP_NAME}" "${XCF_NAME}"
@@ -76,6 +71,9 @@ swift package compute-checksum "${ZIP_PATH}" > "${CHECKSUM_FILE}"
 
 echo "Zip Checksum to put in Package.swift file:"
 cat "${CHECKSUM_FILE}"
+
+echo "Removing build folder"
+rm -rf "${CUR_DIR}/${BUILD_FOLDER}"
 
 echo "-----------------------------------"
 echo "${PRODUCT_NAME} XCFramework is located in ${XCF_FOLDER}"
