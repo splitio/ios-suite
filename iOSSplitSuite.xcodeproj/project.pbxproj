@@ -25,6 +25,7 @@
 		95B0A9342BA9D92000C31A9E /* SuiteRumAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0A9332BA9D91F00C31A9E /* SuiteRumAgent.swift */; };
 		95B0A9362BA9E7C000C31A9E /* SynchronizedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0A9352BA9E7C000C31A9E /* SynchronizedDictionary.swift */; };
 		95B0A9382BADB90000C31A9E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0A9372BADB90000C31A9E /* Date+Extension.swift */; };
+		95B0A9462BB1C4F900C31A9E /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0A9452BB1C4F900C31A9E /* Version.swift */; };
 		95CED0882B600391005E3C34 /* SplitRumConfig+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CED0872B600391005E3C34 /* SplitRumConfig+Extension.swift */; };
 		95CED0B22B62E8EB005E3C34 /* SplitClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CED0B12B62E8EB005E3C34 /* SplitClientMock.swift */; };
 		95CED0B42B62FFF6005E3C34 /* SplitSdkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CED0B32B62FFF6005E3C34 /* SplitSdkClientTests.swift */; };
@@ -77,6 +78,7 @@
 		95B0A9332BA9D91F00C31A9E /* SuiteRumAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiteRumAgent.swift; sourceTree = "<group>"; };
 		95B0A9352BA9E7C000C31A9E /* SynchronizedDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizedDictionary.swift; sourceTree = "<group>"; };
 		95B0A9372BADB90000C31A9E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		95B0A9452BB1C4F900C31A9E /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		95CED0872B600391005E3C34 /* SplitRumConfig+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplitRumConfig+Extension.swift"; sourceTree = "<group>"; };
 		95CED0B12B62E8EB005E3C34 /* SplitClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitClientMock.swift; sourceTree = "<group>"; };
 		95CED0B32B62FFF6005E3C34 /* SplitSdkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSdkClientTests.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				95CED0D42B683E30005E3C34 /* Logger.swift */,
+				95B0A9452BB1C4F900C31A9E /* Version.swift */,
 				958F98482B0E509B001F35B3 /* SplitIdentity+Extension.swift */,
 				958F984A2B0E651B001F35B3 /* SuiteConstants.swift */,
 				95306A982B20FB1D00254468 /* Key+Extension.swift */,
@@ -334,6 +337,7 @@
 				958F98402B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift in Sources */,
 				95306A942B20F11700254468 /* SplitSuiteBuilder.swift in Sources */,
 				95B0A9342BA9D92000C31A9E /* SuiteRumAgent.swift in Sources */,
+				95B0A9462BB1C4F900C31A9E /* Version.swift in Sources */,
 				956706B22B03C3FC002037AF /* SharedSplitSuite.swift in Sources */,
 				958F98492B0E509B001F35B3 /* SplitIdentity+Extension.swift in Sources */,
 				95B0A9362BA9E7C000C31A9E /* SynchronizedDictionary.swift in Sources */,
@@ -503,7 +507,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = D5VPZG3BF4;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -537,7 +541,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = D5VPZG3BF4;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
