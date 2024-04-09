@@ -21,3 +21,9 @@ public typealias SplitEvent = Split.SplitEvent
 
 
 public typealias SplitLogLevel = Split.SplitLogLevel
+public typealias SplitView = Split.SplitView
+public typealias SplitImpression = Split.SplitImpression
+public typealias SplitManager = Split.SplitManager
+public typealias DefaultSplitFactory = Split.DefaultSplitFactory
+public typealias DefaultSplitClient = Split.DefaultSplitClient
+public typealias SplitResult = Split.SplitResult
