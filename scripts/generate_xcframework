@@ -3,8 +3,15 @@ clear
 VERSION=$1
 CUR_DIR=$(pwd)
 PRODUCT_NAME=iOSSplitSuite
+# Static lib schema
+#SCHEMA_NAME=StaticiOSSplitSuite
+
+# Dynamic lib schema
 SCHEMA_NAME=iOSSplitSuite
+
 BUILD_FOLDER=SplitBuild
+FULL_BUILD_FOLDER="${CUR_DIR}/${BUILD_FOLDER}"
+ARCHIVES_PATH="${FULL_BUILD_FOLDER}/archives"
 XCF_FOLDER=xcframework
 
 echo "-----------------------------------"
@@ -19,33 +26,36 @@ rm -rf "${CUR_DIR}/${XCF_FOLDER}"
 
 mkdir "${CUR_DIR}/${BUILD_FOLDER}"
 mkdir "${CUR_DIR}/${XCF_FOLDER}"
+mkdir "${ARCHIVE_PATH}"
 
-# echo "Archiving ${FRAMEWORK_NAME} for devices"
-xcodebuild build    -scheme ${SCHEMA_NAME} \
-                    -derivedDataPath "${CUR_DIR}/${BUILD_FOLDER}" \
-                    -destination generic/platform=iOS \
-                    -configuration release \
-                    SKIP_INSTALL=NO \
-                    BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-                    > /dev/null
+function build_framework {
+    readonly DESTINATION=$1
+    echo "Building ${PRODUCT_NAME} for ${DESTINATION}"
+    xcodebuild build    -scheme ${SCHEMA_NAME} \
+                        -derivedDataPath "${FULL_BUILD_FOLDER}" \
+                        -destination  generic/platform="${DESTINATION}" \
+                        -configuration release \
+                        SKIP_INSTALL=NO \
+                        BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
+                        > /dev/null
 
+    xcodebuild archive  -project "${PRODUCT_NAME}.xcodeproj" \
+                        -scheme ${SCHEMA_NAME} \
+                        -derivedDataPath "${FULL_BUILD_FOLDER}" \
+                        -destination  generic/platform="${DESTINATION}" \
+                        -archivePath "${ARCHIVES_PATH}/${PRODUCT_NAME}-${DESTINATION// /_}.xcarchive" \
+                        > /dev/null
+
+}
+
+build_framework "iOS"
+build_framework "iOS Simulator"
 
 #read -s -k "?Press any key to continue."
-
-echo "Archiving ${FRAMEWORK_NAME} for simulators"
-xcodebuild build    -scheme ${SCHEMA_NAME} \
-                    -derivedDataPath "${CUR_DIR}/${BUILD_FOLDER}" \
-                    -destination generic/platform="iOS Simulator" \
-                    -configuration release \
-                    SKIP_INSTALL=NO \
-                    BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
-                    > /dev/null
-
 
 XCF_NAME_PATH="${CUR_DIR}/${XCF_FOLDER}/${PRODUCT_NAME}"
 XCF_PATH="${XCF_NAME_PATH}.xcframework"
 ZIP_PATH="${XCF_NAME_PATH}_${VERSION}.zip"
-
 
 XCF_FOLDER="${CUR_DIR}/${XCF_FOLDER}"
 XCF_NAME="${PRODUCT_NAME}.xcframework"
@@ -53,13 +63,47 @@ ZIP_NAME="${PRODUCT_NAME}_${VERSION}.zip"
 
 #Creating XCFramework
 echo "Creating XCFramework from ${BUILD_FOLDER} "
-xcodebuild  -create-xcframework \
-            -framework $(readlink -f "${CUR_DIR}/${BUILD_FOLDER}/Build/Products/Release-iphoneos/${PRODUCT_NAME}.framework") \
-            -debug-symbols $(readlink -f "${CUR_DIR}/${BUILD_FOLDER}/Build/Products/Release-iphoneos/${PRODUCT_NAME}.framework.dSYM") \
-            -framework $(readlink -f "${CUR_DIR}/${BUILD_FOLDER}/Build/Products/Release-iphonesimulator/${PRODUCT_NAME}.framework") \
-            -debug-symbols $(readlink -f "${CUR_DIR}/${BUILD_FOLDER}/Build/Products/Release-iphonesimulator/${PRODUCT_NAME}.framework.dSYM") \
-            -output "${XCF_PATH}" \
+PRODUCTS_PATH="${CUR_DIR}/${BUILD_FOLDER}"
+FRAMEWORK_FILE="${PRODUCT_NAME}.framework"
+DSYM_FILE="${FRAMEWORK_FILE}.dSYM"
+
+#$(readlink -f "${PRODUCTS_PATH}/Release-iphoneos/${FRAMEWORK_FILE}") \
+
+# xcodebuild  -create-xcframework \
+#             -framework $(readlink -f "${PRODUCTS_PATH}/release-iphoneos/${FRAMEWORK_FILE}") \
+#             -debug-symbols $(readlink -f "${PRODUCTS_PATH}/release-iphoneos/${DSYM_FILE}") \
+#             -framework $(readlink -f "${PRODUCTS_PATH}/release-iphonesimulator/${FRAMEWORK_FILE}") \
+#             -debug-symbols $(readlink -f "${PRODUCTS_PATH}/release-iphonesimulator/${DSYM_FILE}") \
+#             -output "${XCF_PATH}" \
             # > /dev/null
+
+
+# Using archives 
+xcodebuild  -create-xcframework \
+            -archive "${ARCHIVES_PATH}/${PRODUCT_NAME}-iOS.xcarchive" -framework $FRAMEWORK_FILE \
+            -archive "${ARCHIVES_PATH}/${PRODUCT_NAME}-iOS_Simulator.xcarchive" -framework $FRAMEWORK_FILE \
+            -output "${XCF_PATH}" \
+            > /dev/null
+
+## Creating STATIC xcframework
+# xcodebuild  -create-xcframework \
+#             -library $(readlink -f "${BUILD_FOLDER}/Build/Products/Release-iphoneos/libStaticiOSSplitSuite.a") \
+#             -library $(readlink -f "${BUILD_FOLDER}/Build/Products/Release-iphonesimulator/libStaticiOSSplitSuite.a") \
+#             -output "${XCF_PATH}" \
+#             > /dev/null
+#######################
+
+## Using archives to create XCFramework
+# xcodebuild  -create-xcframework \
+#             -archive "${ARCHIVES_PATH}/${PRODUCT_NAME}-iOS.xcarchive" \
+#             -framework $(readlink -f "${PRODUCTS_PATH}/release-iphoneos/${FRAMEWORK_FILE}") \
+#             -archive "${ARCHIVES_PATH}/${PRODUCT_NAME}-iOS_Simulator.xcarchive" \
+#             -framework $(readlink -f "${PRODUCTS_PATH}/release-iphonesimulator/${FRAMEWORK_FILE}") \
+#             -output "${XCF_PATH}" \
+#             > /dev/null
+
+            # -debug-symbols $(readlink -f "${PRODUCTS_PATH}/release-iphoneos/${DSYM_FILE}") \
+            # -debug-symbols $(readlink -f "${PRODUCTS_PATH}/release-iphonesimulator/${DSYM_FILE}") \
 
 echo "Zipping file"
 cd "${XCF_FOLDER}"
@@ -74,7 +118,7 @@ echo "Zip Checksum to put in Package.swift file:"
 cat "${CHECKSUM_FILE}"
 
 echo "Removing build folder"
-rm -rf "${CUR_DIR}/${BUILD_FOLDER}"
+rm -rf "${FULL_BUILD_FOLDER}"
 
 echo "-----------------------------------"
 echo "${PRODUCT_NAME} XCFramework is located in ${XCF_FOLDER}"
