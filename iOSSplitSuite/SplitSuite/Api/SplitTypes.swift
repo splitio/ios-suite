@@ -27,3 +27,4 @@ public typealias SplitManager = Split.SplitManager
 public typealias DefaultSplitFactory = Split.DefaultSplitFactory
 public typealias DefaultSplitClient = Split.DefaultSplitClient
 public typealias SplitResult = Split.SplitResult
+public typealias SplitImpressionListener = (SplitImpression) -> Void

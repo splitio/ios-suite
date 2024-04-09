@@ -67,43 +67,12 @@ PRODUCTS_PATH="${CUR_DIR}/${BUILD_FOLDER}"
 FRAMEWORK_FILE="${PRODUCT_NAME}.framework"
 DSYM_FILE="${FRAMEWORK_FILE}.dSYM"
 
-#$(readlink -f "${PRODUCTS_PATH}/Release-iphoneos/${FRAMEWORK_FILE}") \
-
-# xcodebuild  -create-xcframework \
-#             -framework $(readlink -f "${PRODUCTS_PATH}/release-iphoneos/${FRAMEWORK_FILE}") \
-#             -debug-symbols $(readlink -f "${PRODUCTS_PATH}/release-iphoneos/${DSYM_FILE}") \
-#             -framework $(readlink -f "${PRODUCTS_PATH}/release-iphonesimulator/${FRAMEWORK_FILE}") \
-#             -debug-symbols $(readlink -f "${PRODUCTS_PATH}/release-iphonesimulator/${DSYM_FILE}") \
-#             -output "${XCF_PATH}" \
-            # > /dev/null
-
-
 # Using archives 
 xcodebuild  -create-xcframework \
             -archive "${ARCHIVES_PATH}/${PRODUCT_NAME}-iOS.xcarchive" -framework $FRAMEWORK_FILE \
             -archive "${ARCHIVES_PATH}/${PRODUCT_NAME}-iOS_Simulator.xcarchive" -framework $FRAMEWORK_FILE \
             -output "${XCF_PATH}" \
             > /dev/null
-
-## Creating STATIC xcframework
-# xcodebuild  -create-xcframework \
-#             -library $(readlink -f "${BUILD_FOLDER}/Build/Products/Release-iphoneos/libStaticiOSSplitSuite.a") \
-#             -library $(readlink -f "${BUILD_FOLDER}/Build/Products/Release-iphonesimulator/libStaticiOSSplitSuite.a") \
-#             -output "${XCF_PATH}" \
-#             > /dev/null
-#######################
-
-## Using archives to create XCFramework
-# xcodebuild  -create-xcframework \
-#             -archive "${ARCHIVES_PATH}/${PRODUCT_NAME}-iOS.xcarchive" \
-#             -framework $(readlink -f "${PRODUCTS_PATH}/release-iphoneos/${FRAMEWORK_FILE}") \
-#             -archive "${ARCHIVES_PATH}/${PRODUCT_NAME}-iOS_Simulator.xcarchive" \
-#             -framework $(readlink -f "${PRODUCTS_PATH}/release-iphonesimulator/${FRAMEWORK_FILE}") \
-#             -output "${XCF_PATH}" \
-#             > /dev/null
-
-            # -debug-symbols $(readlink -f "${PRODUCTS_PATH}/release-iphoneos/${DSYM_FILE}") \
-            # -debug-symbols $(readlink -f "${PRODUCTS_PATH}/release-iphonesimulator/${DSYM_FILE}") \
 
 echo "Zipping file"
 cd "${XCF_FOLDER}"
