@@ -95,7 +95,6 @@
 		95B0A9372BADB90000C31A9E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		95B0A9452BB1C4F900C31A9E /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		95B0A97A2BC4707E00C31A9E /* libStaticiOSSplitSuite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStaticiOSSplitSuite.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		95B0A97C2BC4707E00C31A9E /* StaticiOSSplitSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticiOSSplitSuite.swift; sourceTree = "<group>"; };
 		95CED0872B600391005E3C34 /* SplitRumConfig+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplitRumConfig+Extension.swift"; sourceTree = "<group>"; };
 		95CED0B12B62E8EB005E3C34 /* SplitClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitClientMock.swift; sourceTree = "<group>"; };
 		95CED0B32B62FFF6005E3C34 /* SplitSdkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSdkClientTests.swift; sourceTree = "<group>"; };
@@ -141,7 +140,6 @@
 			children = (
 				9567069A2B03C25A002037AF /* iOSSplitSuite */,
 				956706A42B03C25B002037AF /* iOSSplitSuiteTests */,
-				95B0A97B2BC4707E00C31A9E /* StaticiOSSplitSuite */,
 				956706992B03C25A002037AF /* Products */,
 				95670D1C2B03F13D002037AF /* Frameworks */,
 			);
@@ -219,14 +217,6 @@
 				95B0A9352BA9E7C000C31A9E /* SynchronizedDictionary.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		95B0A97B2BC4707E00C31A9E /* StaticiOSSplitSuite */ = {
-			isa = PBXGroup;
-			children = (
-				95B0A97C2BC4707E00C31A9E /* StaticiOSSplitSuite.swift */,
-			);
-			path = StaticiOSSplitSuite;
 			sourceTree = "<group>";
 		};
 		95CED0AF2B62E8B8005E3C34 /* Utils */ = {
@@ -772,15 +762,15 @@
 			repositoryURL = "https://github.com/splitio/ios-rum";
 			requirement = {
 				kind = exactVersion;
-				version = "0.3.0-rc1";
+				version = "0.3.0-rc4";
 			};
 		};
 		95B0A9732BC46A5B00C31A9E /* XCRemoteSwiftPackageReference "ios-client" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/splitio/ios-client";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.24.5;
+				kind = exactVersion;
+				version = 2.24.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

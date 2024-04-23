@@ -57,19 +57,20 @@ public class SplitSuiteBuilder: SharedSplitSuiteBuilder {
 
     public func build() -> SplitSuite? {
         guard let apiKey = self.apiKey else {
-            // Will never reach here
+            Logger.e("API Key cannot be null")
             return nil
         }
+
+        matchingKey  = matchingKey ?? key?.matchingKey
+        bucketingKey  = bucketingKey ?? key?.bucketingKey
 
         guard let matchingKey = matchingKey else {
-            // Will never reach here
+            Logger.e("Matching Key cannot be null")
             return nil
         }
 
-        let defaultTrafficType = suiteConfig.sdkConfig.trafficType ?? SuiteConstants.trafficTypeUser
-
         let key = Key(matchingKey: matchingKey, bucketingKey: bucketingKey)
-
+        let defaultTrafficType = suiteConfig.sdkConfig.trafficType ?? SuiteConstants.trafficTypeUser
         guard let sdkFactory = DefaultSplitFactoryBuilder()
             .setKey(key)
             .setApiKey(apiKey)
