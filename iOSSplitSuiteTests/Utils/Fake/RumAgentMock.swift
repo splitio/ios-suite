@@ -4,7 +4,7 @@
 //
 //  Created by Javier Avrudsky on 29/01/2024.
 //
-
+import Foundation
 @testable import iOSSplitSuite
 import SplitRumAgent
 

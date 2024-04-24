@@ -10,7 +10,6 @@
 		95306A942B20F11700254468 /* SplitSuiteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95306A932B20F11700254468 /* SplitSuiteBuilder.swift */; };
 		95306A992B20FB1D00254468 /* Key+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95306A982B20FB1D00254468 /* Key+Extension.swift */; };
 		956706A12B03C25B002037AF /* iOSSplitSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 956706982B03C25A002037AF /* iOSSplitSuite.framework */; };
-		956706A62B03C25B002037AF /* SuiteConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956706A52B03C25B002037AF /* SuiteConfigTests.swift */; };
 		956706B22B03C3FC002037AF /* SharedSplitSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956706B12B03C3FC002037AF /* SharedSplitSuite.swift */; };
 		956706B42B03C405002037AF /* SplitSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956706B32B03C405002037AF /* SplitSuite.swift */; };
 		958F98402B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F983F2B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift */; };
@@ -80,7 +79,6 @@
 		956706982B03C25A002037AF /* iOSSplitSuite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOSSplitSuite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9567069B2B03C25A002037AF /* iOSSplitSuite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSSplitSuite.h; sourceTree = "<group>"; };
 		956706A02B03C25B002037AF /* iOSSplitSuiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSSplitSuiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		956706A52B03C25B002037AF /* SuiteConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiteConfigTests.swift; sourceTree = "<group>"; };
 		956706B12B03C3FC002037AF /* SharedSplitSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSplitSuite.swift; sourceTree = "<group>"; };
 		956706B32B03C405002037AF /* SplitSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSuite.swift; sourceTree = "<group>"; };
 		958F983F2B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSuiteSdkClient.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				95CED0AF2B62E8B8005E3C34 /* Utils */,
-				956706A52B03C25B002037AF /* SuiteConfigTests.swift */,
 				95CED0B32B62FFF6005E3C34 /* SplitSdkClientTests.swift */,
 				95CED0D62B6840C3005E3C34 /* SplitSuiteTests.swift */,
 			);
@@ -406,7 +403,6 @@
 			files = (
 				95CED0D92B6845D0005E3C34 /* RumAgentMock.swift in Sources */,
 				95B0A9382BADB90000C31A9E /* Date+Extension.swift in Sources */,
-				956706A62B03C25B002037AF /* SuiteConfigTests.swift in Sources */,
 				95B0A9242BA2290500C31A9E /* TypedKeyValueStorageMock.swift in Sources */,
 				95CED0B42B62FFF6005E3C34 /* SplitSdkClientTests.swift in Sources */,
 				95CED0B62B63012B005E3C34 /* SplitClientCoordinatorMock.swift in Sources */,
