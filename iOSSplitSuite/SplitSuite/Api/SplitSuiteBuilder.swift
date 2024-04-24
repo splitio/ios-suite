@@ -9,13 +9,6 @@ import Foundation
 import Split
 
 public protocol SharedSplitSuiteBuilder {
-//    func config(_ config: SplitSuiteConfig) -> SplitSuiteBuilder
-//    func config(_ config: SplitClientConfig) -> SplitSuiteBuilder
-//    func apiKey(_ apiKey: String) -> SplitSuiteBuilder
-//    func matchingKey(_ matchingKey: String) -> SplitSuiteBuilder
-//    func bucketingKey(_ bucketingKey: String) -> SplitSuiteBuilder
-//    func key(_ key: Key) -> SplitSuiteBuilder
-//    func build() -> SharedSplitSuite?
 
     ///
     /// Sets the Suite API Key
