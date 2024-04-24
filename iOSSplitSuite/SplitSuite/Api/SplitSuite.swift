@@ -10,12 +10,12 @@ import Split
 import SplitRumAgent
 
 public class SplitSuite: SharedSplitSuite {
-    
-    private var clients = SynchronizedDictionary<SplitIdentity, SplitClient>()
+
     private var sdkFactory: SplitFactory
     private var rumAgent: InternalRumAgent
     private let defaultTrafficType: String
     private let defaultKey: String
+    private var clients = SynchronizedDictionary<Int, SplitClient>()
 
     public var properties: [String : Any] {
         return rumAgent.properties
@@ -124,18 +124,20 @@ extension SplitSuite {
 extension SplitSuite: SplitSuiteCoordinator {
 
     func registerClient(key: String, trafficType: String, client: SplitClient) {
-        clients.setValue(client, forKey: SplitIdentity(key: key, trafficType: trafficType))
-        rumAgent.addIdentity(key: key, trafficType: trafficType)    
+        let hashKey = SplitIdentity.hashValue(key: key, trafficType: trafficType)
+        clients.setValue(client, forKey: hashKey)
+        rumAgent.addIdentity(key: key, trafficType: trafficType)
     }
 
     func notifyDestroy(key: String, trafficType: String) {
-        clients.removeValue(forKey: SplitIdentity(key: key, trafficType: trafficType))
+        clients.removeValue(forKey: SplitIdentity(key: key, trafficType: trafficType).hashValue)
         rumAgent.removeIdentity(key: key, trafficType: trafficType)
     }
 
     private func getClient(key: Key, trafficType: String) -> SplitClient {
         let userKey = key.stringRepresentation()
-        if let client = clients.value(forKey: SplitIdentity(key: userKey, trafficType: trafficType)) {
+        let hashKey = SplitIdentity.hashValue(key: userKey, trafficType: trafficType)
+        if let client = clients.value(forKey: hashKey) {
             return client
         }
         let client = SplitSuiteSdkClient(client: sdkFactory.client(matchingKey: userKey),

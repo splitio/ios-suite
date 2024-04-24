@@ -17,4 +17,15 @@ extension SplitIdentity: Hashable {
     public static func == (lhs: SplitIdentity, rhs: SplitIdentity) -> Bool {
         return lhs.key == rhs.key && lhs.trafficType == rhs.trafficType
     }
+
+    var hashIdentity: Int {
+        return Self.hashValue(key: key, trafficType: trafficType)
+    }
+
+    static func hashValue(key: String, trafficType: String) -> Int {
+        var hasher = Hasher()
+        hasher.combine(key)
+        hasher.combine(trafficType)
+        return hasher.finalize()
+    }
 }
