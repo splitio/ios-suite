@@ -8,21 +8,14 @@
 import Foundation
 import Split
 
-public protocol SharedSplitSuiteBuilder {
-//    func config(_ config: SplitSuiteConfig) -> SplitSuiteBuilder
-//    func config(_ config: SplitClientConfig) -> SplitSuiteBuilder
-//    func apiKey(_ apiKey: String) -> SplitSuiteBuilder
-//    func matchingKey(_ matchingKey: String) -> SplitSuiteBuilder
-//    func bucketingKey(_ bucketingKey: String) -> SplitSuiteBuilder
-//    func key(_ key: Key) -> SplitSuiteBuilder
-//    func build() -> SharedSplitSuite?
+public protocol SplitSuiteBuilder {
 
     ///
     /// Sets the Suite API Key
     /// returns: the current instance of SplitSuiteBuilder implementation
     ///
     @discardableResult
-    func setApiKey(_ apiKey: String) -> SplitSuiteBuilder
+    func setApiKey(_ apiKey: String) -> DefaultSplitSuiteBuilder
 
     ///
     /// Sets the Matching Key to use. This method is specially usefull when creating
@@ -32,7 +25,7 @@ public protocol SharedSplitSuiteBuilder {
     /// - returns: the current instance of SplitSuiteBuilder implementation
     ///
     @discardableResult
-    func setMatchingKey(_ matchingKey: String) -> SplitSuiteBuilder
+    func setMatchingKey(_ matchingKey: String) -> DefaultSplitSuiteBuilder
 
     ///
     /// Sets the Bucketing Key to use. This method could be used in conjunction with setMatchingKey
@@ -41,7 +34,7 @@ public protocol SharedSplitSuiteBuilder {
     /// - returns: the current instance of SplitSuiteBuilder implementation
     ///
     @discardableResult
-    func setBucketingKey(_ bucketingKey: String) -> SplitSuiteBuilder
+    func setBucketingKey(_ bucketingKey: String) -> DefaultSplitSuiteBuilder
 
     ///
     /// Sets the Key to use. This method could be used instead of setMatchingKey
@@ -50,7 +43,7 @@ public protocol SharedSplitSuiteBuilder {
     /// - returns: the current instance of SplitSuiteBuilder implementation
     ///
     @discardableResult
-    func setKey(_ key: Key) -> SplitSuiteBuilder
+    func setKey(_ key: Key) -> DefaultSplitSuiteBuilder
 
     ///
     /// Sets the Split configuration to use. If this method is avoided
@@ -59,7 +52,7 @@ public protocol SharedSplitSuiteBuilder {
     /// - returns: the current instance of SplitSuiteBuilder implementation
     ///
     @discardableResult
-    func setConfig(_ config: SplitClientConfig) -> SplitSuiteBuilder
+    func setConfig(_ config: SplitClientConfig) -> DefaultSplitSuiteBuilder
 
     ///
     /// Sets the Split configuration to use. If this method is avoided
@@ -68,15 +61,15 @@ public protocol SharedSplitSuiteBuilder {
     /// - returns: the current instance of SplitSuiteBuilder implementation
     ///
     @discardableResult
-    func setConfig(_ config: SplitSuiteConfig) -> SplitSuiteBuilder
+    func setConfig(_ config: SplitSuiteConfig) -> DefaultSplitSuiteBuilder
 
     ///
     /// Builds the SplitFactory implementation instance based on set values
     /// - returns: An instance of SharedSplitSuite protocol implementation
-    func build() -> SharedSplitSuite?
+    func build() -> SplitSuite?
 }
 
-public class SplitSuiteBuilder: SharedSplitSuiteBuilder {
+public class DefaultSplitSuiteBuilder: SplitSuiteBuilder {
 
     private var suiteConfig: SplitSuiteConfig?
     private var sdkConfig: SplitClientConfig?
@@ -87,42 +80,42 @@ public class SplitSuiteBuilder: SharedSplitSuiteBuilder {
 
     // Setters / builder
     @discardableResult
-    public func setConfig(_ config: SplitSuiteConfig) -> SplitSuiteBuilder {
+    public func setConfig(_ config: SplitSuiteConfig) -> DefaultSplitSuiteBuilder {
         self.suiteConfig = config
         return self
     }
 
     @discardableResult
-    public func setConfig(_ config: SplitClientConfig) -> SplitSuiteBuilder {
+    public func setConfig(_ config: SplitClientConfig) -> DefaultSplitSuiteBuilder {
         self.sdkConfig = config
         return self
     }
 
     @discardableResult
-    public func setApiKey(_ apiKey: String) -> SplitSuiteBuilder {
+    public func setApiKey(_ apiKey: String) -> DefaultSplitSuiteBuilder {
         self.apiKey = apiKey
         return self
     }
 
     @discardableResult
-    public func setMatchingKey(_ matchingKey: String) -> SplitSuiteBuilder {
+    public func setMatchingKey(_ matchingKey: String) -> DefaultSplitSuiteBuilder {
         self.matchingKey = matchingKey
         return self
     }
 
     @discardableResult
-    public func setBucketingKey(_ bucketingKey: String) -> SplitSuiteBuilder {
+    public func setBucketingKey(_ bucketingKey: String) -> DefaultSplitSuiteBuilder {
         self.bucketingKey = bucketingKey
         return self
     }
 
     @discardableResult
-    public func setKey(_ key: Key) -> SplitSuiteBuilder {
+    public func setKey(_ key: Key) -> DefaultSplitSuiteBuilder {
         self.key = key
         return self
     }
 
-    public func build() -> SharedSplitSuite? {
+    public func build() -> SplitSuite? {
         guard let apiKey = self.apiKey else {
             Logger.e("API Key cannot be null")
             return nil
@@ -158,7 +151,7 @@ public class SplitSuiteBuilder: SharedSplitSuiteBuilder {
             Logger.e(" Could not create Split RUM: \(error.localizedDescription)")
             return nil
         }
-        return SplitSuite(key: key, trafficType: defaultTrafficType, rumAgent: rumAgent, sdkFactory: sdkFactory)
+        return DefaultSplitSuite(key: key, trafficType: defaultTrafficType, rumAgent: rumAgent, sdkFactory: sdkFactory)
     }
 
     private func buildRumConfig(suiteConfig: SplitSuiteConfig, sdkConfig: SplitClientConfig) -> SplitRumConfig {

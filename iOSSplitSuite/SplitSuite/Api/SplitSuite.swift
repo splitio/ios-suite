@@ -1,5 +1,5 @@
 //
-//  SplitSuite.swift
+//  SharedSplitSuite.swift
 //  iOSSplitSuite
 //
 //  Created by Javier Avrudsky on 14/11/2023.
@@ -9,142 +9,44 @@ import Foundation
 import Split
 import SplitRumAgent
 
-public class SplitSuite: SharedSplitSuite {
+public typealias SplitErrorEvent = SplitRumAgent.SplitErrorEvent
+typealias DestroyCompletionHandler = ()->Void
 
-    private var sdkFactory: SplitFactory
-    private var rumAgent: InternalRumAgent
-    private let defaultTrafficType: String
-    private let defaultKey: String
-    private var clients = SynchronizedDictionary<Int, SplitClient>()
+public protocol RumAgent {
 
-    public var properties: [String : Any] {
-        return rumAgent.properties
-    }
+    // Properties
+    var properties: [String: Any] { get }
+    func setProperty(name: String, value: Any)
+    func set(properties: [String: Any])
+    func getValue(for property: String) -> Any?
+    func remove(property: String)
+    func removeProperties()
 
-    public var client: SplitClient {
-        return sdkFactory.client
-    }
+    func track(eventType: String,
+               value: Double?,
+               properties: [String: Any]?) -> Bool
 
-    public var manager: SplitManager {
-        return sdkFactory.manager
-    }
+    func track(error: SplitErrorEvent) -> Bool
 
-    public var userConsent: UserConsent {
-        return sdkFactory.userConsent
-    }
+    func trackTimeFromStart(marker: String)
 
-    public var version: String {
-        return sdkFactory.version
-    }
-
-    init(key: Key,
-         trafficType: String,
-         rumAgent: InternalRumAgent,
-         sdkFactory: SplitFactory) {
-
-        self.defaultTrafficType = trafficType
-        self.defaultKey = key.stringRepresentation()
-
-        self.sdkFactory = sdkFactory
-        self.rumAgent = rumAgent
-    }
-
-    public static func builder() -> SharedSplitSuiteBuilder {
-        return SplitSuiteBuilder()
-    }
 }
 
-// MARK: SDK Factory
-extension SplitSuite {
-
-    public func setUserConsent(enabled: Bool) {
-        sdkFactory.setUserConsent(enabled: enabled)
-    }
-
-    public func client(key: Key) -> SplitClient {
-        return getClient(key: key, trafficType: defaultTrafficType)
-    }
-
-    public func client(matchingKey: String) -> SplitClient {
-        return getClient(key: Key(matchingKey: matchingKey), trafficType: defaultTrafficType)
-    }
-
-    public func client(matchingKey: String, bucketingKey: String?) -> SplitClient {
-        return getClient(key: Key(matchingKey: matchingKey, bucketingKey: bucketingKey), trafficType: defaultTrafficType)
-    }
-
-    public func client(key: Key, trafficType: String) -> SplitClient {
-        return getClient(key: key, trafficType: trafficType)
-    }
+protocol InternalRumAgent: RumAgent {
+    var identities: [SplitIdentity] { get }
+    func setup(apiKey: String, config: SplitRumAgent.SplitRumConfig) throws
+    func addIdentity(key: String, trafficType: String)
+    func add(identities: [SplitIdentity])
+    func removeIdentity(key: String, trafficType: String)
+    func removeIdentities()
 }
 
-// MARK: properties
-extension SplitSuite {
-
-    public func setProperty(name: String, value: Any) {
-        rumAgent.setProperty(name: name, value: value)
-    }
-
-    public func set(properties: [String : Any]) {
-        rumAgent.set(properties: properties)
-    }
-
-    public func getValue(for property: String) -> Any? {
-        return rumAgent.getValue(for: property)
-    }
-
-    public func remove(property: String) {
-        rumAgent.remove(property: property)
-    }
-
-    public func removeProperties() {
-        rumAgent.removeProperties()
-    }
+protocol SplitSuiteCoordinator: AnyObject {
+    func registerClient(key: String, trafficType: String, client: SuiteSdkClient)
+    func notifyDestroy(key: String, trafficType: String, completion: DestroyCompletionHandler?)
 }
 
-// MARK: track
-extension SplitSuite {
-
-    public func track(eventType: String, value: Double?, properties: [String : Any]?) -> Bool {
-        // Track with agent to allow not having key and tt???
-        return rumAgent.track(eventType: eventType,
-                              value: value,
-                              properties: properties)
-    }
-
-    public func track(error: SplitErrorEvent) -> Bool {
-        return rumAgent.track(error: error)
-    }
-
-    public func trackTimeFromStart(marker: String) {
-        rumAgent.trackTimeFromStart(marker: marker)
-    }
-}
-
-extension SplitSuite: SplitSuiteCoordinator {
-
-    func registerClient(key: String, trafficType: String, client: SplitClient) {
-        let hashKey = SplitIdentity.hashValue(key: key, trafficType: trafficType)
-        clients.setValue(client, forKey: hashKey)
-        rumAgent.addIdentity(key: key, trafficType: trafficType)
-    }
-
-    func notifyDestroy(key: String, trafficType: String) {
-        clients.removeValue(forKey: SplitIdentity(key: key, trafficType: trafficType).hashValue)
-        rumAgent.removeIdentity(key: key, trafficType: trafficType)
-    }
-
-    private func getClient(key: Key, trafficType: String) -> SplitClient {
-        let userKey = key.stringRepresentation()
-        let hashKey = SplitIdentity.hashValue(key: userKey, trafficType: trafficType)
-        if let client = clients.value(forKey: hashKey) {
-            return client
-        }
-        let client = SplitSuiteSdkClient(client: sdkFactory.client(matchingKey: userKey),
-                                         key: userKey,
-                                         trafficType: trafficType,
-                                         suiteCoordinator: self)
-        registerClient(key: userKey, trafficType: trafficType, client: client)
-        return client
-    }
+public protocol SplitSuite: SplitFactory, RumAgent {
+    static func builder() -> SplitSuiteBuilder
+    func client(key: Key, trafficType: String) -> SplitClient
 }
