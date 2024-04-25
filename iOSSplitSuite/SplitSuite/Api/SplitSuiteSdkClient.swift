@@ -73,7 +73,7 @@ class SplitSuiteSdkClient: SplitClient {
     }
 
     public func track(eventType: String, value: Double) -> Bool {
-        client.track(eventType: trafficType, value: value)
+        client.track(eventType: eventType, value: value)
     }
 
     public func setAttribute(name: String, value: Any) -> Bool {
