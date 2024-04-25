@@ -10,7 +10,7 @@ import Foundation
 import Split
 
 class SplitClientCoordinatorMock: SplitSuiteCoordinator {
-    var clients = [String: SplitClient]()
+    var clients: [String: SplitClient] = [:]
 
     var registerClientCalled = false
     var notifyDestroyedCalled = false

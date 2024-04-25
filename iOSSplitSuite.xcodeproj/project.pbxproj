@@ -10,7 +10,6 @@
 		95306A942B20F11700254468 /* SplitSuiteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95306A932B20F11700254468 /* SplitSuiteBuilder.swift */; };
 		95306A992B20FB1D00254468 /* Key+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95306A982B20FB1D00254468 /* Key+Extension.swift */; };
 		956706A12B03C25B002037AF /* iOSSplitSuite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 956706982B03C25A002037AF /* iOSSplitSuite.framework */; };
-		956706A62B03C25B002037AF /* SuiteConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956706A52B03C25B002037AF /* SuiteConfigTests.swift */; };
 		956706B22B03C3FC002037AF /* SharedSplitSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956706B12B03C3FC002037AF /* SharedSplitSuite.swift */; };
 		956706B42B03C405002037AF /* SplitSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956706B32B03C405002037AF /* SplitSuite.swift */; };
 		958F98402B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958F983F2B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift */; };
@@ -80,7 +79,6 @@
 		956706982B03C25A002037AF /* iOSSplitSuite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOSSplitSuite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9567069B2B03C25A002037AF /* iOSSplitSuite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSSplitSuite.h; sourceTree = "<group>"; };
 		956706A02B03C25B002037AF /* iOSSplitSuiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSSplitSuiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		956706A52B03C25B002037AF /* SuiteConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuiteConfigTests.swift; sourceTree = "<group>"; };
 		956706B12B03C3FC002037AF /* SharedSplitSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedSplitSuite.swift; sourceTree = "<group>"; };
 		956706B32B03C405002037AF /* SplitSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSuite.swift; sourceTree = "<group>"; };
 		958F983F2B0D2EB9001F35B3 /* SplitSuiteSdkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSuiteSdkClient.swift; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 		95B0A9372BADB90000C31A9E /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		95B0A9452BB1C4F900C31A9E /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		95B0A97A2BC4707E00C31A9E /* libStaticiOSSplitSuite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libStaticiOSSplitSuite.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		95B0A97C2BC4707E00C31A9E /* StaticiOSSplitSuite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticiOSSplitSuite.swift; sourceTree = "<group>"; };
 		95CED0872B600391005E3C34 /* SplitRumConfig+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplitRumConfig+Extension.swift"; sourceTree = "<group>"; };
 		95CED0B12B62E8EB005E3C34 /* SplitClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitClientMock.swift; sourceTree = "<group>"; };
 		95CED0B32B62FFF6005E3C34 /* SplitSdkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSdkClientTests.swift; sourceTree = "<group>"; };
@@ -141,7 +138,6 @@
 			children = (
 				9567069A2B03C25A002037AF /* iOSSplitSuite */,
 				956706A42B03C25B002037AF /* iOSSplitSuiteTests */,
-				95B0A97B2BC4707E00C31A9E /* StaticiOSSplitSuite */,
 				956706992B03C25A002037AF /* Products */,
 				95670D1C2B03F13D002037AF /* Frameworks */,
 			);
@@ -170,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				95CED0AF2B62E8B8005E3C34 /* Utils */,
-				956706A52B03C25B002037AF /* SuiteConfigTests.swift */,
 				95CED0B32B62FFF6005E3C34 /* SplitSdkClientTests.swift */,
 				95CED0D62B6840C3005E3C34 /* SplitSuiteTests.swift */,
 			);
@@ -219,14 +214,6 @@
 				95B0A9352BA9E7C000C31A9E /* SynchronizedDictionary.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		95B0A97B2BC4707E00C31A9E /* StaticiOSSplitSuite */ = {
-			isa = PBXGroup;
-			children = (
-				95B0A97C2BC4707E00C31A9E /* StaticiOSSplitSuite.swift */,
-			);
-			path = StaticiOSSplitSuite;
 			sourceTree = "<group>";
 		};
 		95CED0AF2B62E8B8005E3C34 /* Utils */ = {
@@ -416,7 +403,6 @@
 			files = (
 				95CED0D92B6845D0005E3C34 /* RumAgentMock.swift in Sources */,
 				95B0A9382BADB90000C31A9E /* Date+Extension.swift in Sources */,
-				956706A62B03C25B002037AF /* SuiteConfigTests.swift in Sources */,
 				95B0A9242BA2290500C31A9E /* TypedKeyValueStorageMock.swift in Sources */,
 				95CED0B42B62FFF6005E3C34 /* SplitSdkClientTests.swift in Sources */,
 				95CED0B62B63012B005E3C34 /* SplitClientCoordinatorMock.swift in Sources */,
@@ -772,15 +758,15 @@
 			repositoryURL = "https://github.com/splitio/ios-rum";
 			requirement = {
 				kind = exactVersion;
-				version = "0.3.0-rc1";
+				version = "0.3.0-rc4";
 			};
 		};
 		95B0A9732BC46A5B00C31A9E /* XCRemoteSwiftPackageReference "ios-client" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/splitio/ios-client";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.24.5;
+				kind = exactVersion;
+				version = 2.24.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
