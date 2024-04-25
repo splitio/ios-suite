@@ -6,9 +6,12 @@
 //
 
 import Foundation
-import SplitSdk
+import Split
+import SplitRumAgent
 
-public protocol SplitRumAgent {
+public typealias SplitErrorEvent = SplitRumAgent.SplitErrorEvent
+
+public protocol RumAgent {
 
     // Properties
     var properties: [String: Any] { get }
@@ -16,6 +19,7 @@ public protocol SplitRumAgent {
     func set(properties: [String: Any])
     func getValue(for property: String) -> Any?
     func remove(property: String)
+    func removeProperties()
 
     func track(eventType: String,
                value: Double?,
@@ -27,12 +31,21 @@ public protocol SplitRumAgent {
 
 }
 
+protocol InternalRumAgent: RumAgent {
+    var identities: [SplitIdentity] { get }
+    func setup(apiKey: String, config: SplitRumAgent.SplitRumConfig) throws
+    func addIdentity(key: String, trafficType: String)
+    func add(identities: [SplitIdentity])
+    func removeIdentity(key: String, trafficType: String)
+    func removeIdentities()
+}
+
 protocol SplitSuiteCoordinator: AnyObject {
     func registerClient(key: String, trafficType: String, client: SplitClient)
     func notifyDestroy(key: String, trafficType: String)
 }
 
-public protocol SharedSplitSuite: SplitFactory, SplitRumAgent {
+public protocol SharedSplitSuite: SplitFactory, RumAgent {
+    static func builder() -> SharedSplitSuiteBuilder
     func client(key: Key, trafficType: String) -> SplitClient
 }
-

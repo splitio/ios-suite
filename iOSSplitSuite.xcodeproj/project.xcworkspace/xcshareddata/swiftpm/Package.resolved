@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "ios-client",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/splitio/ios-client",
+      "state" : {
+        "revision" : "3ab4b872b7288b27754164fa9ef33a6830aa2964",
+        "version" : "2.24.5"
+      }
+    },
+    {
+      "identity" : "ios-rum",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/splitio/ios-rum",
+      "state" : {
+        "revision" : "b8def3efb5223a7f670a626f66109c126d8740fa",
+        "version" : "0.3.0-rc1"
+      }
+    }
+  ],
+  "version" : 2
+}
