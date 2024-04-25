@@ -7,11 +7,16 @@
 import Foundation
 import Split
 
-class SplitSuiteSdkClient: SplitClient {
+protocol SuiteSdkClient: SplitClient {
+    var key: String { get }
+    func realDestroy(completion: DestroyCompletionHandler?)
+}
+
+class SplitSuiteSdkClient: SuiteSdkClient {
 
     private let client: SplitClient
     private let trafficType: String
-    private let key: String
+    let key: String
     weak private var suiteCoordinator: SplitSuiteCoordinator?
 
     init(client: SplitClient,
@@ -25,27 +30,27 @@ class SplitSuiteSdkClient: SplitClient {
     }
 
     public func getTreatment(_ split: String, attributes: [String : Any]?) -> String {
-        client.getTreatment(split, attributes: attributes)
+        return client.getTreatment(split, attributes: attributes)
     }
 
     public func getTreatment(_ split: String) -> String {
-        client.getTreatment(split)
+        return client.getTreatment(split)
     }
 
     public func getTreatments(splits: [String], attributes: [String : Any]?) -> [String : String] {
-        client.getTreatments(splits: splits, attributes: attributes)
+        return client.getTreatments(splits: splits, attributes: attributes)
     }
 
     public func getTreatmentWithConfig(_ split: String) -> SplitResult {
-        client.getTreatmentWithConfig(split)
+        return client.getTreatmentWithConfig(split)
     }
 
     public func getTreatmentWithConfig(_ split: String, attributes: [String : Any]?) -> SplitResult {
-        client.getTreatmentWithConfig(split, attributes: attributes)
+        return client.getTreatmentWithConfig(split, attributes: attributes)
     }
 
     public func getTreatmentsWithConfig(splits: [String], attributes: [String : Any]?) -> [String : SplitResult] {
-        client.getTreatmentsWithConfig(splits: splits, attributes: attributes)
+        return client.getTreatmentsWithConfig(splits: splits, attributes: attributes)
     }
 
     public func on(event: SplitEvent, execute action: @escaping SplitAction) {
@@ -61,31 +66,31 @@ class SplitSuiteSdkClient: SplitClient {
     }
 
     public func track(trafficType: String, eventType: String) -> Bool {
-        client.track(trafficType: trafficType, eventType: eventType)
+        return client.track(trafficType: trafficType, eventType: eventType)
     }
 
     public func track(trafficType: String, eventType: String, value: Double) -> Bool {
-        client.track(trafficType: trafficType, eventType: eventType, value: value)
+        return client.track(trafficType: trafficType, eventType: eventType, value: value)
     }
 
     public func track(eventType: String) -> Bool {
-        client.track(eventType: eventType)
+        return client.track(eventType: eventType)
     }
 
     public func track(eventType: String, value: Double) -> Bool {
-        client.track(eventType: eventType, value: value)
+        return client.track(eventType: eventType, value: value)
     }
 
     public func setAttribute(name: String, value: Any) -> Bool {
-        client.setAttribute(name: name, value: value)
+        return client.setAttribute(name: name, value: value)
     }
 
     public func getAttribute(name: String) -> Any? {
-        client.getAttribute(name: name)
+        return client.getAttribute(name: name)
     }
 
     public func setAttributes(_ values: [String : Any]) -> Bool {
-        client.setAttributes(values)
+        return client.setAttributes(values)
     }
 
     public func getAttributes() -> [String : Any]? {
@@ -93,11 +98,11 @@ class SplitSuiteSdkClient: SplitClient {
     }
 
     public func removeAttribute(name: String) -> Bool {
-        client.removeAttribute(name: name)
+        return client.removeAttribute(name: name)
     }
 
     public func clearAttributes() -> Bool {
-        client.clearAttributes()
+        return client.clearAttributes()
     }
 
     public func flush() {
@@ -105,12 +110,10 @@ class SplitSuiteSdkClient: SplitClient {
     }
 
     public func destroy() {
-        client.destroy()
         notifyDestroy()
     }
 
     public func destroy(completion: (() -> Void)?) {
-        client.destroy(completion: completion)
         notifyDestroy()
     }
 
@@ -148,6 +151,11 @@ class SplitSuiteSdkClient: SplitClient {
 }
 
 extension SplitSuiteSdkClient {
+
+    func realDestroy(completion: DestroyCompletionHandler?) {
+        client.destroy(completion: completion)
+    }
+
     private func notifyDestroy() {
         if let suiteCoordinator = self.suiteCoordinator {
             suiteCoordinator.notifyDestroy(key: key, trafficType: trafficType)

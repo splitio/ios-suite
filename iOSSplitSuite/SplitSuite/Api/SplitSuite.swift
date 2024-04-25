@@ -15,7 +15,7 @@ public class SplitSuite: SharedSplitSuite {
     private var rumAgent: InternalRumAgent
     private let defaultTrafficType: String
     private let defaultKey: String
-    private var clients = SynchronizedDictionary<Int, SplitClient>()
+    private var clients = SynchronizedDictionary<Int, SuiteSdkClient>()
 
     public var properties: [String : Any] {
         return rumAgent.properties
@@ -123,15 +123,21 @@ extension SplitSuite {
 
 extension SplitSuite: SplitSuiteCoordinator {
 
-    func registerClient(key: String, trafficType: String, client: SplitClient) {
+    func registerClient(key: String, trafficType: String, client: SuiteSdkClient) {
         let hashKey = SplitIdentity.hashValue(key: key, trafficType: trafficType)
         clients.setValue(client, forKey: hashKey)
         rumAgent.addIdentity(key: key, trafficType: trafficType)
     }
 
-    func notifyDestroy(key: String, trafficType: String) {
-        clients.removeValue(forKey: SplitIdentity(key: key, trafficType: trafficType).hashValue)
+    func notifyDestroy(key: String, trafficType: String, completion: DestroyCompletionHandler?) {
+        let hashValue = SplitIdentity.hashValue(key: key, trafficType: trafficType)
+        let client = clients.value(forKey: hashValue)
+        clients.removeValue(forKey: hashValue)
         rumAgent.removeIdentity(key: key, trafficType: trafficType)
+        if (clients.all.values.filter { $0.key == key }.count) == 0 {
+            client?.realDestroy(completion: completion)
+        }
+
     }
 
     private func getClient(key: Key, trafficType: String) -> SplitClient {
@@ -140,7 +146,7 @@ extension SplitSuite: SplitSuiteCoordinator {
         if let client = clients.value(forKey: hashKey) {
             return client
         }
-        let client = SplitSuiteSdkClient(client: sdkFactory.client(matchingKey: userKey),
+        let client = SplitSuiteSdkClient(client: sdkFactory.client(key: key),
                                          key: userKey,
                                          trafficType: trafficType,
                                          suiteCoordinator: self)

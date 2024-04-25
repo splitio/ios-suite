@@ -10,6 +10,7 @@ import Split
 import SplitRumAgent
 
 public typealias SplitErrorEvent = SplitRumAgent.SplitErrorEvent
+typealias DestroyCompletionHandler = ()->Void
 
 public protocol RumAgent {
 
@@ -41,8 +42,8 @@ protocol InternalRumAgent: RumAgent {
 }
 
 protocol SplitSuiteCoordinator: AnyObject {
-    func registerClient(key: String, trafficType: String, client: SplitClient)
-    func notifyDestroy(key: String, trafficType: String)
+    func registerClient(key: String, trafficType: String, client: SuiteSdkClient)
+    func notifyDestroy(key: String, trafficType: String, completion: DestroyCompletionHandler?)
 }
 
 public protocol SharedSplitSuite: SplitFactory, RumAgent {
