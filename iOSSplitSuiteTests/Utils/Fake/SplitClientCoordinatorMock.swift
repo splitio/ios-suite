@@ -10,18 +10,19 @@ import Foundation
 import Split
 
 class SplitClientCoordinatorMock: SplitSuiteCoordinator {
-    var clients: [String: SplitClient] = [:]
+
+    var clients: [String: SuiteSdkClient] = [:]
 
     var registerClientCalled = false
     var notifyDestroyedCalled = false
     var composedKey: String = ""
 
-    func registerClient(key: String, trafficType: String, client: SplitClient) {
+    func registerClient(key: String, trafficType: String, client: SuiteSdkClient) {
         clients[buildKey(key: key, trafficType: trafficType)] = client
         registerClientCalled = true
     }
     
-    func notifyDestroy(key: String, trafficType: String) {
+    func notifyDestroy(key: String, trafficType: String, completion: DestroyCompletionHandler?) {
         let fullKey = buildKey(key: key, trafficType: trafficType)
         clients.removeValue(forKey: fullKey)
         notifyDestroyedCalled = true

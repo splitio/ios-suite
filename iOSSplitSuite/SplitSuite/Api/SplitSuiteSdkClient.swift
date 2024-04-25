@@ -110,11 +110,11 @@ class SplitSuiteSdkClient: SuiteSdkClient {
     }
 
     public func destroy() {
-        notifyDestroy()
+        notifyDestroy(completion: nil)
     }
 
     public func destroy(completion: (() -> Void)?) {
-        notifyDestroy()
+        notifyDestroy(completion: completion)
     }
 
     public func track(trafficType: String, eventType: String, properties: [String : Any]?) -> Bool {
@@ -156,9 +156,9 @@ extension SplitSuiteSdkClient {
         client.destroy(completion: completion)
     }
 
-    private func notifyDestroy() {
+    private func notifyDestroy(completion: DestroyCompletionHandler?) {
         if let suiteCoordinator = self.suiteCoordinator {
-            suiteCoordinator.notifyDestroy(key: key, trafficType: trafficType)
+            suiteCoordinator.notifyDestroy(key: key, trafficType: trafficType, completion: completion)
         }
     }
 }
