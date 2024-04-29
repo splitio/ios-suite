@@ -95,9 +95,13 @@ class SplitClientTests: XCTestCase {
         suiteSdkClient.on(event: .sdkReady) {}
 
         XCTAssertTrue(client.wasMethodCalled(SplitClientMock.Method.flush__.rawValue))
-        XCTAssertTrue(client.wasMethodCalled(SplitClientMock.Method.destroy__.rawValue))
-        XCTAssertTrue(client.wasMethodCalled(SplitClientMock.Method.destroy_completion__.rawValue))
         XCTAssertTrue(client.wasMethodCalled(SplitClientMock.Method.on_event_event_execute__.rawValue))
+    }
+
+    func testRealDestroyOnMethodsCalled() {
+
+        suiteSdkClient.realDestroy(completion: {})
+        XCTAssertTrue(client.wasMethodCalled(SplitClientMock.Method.destroy_completion__.rawValue))
     }
 
     func testDestroyNotify() {
