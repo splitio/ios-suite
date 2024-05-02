@@ -758,7 +758,7 @@
 			repositoryURL = "https://github.com/splitio/ios-rum";
 			requirement = {
 				kind = exactVersion;
-				version = "0.3.0-rc4";
+				version = 0.3.0;
 			};
 		};
 		95B0A9732BC46A5B00C31A9E /* XCRemoteSwiftPackageReference "ios-client" */ = {
