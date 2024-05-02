@@ -1,0 +1,4 @@
+1.0.0: (May 2, 2024)
+- Initial release
+    - SDK 2.24.6
+    - RUM 0.3.0
