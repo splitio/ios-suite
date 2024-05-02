@@ -19,13 +19,13 @@ class SplitSuiteTests: XCTestCase {
     var trafficType: String = "tt1"
     var rumAgent: RumAgentMock!
     var sdkFactory: SplitFactory!
-    var suite: SharedSplitSuite!
+    var suite: SplitSuite!
 
     override func setUp() {
         rumAgent = RumAgentMock()
         sdkFactory = SplitFactoryMock()
 
-        suite = SplitSuite(key: key, trafficType: trafficType,
+        suite = DefaultSplitSuite(key: key, trafficType: trafficType,
                            rumAgent: rumAgent, sdkFactory: sdkFactory)
     }
 
