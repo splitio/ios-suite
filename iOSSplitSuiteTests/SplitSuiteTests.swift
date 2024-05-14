@@ -18,7 +18,7 @@ class SplitSuiteTests: XCTestCase {
     var key: Key = Key(matchingKey: "key1")
     var trafficType: String = "tt1"
     var rumAgent: RumAgentMock!
-    var sdkFactory: SplitFactory!
+    var sdkFactory: SplitFactoryMock!
     var suite: SplitSuite!
 
     override func setUp() {
@@ -78,5 +78,32 @@ class SplitSuiteTests: XCTestCase {
         XCTAssertNil(prop2["p1"])
 
         XCTAssertEqual(0, prop3.count)
+    }
+
+    func testUserConsent() {
+        rumAgent.userConsentValue = false
+        rumAgent.userConsentCalled = false
+        sdkFactory.userConsentCalled = false
+        sdkFactory.userConsentValue = false
+
+        suite.setUserConsent(enabled: true)
+        
+        let rumV1 = rumAgent.userConsentValue
+        let factV1 = sdkFactory.userConsentValue
+
+        suite.setUserConsent(enabled: false)
+
+        let rumV2 = rumAgent.userConsentValue
+        let factV2 = sdkFactory.userConsentValue
+
+        XCTAssertTrue(rumAgent.userConsentCalled)
+        XCTAssertTrue(sdkFactory.userConsentCalled)
+
+        XCTAssertTrue(rumV1)
+        XCTAssertTrue(factV1)
+
+        XCTAssertFalse(rumV2)
+        XCTAssertFalse(factV2)
+
     }
 }

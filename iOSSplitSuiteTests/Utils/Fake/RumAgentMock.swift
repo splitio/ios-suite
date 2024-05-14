@@ -28,6 +28,8 @@ struct Event {
 
 class RumAgentMock: InternalRumAgent {
 
+    
+
     var anonymousId: String = IdHelper.generate()
     var sessionId: String = IdHelper.generate()
 
@@ -123,5 +125,12 @@ class RumAgentMock: InternalRumAgent {
 
     func trackTimeFromStart(marker: String) {
         trackedEvents.append(Event(sessionId: sessionId, eventTypeId: marker))
+    }
+
+    var userConsentCalled = false
+    var userConsentValue = false
+    func setUserConsent(enabled: Bool) {
+        userConsentCalled = true
+        userConsentValue = enabled
     }
 }
