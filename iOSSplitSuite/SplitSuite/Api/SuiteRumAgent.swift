@@ -11,7 +11,7 @@ import SplitRumAgent
 class SuiteRumAgent: InternalRumAgent {
 
     func setUserConsent(enabled: Bool) {
-        SplitRum.setUserConsent(enabled: true)
+        SplitRum.setUserConsent(enabled: enabled)
     }
     
     var identities: [SplitRumAgent.SplitIdentity] {

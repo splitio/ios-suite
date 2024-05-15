@@ -160,6 +160,7 @@ public class DefaultSplitSuiteBuilder: SplitSuiteBuilder {
             .logLevel(sdkConfig.logLevel.toRumLevel())
             .serviceEndpoints(sdkConfig.serviceEndpoints.asSplitServiceEndpoints())
             .eventsPushRate(sdkConfig.eventsPushRate)
+            .userConsent(sdkConfig.userConsent.rumType())
         if let prefix = suiteConfig.prefix {
             rumConfig = rumConfig.prefix(prefix)
         }
