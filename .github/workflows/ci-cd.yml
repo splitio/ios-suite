@@ -1,9 +1,7 @@
 name: Build xcframework
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
     branches:
       - main
       - dev_test
@@ -42,8 +40,6 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        ref: ${{ env.branch_name }}
 
     - name: Generate xcframework zip
       run: ./scripts/generate_xcframework ${{ env.version }}
