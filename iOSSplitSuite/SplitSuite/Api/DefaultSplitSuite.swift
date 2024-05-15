@@ -59,6 +59,7 @@ extension DefaultSplitSuite {
 
     public func setUserConsent(enabled: Bool) {
         sdkFactory.setUserConsent(enabled: enabled)
+        rumAgent.setUserConsent(enabled: enabled)
     }
 
     public func client(key: Key) -> SplitClient {

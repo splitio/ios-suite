@@ -9,6 +9,11 @@ import Foundation
 import SplitRumAgent
 
 class SuiteRumAgent: InternalRumAgent {
+
+    func setUserConsent(enabled: Bool) {
+        SplitRum.setUserConsent(enabled: enabled)
+    }
+    
     var identities: [SplitRumAgent.SplitIdentity] {
         return SplitRum.identities
     }

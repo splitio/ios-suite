@@ -20,7 +20,7 @@ class SplitFactoryMock: SplitFactory {
     var version: String = "2.0.0"
 
     // Tracking variables for method calls
-    var setUserConsentCalled: Bool = false
+    var userConsentCalled: Bool = false
 
     init() {
         client = SplitClientMock()
@@ -43,8 +43,10 @@ class SplitFactoryMock: SplitFactory {
         return self.client
     }
 
+    var userConsentValue = false
     func setUserConsent(enabled: Bool) {
-        setUserConsentCalled = true
+        userConsentCalled = true
+        userConsentValue = enabled
         userConsent = enabled ? .granted : .declined
     }
 }
