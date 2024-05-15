@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-  spec.name         = "Split Suite"
+  spec.name         = "SplitSuite"
   spec.version      = "1.0.1-rc2"
   spec.summary      = "iOS Suite for Split"
   spec.description  = <<-DESC
@@ -11,5 +11,5 @@ Pod::Spec.new do |spec|
   spec.author             = "Split Software"
   spec.platform     = :ios, "12.0"
   spec.source       = { :http => "https://cdn.split.io/ios-suite/iOSSplitSuite_1.0.1-rc2.zip" }
-  spec.vendored_frameworks = "SplitRumAgent.xcframework"
+  spec.vendored_frameworks = "iOSSplitSuite.xcframework"
 end
