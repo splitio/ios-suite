@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "Split Suite"
-  spec.version      = "1.0.1-rc1"
+  spec.version      = "1.0.1-rc2"
   spec.summary      = "iOS Suite for Split"
   spec.description  = <<-DESC
   iOS Suite provides the all-encompassing essential programming interface for working with your Split feature flags, as well as capabilities for automatically tracking performance measurements and user events.
