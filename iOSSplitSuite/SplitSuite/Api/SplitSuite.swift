@@ -14,7 +14,7 @@ typealias DestroyCompletionHandler = ()->Void
 
 public protocol RumAgent {
 
-    // Properties
+    // MARK: Properties
     var properties: [String: Any] { get }
     func setProperty(name: String, value: Any)
     func set(properties: [String: Any])
@@ -22,6 +22,7 @@ public protocol RumAgent {
     func remove(property: String)
     func removeProperties()
 
+    // MARK: Track
     func track(eventType: String,
                value: Double?,
                properties: [String: Any]?) -> Bool
@@ -29,6 +30,10 @@ public protocol RumAgent {
     func track(error: SplitErrorEvent) -> Bool
 
     func trackTimeFromStart(marker: String)
+
+    // MARK: User Consent
+    func setUserConsent(enabled: Bool)
+
 
 }
 
