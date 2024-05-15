@@ -10,6 +10,6 @@ Pod::Spec.new do |spec|
   spec.license          = { :type => "Apache 2.0", :file => "LICENSE" }
   spec.author             = "Split Software"
   spec.platform     = :ios, "12.0"
-  spec.source       = { :http => "https://cdn.split.io/ios-suite/iOSSplitSuite_1.0.0.zip" }
+  spec.source       = { :http => "https://cdn.split.io/ios-suite/iOSSplitSuite_1.0.1-rc1.zip" }
   spec.vendored_frameworks = "SplitRumAgent.xcframework"
 end
