@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "SplitSuite"
-  spec.version      = "1.0.1-rc2"
+  spec.version      = "1.0.1-rc3"
   spec.summary      = "iOS Suite for Split"
   spec.description  = <<-DESC
   iOS Suite provides the all-encompassing essential programming interface for working with your Split feature flags, as well as capabilities for automatically tracking performance measurements and user events.
@@ -12,4 +12,6 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "12.0"
   spec.source       = { :http => "https://cdn.split.io/ios-suite/iOSSplitSuite_1.0.1-rc2.zip" }
   spec.vendored_frameworks = "iOSSplitSuite.xcframework"
+  spec.dependency "Split", "2.24.7"
+  spec.dependency "SplitRum", "0.4.0" 
 end
