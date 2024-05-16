@@ -13,6 +13,7 @@ BUILD_FOLDER=SplitBuild
 FULL_BUILD_FOLDER="${CUR_DIR}/${BUILD_FOLDER}"
 ARCHIVES_PATH="${FULL_BUILD_FOLDER}/archives"
 XCF_FOLDER=xcframework
+LICENSE_FILE=LICENSE
 
 echo "-----------------------------------"
 echo "This script must be run from the folder containing iOSSplitSuite.xcodeproj"
@@ -75,8 +76,10 @@ xcodebuild  -create-xcframework \
             > /dev/null
 
 echo "Zipping file"
+cp "${LICENSE_FILE}" "${XCF_FOLDER}"
+
 cd "${XCF_FOLDER}"
-zip -vrqD "${ZIP_NAME}" "${XCF_NAME}"
+zip -vrqD "${ZIP_NAME}" "${XCF_NAME}" "${LICENSE_FILE}"
 
 CHECKSUM_FILE="${XCF_FOLDER}/checksum"
 
