@@ -2,3 +2,9 @@
 - Initial release
     - SDK 2.24.6
     - RUM 0.3.0
+
+1.1.0: (May 17, 2024)
+- Added user consent feature
+- Version compatibility
+    - SDK 2.24.7
+    - RUM 0.4.0
