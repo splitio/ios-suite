@@ -630,8 +630,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/splitio/ios-rum";
 			requirement = {
-				branch = release_0.4.0;
-				kind = branch;
+				kind = exactVersion;
+				version = 0.4.0;
 			};
 		};
 		95B0A9732BC46A5B00C31A9E /* XCRemoteSwiftPackageReference "ios-client" */ = {
@@ -639,7 +639,7 @@
 			repositoryURL = "https://github.com/splitio/ios-client";
 			requirement = {
 				kind = exactVersion;
-				version = 2.24.6;
+				version = 2.25.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
