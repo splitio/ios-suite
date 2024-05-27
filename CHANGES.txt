@@ -8,3 +8,10 @@
 - Version compatibility
     - SDK 2.24.7
     - RUM 0.4.0
+
+1.2.0: (May 27, 2024)
+- Added support for targeting rules based on semantic versions (https://semver.org/).
+- Added special impression label "targeting rule type unsupported by sdk" when the matcher type is not supported by the SDK, which returns 'control' treatment.
+- Version compatibility
+    - SDK 2.25.0
+    - RUM 0.4.0
