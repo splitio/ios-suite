@@ -1,13 +1,12 @@
 {
-  "originHash" : "c6a14b999a2eb902db95a0772262e186de872bf4deef8d26e5e29b1b63b9aba3",
   "pins" : [
     {
       "identity" : "ios-client",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/splitio/ios-client",
       "state" : {
-        "revision" : "8fbf8d6bb162135d028b84f7b2075fcc1800a772",
-        "version" : "2.25.0"
+        "revision" : "d5bad83df820ccd0eda8cb1e251cf4d6a23af217",
+        "version" : "2.25.1"
       }
     },
     {
@@ -20,5 +19,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }
