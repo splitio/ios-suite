@@ -1,12 +1,7 @@
-1.0.0: (May 2, 2024)
-- Initial release
-    - SDK 2.24.6
-    - RUM 0.3.0
-
-1.1.0: (May 17, 2024)
-- Added user consent feature
+1.2.1: (Jun 26, 2024)
+- Updated impressions deduplication to apply across sessions.
 - Version compatibility
-    - SDK 2.24.7
+    - SDK 2.25.1
     - RUM 0.4.0
 
 1.2.0: (May 27, 2024)
@@ -15,3 +10,16 @@
 - Version compatibility
     - SDK 2.25.0
     - RUM 0.4.0
+
+1.1.0: (May 17, 2024)
+- Added user consent feature.
+- Version compatibility
+    - SDK 2.24.7
+    - RUM 0.4.0
+
+1.0.0: (May 2, 2024)
+- Initial release
+    - SDK 2.24.6
+    - RUM 0.3.0
+
+
