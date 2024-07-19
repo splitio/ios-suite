@@ -28,7 +28,8 @@ public typealias DefaultSplitClient = Split.DefaultSplitClient
 public typealias SplitResult = Split.SplitResult
 public typealias SplitImpressionListener = (SplitImpression) -> Void
 public typealias UserConsent = Split.UserConsent
-
+public typealias CertificatePinningConfig = Split.CertificatePinningConfig
+public typealias CertificatePinningError = Split.CertificatePinningError
 
 // MARK: Split RUM
 public typealias SplitRumConfig = SplitRumAgent.SplitRumConfig
