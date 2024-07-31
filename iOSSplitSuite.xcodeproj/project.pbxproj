@@ -639,7 +639,7 @@
 			repositoryURL = "https://github.com/splitio/ios-client";
 			requirement = {
 				kind = exactVersion;
-				version = "2.26.0-rc5";
+				version = 2.26.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
