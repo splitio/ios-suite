@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9518E0C62CAC3451000D7E60 /* Split in Frameworks */ = {isa = PBXBuildFile; productRef = 9518E0C52CAC3451000D7E60 /* Split */; };
 		95306A942B20F11700254468 /* SplitSuiteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95306A932B20F11700254468 /* SplitSuiteBuilder.swift */; };
 		95306A992B20FB1D00254468 /* Key+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95306A982B20FB1D00254468 /* Key+Extension.swift */; };
 		954F9A3F2BF4F83A00F8CE8B /* UserConsent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954F9A3E2BF4F83A00F8CE8B /* UserConsent+Extension.swift */; };
@@ -82,7 +81,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				95B0A9322BA9C92800C31A9E /* SplitRum in Frameworks */,
-				9518E0C62CAC3451000D7E60 /* Split in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +229,6 @@
 			name = iOSSplitSuite;
 			packageProductDependencies = (
 				95B0A9312BA9C92800C31A9E /* SplitRum */,
-				9518E0C52CAC3451000D7E60 /* Split */,
 			);
 			productName = iOSSplitSuite;
 			productReference = 956706982B03C25A002037AF /* iOSSplitSuite.framework */;
@@ -285,7 +282,7 @@
 			mainGroup = 9567068E2B03C25A002037AF;
 			packageReferences = (
 				95B0A92E2BA9C7AA00C31A9E /* XCRemoteSwiftPackageReference "ios-rum" */,
-				9518E0C42CAC2D67000D7E60 /* XCRemoteSwiftPackageReference "ios-client" */,
+				C533AB172CD146C300E134D5 /* XCRemoteSwiftPackageReference "ios-client" */,
 			);
 			productRefGroup = 956706992B03C25A002037AF /* Products */;
 			projectDirPath = "";
@@ -626,14 +623,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9518E0C42CAC2D67000D7E60 /* XCRemoteSwiftPackageReference "ios-client" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/splitio/ios-client";
-			requirement = {
-				kind = exactVersion;
-				version = "3.0.0-rc1";
-			};
-		};
 		95B0A92E2BA9C7AA00C31A9E /* XCRemoteSwiftPackageReference "ios-rum" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/splitio/ios-rum";
@@ -642,14 +631,17 @@
 				version = 0.4.0;
 			};
 		};
+		C533AB172CD146C300E134D5 /* XCRemoteSwiftPackageReference "ios-client" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/splitio/ios-client";
+			requirement = {
+				kind = exactVersion;
+				version = "3.0.0-rc1";
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9518E0C52CAC3451000D7E60 /* Split */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9518E0C42CAC2D67000D7E60 /* XCRemoteSwiftPackageReference "ios-client" */;
-			productName = Split;
-		};
 		95B0A9312BA9C92800C31A9E /* SplitRum */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 95B0A92E2BA9C7AA00C31A9E /* XCRemoteSwiftPackageReference "ios-rum" */;
