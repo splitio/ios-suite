@@ -1,5 +1,4 @@
 {
-  "originHash" : "4688d3475b5fc546a616e319189f900f510382e43a1f98813d01c9e36f4162e7",
   "pins" : [
     {
       "identity" : "ios-client",
@@ -20,5 +19,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

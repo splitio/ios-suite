@@ -25,6 +25,7 @@
 		95B0A9362BA9E7C000C31A9E /* SynchronizedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0A9352BA9E7C000C31A9E /* SynchronizedDictionary.swift */; };
 		95B0A9382BADB90000C31A9E /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0A9372BADB90000C31A9E /* Date+Extension.swift */; };
 		95B0A9462BB1C4F900C31A9E /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B0A9452BB1C4F900C31A9E /* Version.swift */; };
+		95B0A9752BC46A5B00C31A9E /* Split in Frameworks */ = {isa = PBXBuildFile; productRef = 95B0A9742BC46A5B00C31A9E /* Split */; };
 		95CED0882B600391005E3C34 /* SplitRumConfig+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CED0872B600391005E3C34 /* SplitRumConfig+Extension.swift */; };
 		95CED0B22B62E8EB005E3C34 /* SplitClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CED0B12B62E8EB005E3C34 /* SplitClientMock.swift */; };
 		95CED0B42B62FFF6005E3C34 /* SplitSdkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CED0B32B62FFF6005E3C34 /* SplitSdkClientTests.swift */; };
@@ -33,7 +34,6 @@
 		95CED0D72B6840C3005E3C34 /* SplitSuiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CED0D62B6840C3005E3C34 /* SplitSuiteTests.swift */; };
 		95CED0D92B6845D0005E3C34 /* RumAgentMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CED0D82B6845D0005E3C34 /* RumAgentMock.swift */; };
 		95CED0DD2B68489D005E3C34 /* SplitFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CED0DC2B68489D005E3C34 /* SplitFactoryMock.swift */; };
-		C533AB1A2CD1499A00E134D5 /* Split in Frameworks */ = {isa = PBXBuildFile; productRef = C533AB192CD1499A00E134D5 /* Split */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B0A9752BC46A5B00C31A9E /* Split in Frameworks */,
 				95B0A9322BA9C92800C31A9E /* SplitRum in Frameworks */,
-				C533AB1A2CD1499A00E134D5 /* Split in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +231,7 @@
 			name = iOSSplitSuite;
 			packageProductDependencies = (
 				95B0A9312BA9C92800C31A9E /* SplitRum */,
-				C533AB192CD1499A00E134D5 /* Split */,
+				95B0A9742BC46A5B00C31A9E /* Split */,
 			);
 			productName = iOSSplitSuite;
 			productReference = 956706982B03C25A002037AF /* iOSSplitSuite.framework */;
@@ -285,7 +285,7 @@
 			mainGroup = 9567068E2B03C25A002037AF;
 			packageReferences = (
 				95B0A92E2BA9C7AA00C31A9E /* XCRemoteSwiftPackageReference "ios-rum" */,
-				C533AB182CD1499A00E134D5 /* XCRemoteSwiftPackageReference "ios-client" */,
+				95B0A9732BC46A5B00C31A9E /* XCRemoteSwiftPackageReference "ios-client" */,
 			);
 			productRefGroup = 956706992B03C25A002037AF /* Products */;
 			projectDirPath = "";
@@ -634,7 +634,7 @@
 				version = 0.4.0;
 			};
 		};
-		C533AB182CD1499A00E134D5 /* XCRemoteSwiftPackageReference "ios-client" */ = {
+		95B0A9732BC46A5B00C31A9E /* XCRemoteSwiftPackageReference "ios-client" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/splitio/ios-client";
 			requirement = {
@@ -650,9 +650,9 @@
 			package = 95B0A92E2BA9C7AA00C31A9E /* XCRemoteSwiftPackageReference "ios-rum" */;
 			productName = SplitRum;
 		};
-		C533AB192CD1499A00E134D5 /* Split */ = {
+		95B0A9742BC46A5B00C31A9E /* Split */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C533AB182CD1499A00E134D5 /* XCRemoteSwiftPackageReference "ios-client" */;
+			package = 95B0A9732BC46A5B00C31A9E /* XCRemoteSwiftPackageReference "ios-client" */;
 			productName = Split;
 		};
 /* End XCSwiftPackageProductDependency section */
