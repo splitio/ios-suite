@@ -15,8 +15,11 @@ class NotificationHelperMock: NotificationHelper {
     }
 
     func removeAllObservers() {
-        
+
     }
 
+    func post(notification: AppNotification, info: AnyObject?) {
+
+    }
 
 }
