@@ -1,6 +1,13 @@
+2.0.0: (Nov 25, 2024)
+- Added support for targeting rules based on large segments.
+- BREAKING (for Split Proxy users): Dropped support for Split Proxy below version 5.9.0. Split Proxy 5.9.0 or above is now required.
+- Version compatibility
+    - SDK 3.0.0
+    - RUM 0.4.0
+
 1.3.0: (Jul 31, 2024)
 - Added certificate pinning functionality. This feature allows you to pin a certificate to the SDK, ensuring that the SDK only communicates with servers that present this certificate. Read more in our documentation.
- - Version compatibility
+- Version compatibility
    - SDK 2.26.1
    - RUM 0.4.0
 
