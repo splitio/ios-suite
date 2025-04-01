@@ -53,6 +53,38 @@ class SplitSuiteSdkClient: SuiteSdkClient {
         return client.getTreatmentsWithConfig(splits: splits, attributes: attributes)
     }
 
+    func getTreatment(_ split: String, attributes: [String : Any]?, evaluationOptions: Split.EvaluationOptions?) -> String {
+        return client.getTreatment(split, attributes: attributes, evaluationOptions: evaluationOptions)
+    }
+
+    func getTreatments(splits: [String], attributes: [String : Any]?, evaluationOptions: Split.EvaluationOptions?) -> [String : String] {
+        return client.getTreatments(splits: splits, attributes: attributes, evaluationOptions: evaluationOptions)
+    }
+
+    func getTreatmentWithConfig(_ split: String, attributes: [String : Any]?, evaluationOptions: Split.EvaluationOptions?) -> Split.SplitResult {
+        return client.getTreatmentWithConfig(split, attributes: attributes, evaluationOptions: evaluationOptions)
+    }
+
+    func getTreatmentsWithConfig(splits: [String], attributes: [String : Any]?, evaluationOptions: Split.EvaluationOptions?) -> [String : Split.SplitResult] {
+        return client.getTreatmentsWithConfig(splits: splits, attributes: attributes, evaluationOptions: evaluationOptions)
+    }
+
+    func getTreatmentsByFlagSet(_ flagSet: String, attributes: [String : Any]?, evaluationOptions: Split.EvaluationOptions?) -> [String : String] {
+        return client.getTreatmentsByFlagSet(flagSet, attributes: attributes, evaluationOptions: evaluationOptions)
+    }
+
+    func getTreatmentsByFlagSets(_ flagSets: [String], attributes: [String : Any]?, evaluationOptions: Split.EvaluationOptions?) -> [String : String] {
+        return client.getTreatmentsByFlagSets(flagSets, attributes: attributes, evaluationOptions: evaluationOptions)
+    }
+
+    func getTreatmentsWithConfigByFlagSet(_ flagSet: String, attributes: [String : Any]?, evaluationOptions: Split.EvaluationOptions?) -> [String : Split.SplitResult] {
+        return client.getTreatmentsWithConfigByFlagSet(flagSet, attributes: attributes, evaluationOptions: evaluationOptions)
+    }
+
+    func getTreatmentsWithConfigByFlagSets(_ flagSets: [String], attributes: [String : Any]?, evaluationOptions: Split.EvaluationOptions?) -> [String : Split.SplitResult] {
+        return client.getTreatmentsWithConfigByFlagSets(flagSets, attributes: attributes, evaluationOptions: evaluationOptions)
+    }
+
     public func on(event: SplitEvent, execute action: @escaping SplitAction) {
         client.on(event: event, execute: action)
     }
