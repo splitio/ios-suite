@@ -30,6 +30,7 @@ public typealias SplitImpressionListener = (SplitImpression) -> Void
 public typealias UserConsent = Split.UserConsent
 public typealias CertificatePinningConfig = Split.CertificatePinningConfig
 public typealias CertificatePinningError = Split.CertificatePinningError
+public typealias EvaluationOptions = Split.EvaluationOptions
 
 // MARK: Split RUM
 public typealias SplitRumConfig = SplitRumAgent.SplitRumConfig

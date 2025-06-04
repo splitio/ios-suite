@@ -160,8 +160,45 @@ public class SplitClientMock: SplitClient {
         return [:]
     }
 
-    // Implement other methods as needed...
-    // For each method, make sure to call `recordCall` with the appropriate enum value.
+    public func getTreatment(_ split: String, attributes: [String : Any]?, evaluationOptions: EvaluationOptions?) -> String {
+        recordCall(#function)
+        return defaultTreatment
+    }
+
+    public func getTreatments(splits: [String], attributes: [String : Any]?, evaluationOptions: EvaluationOptions?) -> [String : String] {
+        recordCall(#function)
+        return splits.reduce(into: [String: String]()) { $0[$1] = defaultTreatment }
+    }
+
+    public func getTreatmentWithConfig(_ split: String, attributes: [String : Any]?, evaluationOptions: EvaluationOptions?) -> SplitResult {
+        recordCall(#function)
+        return SplitResult(treatment: defaultTreatment, config: nil)
+    }
+
+    public func getTreatmentsWithConfig(splits: [String], attributes: [String : Any]?, evaluationOptions: EvaluationOptions?) -> [String : SplitResult] {
+        recordCall(#function)
+        return splits.reduce(into: [String: SplitResult]()) { $0[$1] = SplitResult(treatment: defaultTreatment, config: nil) }
+    }
+
+    public func getTreatmentsByFlagSet(_ flagSet: String, attributes: [String : Any]?, evaluationOptions: EvaluationOptions?) -> [String : String] {
+        recordCall(#function)
+        return [:]
+    }
+
+    public func getTreatmentsByFlagSets(_ flagSets: [String], attributes: [String : Any]?, evaluationOptions: EvaluationOptions?) -> [String : String] {
+        recordCall(#function)
+        return [:]
+    }
+
+    public func getTreatmentsWithConfigByFlagSet(_ flagSet: String, attributes: [String : Any]?, evaluationOptions: EvaluationOptions?) -> [String : SplitResult] {
+        recordCall(#function)
+        return [:]
+    }
+
+    public func getTreatmentsWithConfigByFlagSets(_ flagSets: [String], attributes: [String : Any]?, evaluationOptions: EvaluationOptions?) -> [String : SplitResult] {
+        recordCall(#function)
+        return [:]
+    }
 
     // MARK: Client lifecycle implementations
     public func flush() {
