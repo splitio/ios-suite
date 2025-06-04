@@ -145,5 +145,36 @@ class SplitClientTests: XCTestCase {
         XCTAssertTrue(client.wasMethodCalled(SplitClientMock.Method.track_eventType_properties__.rawValue))
         XCTAssertTrue(client.wasMethodCalled(SplitClientMock.Method.track_eventType_value_properties__.rawValue))
     }
+
+    func testEvaluationOptionsMethodsCalled() {
+        let splitName = "split1"
+        let splits = ["split1", "split2"]
+        let flagSet = "flagSet1"
+        let flagSets = ["flagSet1", "flagSet2"]
+        let attributes: [String: Any] = ["attr1": "value1"]
+        let evaluationOptions = EvaluationOptions()
+
+        _ = suiteSdkClient.getTreatment(splitName, attributes: attributes, evaluationOptions: evaluationOptions)
+
+        _ = suiteSdkClient.getTreatments(splits: splits, attributes: attributes, evaluationOptions: evaluationOptions)
+
+        _ = suiteSdkClient.getTreatmentWithConfig(splitName, attributes: attributes, evaluationOptions: evaluationOptions)
+
+        _ = suiteSdkClient.getTreatmentsWithConfig(splits: splits, attributes: attributes, evaluationOptions: evaluationOptions)
+
+        _ = suiteSdkClient.getTreatmentsByFlagSet(flagSet, attributes: attributes, evaluationOptions: evaluationOptions)
+        _ = suiteSdkClient.getTreatmentsByFlagSets(flagSets, attributes: attributes, evaluationOptions: evaluationOptions)
+        _ = suiteSdkClient.getTreatmentsWithConfigByFlagSet(flagSet, attributes: attributes, evaluationOptions: evaluationOptions)
+        _ = suiteSdkClient.getTreatmentsWithConfigByFlagSets(flagSets, attributes: attributes, evaluationOptions: evaluationOptions)
+
+        XCTAssertTrue(client.wasMethodCalled("getTreatment(_:attributes:evaluationOptions:)"))
+        XCTAssertTrue(client.wasMethodCalled("getTreatments(splits:attributes:evaluationOptions:)"))
+        XCTAssertTrue(client.wasMethodCalled("getTreatmentWithConfig(_:attributes:evaluationOptions:)"))
+        XCTAssertTrue(client.wasMethodCalled("getTreatmentsWithConfig(splits:attributes:evaluationOptions:)"))
+        XCTAssertTrue(client.wasMethodCalled("getTreatmentsByFlagSet(_:attributes:evaluationOptions:)"))
+        XCTAssertTrue(client.wasMethodCalled("getTreatmentsByFlagSets(_:attributes:evaluationOptions:)"))
+        XCTAssertTrue(client.wasMethodCalled("getTreatmentsWithConfigByFlagSet(_:attributes:evaluationOptions:)"))
+        XCTAssertTrue(client.wasMethodCalled("getTreatmentsWithConfigByFlagSets(_:attributes:evaluationOptions:)"))
+    }
 }
 
