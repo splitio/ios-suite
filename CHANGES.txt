@@ -1,3 +1,13 @@
+2.2.0: (Jun 4, 2025)
+- Added support for rule-based segments. These segments determine membership at runtime by evaluating their configured rules against the user attributes provided to the SDK.
+- Added support for feature flag prerequisites. This allows customers to define dependency conditions between flags, which are evaluated before any allowlists or targeting rules.
+- Added two new configuration options to control the behavior of the persisted rollout plan cache. Use `rolloutCacheConfiguration` in the config.
+- Fixed performance issue evaluating flags.
+
+- Version compatibility
+    - SDK 3.3.0
+    - RUM 0.4.0
+
 2.1.0: (Apr 1, 2025)
 - Added support for the new impressions tracking toggle available on feature flags, both respecting the setting and including the new field being returned on SplitView type objects. Read more in our docs.
 - Fixed issue when converting UInt32 to Int in 32 bit platforms.
