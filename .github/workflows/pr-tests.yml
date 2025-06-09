@@ -1,0 +1,40 @@
+name: PR Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev_test
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: macos-15
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '16.2'
+    
+    - name: Build iOS and Test
+      uses: sersoft-gmbh/xcodebuild-action@v3
+      with:
+        action: test
+        build-settings: ONLY_ACTIVE_ARCH=NO
+        configuration: Debug
+        destination: "platform=iOS Simulator,OS=18.0,name=iPhone 16"
+        project: iOSSplitSuite.xcodeproj
+        scheme: iOSSplitSuiteTests
+        output-formatter: 'xcbeautify'
+        sdk: 'iphonesimulator'
