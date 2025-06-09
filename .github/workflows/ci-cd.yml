@@ -37,7 +37,7 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.merge_commit_sha }}
         fetch-depth: 0
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
         
     - name: Create Tag
       run: |
@@ -47,11 +47,13 @@ jobs:
         git tag -a "${{ steps.extract_version.outputs.VERSION }}" -m "Release ${{ steps.extract_version.outputs.VERSION }}"
         git push origin "${{ steps.extract_version.outputs.VERSION }}"
 
-    - name: Artifact name
-      run: echo "artifact_name=iOSSplitSuite" >> $GITHUB_ENV
+    - name: Set artifact name
+      id: set-artifact-name
+      run: echo "ARTIFACT_NAME=iOSSplitSuite" >> $GITHUB_OUTPUT
 
-    - name: Zip name
-      run: echo "zip_name=${{ env.artifact_name }}_${{ steps.extract_version.outputs.VERSION }}.zip" >> $GITHUB_ENV
+    - name: Set zip name
+      id: set-zip-name
+      run: echo "ZIP_NAME=${{ steps.set-artifact-name.outputs.ARTIFACT_NAME }}_${{ steps.extract_version.outputs.VERSION }}.zip" >> $GITHUB_OUTPUT
 
     - name: Checkout
       uses: actions/checkout@v4
@@ -62,13 +64,13 @@ jobs:
     - name: Store zip file
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.zip_name }}
-        path: xcframework/${{ env.zip_name }}
+        name: ${{ steps.set-zip-name.outputs.ZIP_NAME }}
+        path: xcframework/${{ steps.set-zip-name.outputs.ZIP_NAME }}
         retention-days: 1
 
     - id: zip_file
       name: Setting output zip name
-      run: echo "zip_file_name=${{ env.zip_name }}" >> "$GITHUB_OUTPUT"
+      run: echo "zip_file_name=${{ steps.set-zip-name.outputs.ZIP_NAME }}" >> "$GITHUB_OUTPUT"
 
   upload-prod:
     name: Upload assets
