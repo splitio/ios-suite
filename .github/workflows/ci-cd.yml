@@ -75,11 +75,13 @@ jobs:
     - name: Generate xcframework zip
       run: ./scripts/generate_xcframework ${{ steps.extract_version.outputs.VERSION }}
 
-    - name: Store zip file
+    - name: Upload xcframework zip and checksum
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ steps.set-zip-name.outputs.ZIP_NAME }}
-        path: xcframework/${{ steps.set-zip-name.outputs.ZIP_NAME }}
+        name: xcframework-artifacts
+        path: |
+          xcframework/${{ steps.set-zip-name.outputs.ZIP_NAME }}
+          xcframework/checksum
         retention-days: 1
 
     - id: zip_file
@@ -104,10 +106,10 @@ jobs:
           zip_file_name: ${{ needs.build.outputs.zip_file_name }}
         run: echo "zip_name=${{ env.zip_file_name }}" >> $GITHUB_ENV
 
-      - name: Download zip ${{ env.zip_name }}
+      - name: Download xcframework artifacts
         uses: actions/download-artifact@v4
         with:
-          name: ${{ env.zip_name }}
+          name: xcframework-artifacts
           path: dist
 
       - name: Display structure of assets
@@ -153,10 +155,10 @@ jobs:
             echo "TARGET_BRANCH=main" >> $GITHUB_OUTPUT
           fi
       
-      - name: Download checksum file
+      - name: Download xcframework artifacts for Package.swift update
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.set-zip-name.outputs.ZIP_NAME }}
+          name: xcframework-artifacts
           path: dist
       
       - name: Read checksum
@@ -209,12 +211,14 @@ jobs:
           
       - name: Checkout example-ios-objc repo
         uses: actions/checkout@v4
+        continue-on-error: true
         with:
           repository: splitio/example-ios-objc
           token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
           path: example-ios-objc
       
       - name: Modify test_release.sh for example-ios-objc
+        continue-on-error: true
         run: |
           cd example-ios-objc
           # Comment out the line that deletes the branch
@@ -225,6 +229,7 @@ jobs:
       
       - name: Run test_release.sh for example-ios-objc
         id: run-test-release-objc
+        continue-on-error: true
         run: |
           cd example-ios-objc
           chmod +x ./test_release.sh
@@ -236,18 +241,24 @@ jobs:
       
       - name: Create Example PR for example-ios-objc
         id: create-example-pr
-        uses: octokit/request-action@v2.x
+        continue-on-error: true
+        uses: peter-evans/create-pull-request@v7
         with:
-          route: POST /repos/splitio/example-ios-objc/pulls
+          token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
+          path: example-ios-objc
+          commit-message: "Pointing to SDK ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          branch: test_release_${{ steps.extract-sdk-version.outputs.SDK_VERSION }}
+          delete-branch: true
           title: "Pointing to SDK ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}"
           body: |
             Pointing to SDK ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}.
-          head: "${{ steps.run-test-release-objc.outputs.BRANCH_NAME }}"
-          base: "main"
-        env:
-          GITHUB_TOKEN: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
+          base: main
       
       - name: Add Example PR URL as comment
+        if: steps.create-example-pr.outputs.pull-request-url != ''
+        continue-on-error: true
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
@@ -288,18 +299,21 @@ jobs:
       
       - name: Create Example iOS PR
         id: create-example-ios-pr
-        uses: octokit/request-action@v2.x
+        uses: peter-evans/create-pull-request@v7
         with:
-          route: POST /repos/splitio/example-ios/pulls
+          token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
+          path: example-ios
+          commit-message: "Update example to use SDK version ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          branch: test_release_${{ steps.extract-sdk-version.outputs.SDK_VERSION }}
+          delete-branch: true
           title: "Update example to use SDK version ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}"
           body: |
             This PR updates the example to use SDK version ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}.
             
             Related to Suite version ${{ steps.extract-version.outputs.VERSION }} and RUM version ${{ steps.extract-rum-version.outputs.RUM_VERSION }}.
-          head: "${{ steps.run-test-release.outputs.BRANCH_NAME }}"
-          base: "master"
-        env:
-          GITHUB_TOKEN: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
+          base: master
       
       - name: Add Example iOS PR URL as comment
         uses: actions/github-script@v7
