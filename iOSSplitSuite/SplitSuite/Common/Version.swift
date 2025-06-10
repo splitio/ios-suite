@@ -9,7 +9,7 @@ import Foundation
 
 struct Version {
     private static let kSdkPlatform: String = "ios-suite"
-    private static let kVersion = "2.2.1-rc0"
+    private static let kVersion = "2.2.1-rc1"
 
     static var semantic: String {
         return kVersion
