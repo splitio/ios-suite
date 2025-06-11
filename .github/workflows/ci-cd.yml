@@ -22,6 +22,9 @@ jobs:
     runs-on: macos-15
     outputs:
       zip_file_name: ${{ steps.zip_file.outputs.zip_file_name }}
+      sdk_version: ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}
+      rum_version: ${{ steps.extract-rum-version.outputs.RUM_VERSION }}
+      version: ${{ steps.extract_version.outputs.VERSION }}
 
     steps:
     - uses: maxim-lobanov/setup-xcode@v1
@@ -30,7 +33,20 @@ jobs:
         
     - name: Extract version from branch name
       id: extract_version
-      run: echo "VERSION=$(echo ${{ github.head_ref }} | sed 's|release/||')" >> $GITHUB_OUTPUT
+      run: |
+        if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          # For PR merges
+          BRANCH_NAME="${{ github.head_ref }}"
+        else
+          # For direct pushes
+          BRANCH_NAME="${{ github.ref_name }}"
+        fi
+        
+        # Extract version from branch name
+        VERSION=$(echo "$BRANCH_NAME" | sed 's/release\///')
+        
+        echo "Extracted version: $VERSION"
+        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
       
     - name: Checkout
       uses: actions/checkout@v4
@@ -133,7 +149,7 @@ jobs:
   update-package:
     name: Update Package.swift
     runs-on: ubuntu-latest
-    needs: [build, upload-prod]
+    needs: [build]
     outputs:
       pr_url: ${{ steps.create-pr.outputs.pr_url }}
     
@@ -175,8 +191,9 @@ jobs:
       - name: Update Package.swift
         run: |
           cd ios-suite
-          sed -i -E "s/let version = \"[0-9]+(\.[0-9]+)*(-rc[0-9]+)?\"/let version = \"${{ steps.extract-version.outputs.VERSION }}\"/g" Package.swift
+          sed -i -E "s|url: \"https://cdn\.split\.io/ios-suite/iOSSplitSuite_[0-9]+(\.[0-9]+)*(-rc[0-9]+)?\.zip\"|url: \"https://cdn.split.io/ios-suite/iOSSplitSuite_${{ steps.extract-version.outputs.VERSION }}.zip\"|g" Package.swift
           sed -i -E "s/checksum: \"[a-f0-9]+\"/checksum: \"${{ steps.read-checksum.outputs.CHECKSUM }}\"/g" Package.swift
+          cat Package.swift
       
       - name: Create Pull Request
         id: create-pr
@@ -196,6 +213,8 @@ jobs:
           base: ${{ steps.target-branch.outputs.TARGET_BRANCH }}
       
       - name: Add Package.swift PR URL as comment
+        if: github.event_name == 'pull_request' && steps.create-pr.outputs.pull-request-url != ''
+        continue-on-error: true
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
@@ -227,17 +246,21 @@ jobs:
           sed -i 's/open -a "Google Chrome"/# open -a "Google Chrome"/' test_release.sh
           cat test_release.sh
       
-      - name: Run test_release.sh for example-ios-objc
-        id: run-test-release-objc
+      - name: Update example-ios-objc files
+        id: update-example-ios-objc
         continue-on-error: true
         run: |
           cd example-ios-objc
+          # Set GitHub identity
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
           chmod +x ./test_release.sh
-          BRANCH_NAME="test_release_${SDK_VERSION}"
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_OUTPUT
-          ./test_release.sh ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}
+          # Run the script but don't let it push the branch
+          sed -i 's/git push -u origin ${test_branch}/echo "Skipping push, will be handled by create-pull-request action"/' test_release.sh
+          ./test_release.sh ${SDK_VERSION}
         env:
-          SDK_VERSION: ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}
+          SDK_VERSION: ${{ needs.build.outputs.sdk_version }}
       
       - name: Create Example PR for example-ios-objc
         id: create-example-pr
@@ -246,14 +269,13 @@ jobs:
         with:
           token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
           path: example-ios-objc
-          commit-message: "Pointing to SDK ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}"
+          commit-message: "Pointing to SDK ${{ needs.build.outputs.sdk_version }}"
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          branch: test_release_${{ steps.extract-sdk-version.outputs.SDK_VERSION }}
-          delete-branch: true
-          title: "Pointing to SDK ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}"
+          branch: test_release_${{ needs.build.outputs.sdk_version }}
+          title: "Pointing to SDK ${{ needs.build.outputs.sdk_version }}"
           body: |
-            Pointing to SDK ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}.
+            Pointing to SDK ${{ needs.build.outputs.sdk_version }}.
           base: main
       
       - name: Add Example PR URL as comment
@@ -274,12 +296,14 @@ jobs:
           
       - name: Checkout example-ios repo
         uses: actions/checkout@v4
+        continue-on-error: true
         with:
           repository: splitio/example-ios
           token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
           path: example-ios
       
       - name: Modify test_release.sh to keep branch
+        continue-on-error: true
         run: |
           cd example-ios
           # Comment out the line that deletes the branch
@@ -288,34 +312,45 @@ jobs:
           sed -i 's/open -a "Google Chrome"/# open -a "Google Chrome"/' test_release.sh
           cat test_release.sh
       
-      - name: Run test_release.sh for example-ios
-        id: run-test-release
+      - name: Update example-ios files
+        id: update-example-ios
+        continue-on-error: true
         run: |
           cd example-ios
+          # Set GitHub identity
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
           chmod +x ./test_release.sh
-          BRANCH_NAME="test_release_${{ steps.extract-sdk-version.outputs.SDK_VERSION }}"
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_OUTPUT
-          ./test_release.sh ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}
+          # Run the script but don't let it push the branch
+          sed -i 's/git push -u origin ${test_branch}/echo "Skipping push, will be handled by create-pull-request action"/' test_release.sh
+          ./test_release.sh ${SUITE_VERSION} ${SDK_VERSION} ${RUM_VERSION}
+        env:
+          SUITE_VERSION: ${{ needs.build.outputs.version }}
+          SDK_VERSION: ${{ needs.build.outputs.sdk_version }}
+          RUM_VERSION: ${{ needs.build.outputs.rum_version }}
       
       - name: Create Example iOS PR
         id: create-example-ios-pr
+        continue-on-error: true
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
           path: example-ios
-          commit-message: "Update example to use SDK version ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}"
+          commit-message: "Update example to use SDK version ${{ needs.build.outputs.sdk_version }}"
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          branch: test_release_${{ steps.extract-sdk-version.outputs.SDK_VERSION }}
-          delete-branch: true
-          title: "Update example to use SDK version ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}"
+          branch: test_release_${{ needs.build.outputs.sdk_version }}
+          title: "Update example to use SDK version ${{ needs.build.outputs.sdk_version }}"
           body: |
-            This PR updates the example to use SDK version ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}.
+            This PR updates the example to use SDK version ${{ needs.build.outputs.sdk_version }}.
             
-            Related to Suite version ${{ steps.extract-version.outputs.VERSION }} and RUM version ${{ steps.extract-rum-version.outputs.RUM_VERSION }}.
+            Related to Suite version ${{ needs.build.outputs.version }} and RUM version ${{ needs.build.outputs.rum_version }}.
           base: master
       
       - name: Add Example iOS PR URL as comment
+        if: github.event_name == 'pull_request' && steps.create-example-ios-pr.outputs.pull-request-url != ''
+        continue-on-error: true
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
