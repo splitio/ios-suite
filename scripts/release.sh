@@ -244,8 +244,16 @@ fi
 
 # Get current versions from files
 CURRENT_SUITE_VERSION=$(grep -o 'private static let kVersion = "[^"]*"' iOSSplitSuite/SplitSuite/Common/Version.swift | cut -d'"' -f2)
-CURRENT_SDK_VERSION=$(grep -A 5 '"identity" : "ios-client"' iOSSplitSuite.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved | grep 'version' | sed -E 's/.*"version" : "([^"]*)".*/\1/')
-CURRENT_RUM_VERSION=$(grep -A 5 '"identity" : "ios-rum"' iOSSplitSuite.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved | grep 'version' | sed -E 's/.*"version" : "([^"]*)".*/\1/')
+
+# Use jq if available for more reliable JSON parsing
+if command -v jq &> /dev/null; then
+  CURRENT_SDK_VERSION=$(cat iOSSplitSuite.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved | jq -r '.pins[] | select(.identity == "ios-client") | .state.version')
+  CURRENT_RUM_VERSION=$(cat iOSSplitSuite.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved | jq -r '.pins[] | select(.identity == "ios-rum") | .state.version')
+else
+  # Fallback to grep/sed if jq is not available
+  CURRENT_SDK_VERSION=$(grep -A 10 '"identity": "ios-client"' iOSSplitSuite.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved | grep -o '"version": "[^"]*"' | head -1 | cut -d'"' -f4)
+  CURRENT_RUM_VERSION=$(grep -A 10 '"identity": "ios-rum"' iOSSplitSuite.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved | grep -o '"version": "[^"]*"' | head -1 | cut -d'"' -f4)
+fi
 
 # Display current versions
 echo "📋 Current versions:"
