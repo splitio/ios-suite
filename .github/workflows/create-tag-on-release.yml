@@ -30,4 +30,4 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git tag -a "${{ env.VERSION }}" -m "Release ${{ env.VERSION }}"
-          git push origin "v${{ env.VERSION }}"
+          git push origin "${{ env.VERSION }}"
