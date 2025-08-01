@@ -22,6 +22,9 @@ jobs:
     runs-on: macos-15
     outputs:
       zip_file_name: ${{ steps.zip_file.outputs.zip_file_name }}
+      sdk_version: ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}
+      rum_version: ${{ steps.extract-rum-version.outputs.RUM_VERSION }}
+      version: ${{ steps.extract_version.outputs.VERSION }}
 
     steps:
     - uses: maxim-lobanov/setup-xcode@v1
@@ -30,14 +33,27 @@ jobs:
         
     - name: Extract version from branch name
       id: extract_version
-      run: echo "VERSION=$(echo ${{ github.head_ref }} | sed 's|release/||')" >> $GITHUB_OUTPUT
+      run: |
+        if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+          # For PR merges
+          BRANCH_NAME="${{ github.head_ref }}"
+        else
+          # For direct pushes
+          BRANCH_NAME="${{ github.ref_name }}"
+        fi
+        
+        # Extract version from branch name
+        VERSION=$(echo "$BRANCH_NAME" | sed 's/release\///')
+        
+        echo "Extracted version: $VERSION"
+        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
       
     - name: Checkout
       uses: actions/checkout@v4
       with:
         ref: ${{ github.event.pull_request.merge_commit_sha }}
         fetch-depth: 0
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
         
     - name: Create Tag
       run: |
@@ -47,28 +63,46 @@ jobs:
         git tag -a "${{ steps.extract_version.outputs.VERSION }}" -m "Release ${{ steps.extract_version.outputs.VERSION }}"
         git push origin "${{ steps.extract_version.outputs.VERSION }}"
 
-    - name: Artifact name
-      run: echo "artifact_name=iOSSplitSuite" >> $GITHUB_ENV
+    - name: Set artifact name
+      id: set-artifact-name
+      run: echo "ARTIFACT_NAME=iOSSplitSuite" >> $GITHUB_OUTPUT
 
-    - name: Zip name
-      run: echo "zip_name=${{ env.artifact_name }}_${{ steps.extract_version.outputs.VERSION }}.zip" >> $GITHUB_ENV
+    - name: Set zip name
+      id: set-zip-name
+      run: echo "ZIP_NAME=${{ steps.set-artifact-name.outputs.ARTIFACT_NAME }}_${{ steps.extract_version.outputs.VERSION }}.zip" >> $GITHUB_OUTPUT
 
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Extract iOS SDK version
+      id: extract-sdk-version
+      run: |
+        SDK_VERSION=$(cat iOSSplitSuite.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved | jq -r '.pins[] | select(.identity == "ios-client") | .state.version')
+        echo "SDK_VERSION=$SDK_VERSION" >> $GITHUB_OUTPUT
+        echo "Found iOS SDK version: $SDK_VERSION"
+        
+    - name: Extract RUM version
+      id: extract-rum-version
+      run: |
+        RUM_VERSION=$(cat iOSSplitSuite.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved | jq -r '.pins[] | select(.identity == "ios-rum") | .state.version')
+        echo "RUM_VERSION=$RUM_VERSION" >> $GITHUB_OUTPUT
+        echo "Found iOS RUM version: $RUM_VERSION"
+
     - name: Generate xcframework zip
       run: ./scripts/generate_xcframework ${{ steps.extract_version.outputs.VERSION }}
 
-    - name: Store zip file
+    - name: Upload xcframework zip and checksum
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.zip_name }}
-        path: xcframework/${{ env.zip_name }}
+        name: xcframework-artifacts
+        path: |
+          xcframework/${{ steps.set-zip-name.outputs.ZIP_NAME }}
+          xcframework/checksum
         retention-days: 1
 
     - id: zip_file
       name: Setting output zip name
-      run: echo "zip_file_name=${{ env.zip_name }}" >> "$GITHUB_OUTPUT"
+      run: echo "zip_file_name=${{ steps.set-zip-name.outputs.ZIP_NAME }}" >> "$GITHUB_OUTPUT"
 
   upload-prod:
     name: Upload assets
@@ -88,10 +122,10 @@ jobs:
           zip_file_name: ${{ needs.build.outputs.zip_file_name }}
         run: echo "zip_name=${{ env.zip_file_name }}" >> $GITHUB_ENV
 
-      - name: Download zip ${{ env.zip_name }}
+      - name: Download xcframework artifacts
         uses: actions/download-artifact@v4
         with:
-          name: ${{ env.zip_name }}
+          name: xcframework-artifacts
           path: dist
 
       - name: Display structure of assets
@@ -115,7 +149,7 @@ jobs:
   update-package:
     name: Update Package.swift
     runs-on: ubuntu-latest
-    needs: [build, upload-prod]
+    needs: [build]
     outputs:
       pr_url: ${{ steps.create-pr.outputs.pr_url }}
     
@@ -137,10 +171,10 @@ jobs:
             echo "TARGET_BRANCH=main" >> $GITHUB_OUTPUT
           fi
       
-      - name: Download checksum file
+      - name: Download xcframework artifacts for Package.swift update
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.set-zip-name.outputs.ZIP_NAME }}
+          name: xcframework-artifacts
           path: dist
       
       - name: Read checksum
@@ -157,8 +191,9 @@ jobs:
       - name: Update Package.swift
         run: |
           cd ios-suite
-          sed -i -E "s/let version = \"[0-9]+(\.[0-9]+)*(-rc[0-9]+)?\"/let version = \"${{ steps.extract-version.outputs.VERSION }}\"/g" Package.swift
+          sed -i -E "s|url: \"https://cdn\.split\.io/ios-suite/iOSSplitSuite_[0-9]+(\.[0-9]+)*(-rc[0-9]+)?\.zip\"|url: \"https://cdn.split.io/ios-suite/iOSSplitSuite_${{ steps.extract-version.outputs.VERSION }}.zip\"|g" Package.swift
           sed -i -E "s/checksum: \"[a-f0-9]+\"/checksum: \"${{ steps.read-checksum.outputs.CHECKSUM }}\"/g" Package.swift
+          cat Package.swift
       
       - name: Create Pull Request
         id: create-pr
@@ -173,12 +208,22 @@ jobs:
           delete-branch: true
           title: "Update Suite version to ${{ steps.extract-version.outputs.VERSION }}"
           body: |
-            This PR updates the Suite version to ${{ steps.extract-version.outputs.VERSION }} and updates the checksum for the binary.
-            
-            Auto-generated by [create-pull-request][1] GitHub Action
-            
-            [1]: https://github.com/peter-evans/create-pull-request
+            This PR updates the Suite version to ${{ steps.extract-version.outputs.VERSION }}.
+
           base: ${{ steps.target-branch.outputs.TARGET_BRANCH }}
       
-      - name: Display PR URL
-        run: echo "Created PR at ${{ steps.create-pr.outputs.pull-request-url }}"
+      - name: Add Package.swift PR URL as comment
+        if: github.event_name == 'pull_request' && steps.create-pr.outputs.pull-request-url != ''
+        continue-on-error: true
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.DEVOPS_READONLY_GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `✅ Package.swift update PR created: ${process.env.PR_URL}`
+            })
+        env:
+          PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
