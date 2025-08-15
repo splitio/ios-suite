@@ -19,7 +19,7 @@ permissions:
 jobs:
   build:
     if: startsWith(github.head_ref, 'release/') && github.event.pull_request.merged == true
-    runs-on: macos-15
+    runs-on: macos-14
     outputs:
       zip_file_name: ${{ steps.zip_file.outputs.zip_file_name }}
       sdk_version: ${{ steps.extract-sdk-version.outputs.SDK_VERSION }}

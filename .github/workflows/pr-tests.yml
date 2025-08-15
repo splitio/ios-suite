@@ -16,7 +16,7 @@ permissions:
 jobs:
   test:
     name: Run Tests
-    runs-on: macos-15
+    runs-on: macos-14
     
     steps:
     - name: Checkout
