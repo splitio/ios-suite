@@ -16,7 +16,7 @@ permissions:
 jobs:
   test:
     name: Run Tests
-    runs-on: macos-15
+    runs-on: macos-14
     
     steps:
     - name: Checkout
@@ -33,7 +33,7 @@ jobs:
         action: test
         build-settings: ONLY_ACTIVE_ARCH=NO
         configuration: Debug
-        destination: "platform=iOS Simulator,OS=18.0,name=iPhone 16"
+        destination: "platform=iOS Simulator,OS=18.1,name=iPhone 16"
         project: iOSSplitSuite.xcodeproj
         scheme: iOSSplitSuiteTests
         output-formatter: 'xcbeautify'
