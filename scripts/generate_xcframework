@@ -1,6 +1,5 @@
 #!/bin/zsh
 set -euo pipefail
-# Avoid clear errors on CI when TERM is not set
 if [ -t 1 ]; then
   clear
 fi
@@ -29,39 +28,26 @@ echo "Building Split Suite Version ${VERSION}"
 rm -rf "${CUR_DIR}/${BUILD_FOLDER}"
 rm -rf "${CUR_DIR}/${XCF_FOLDER}"
 
-mkdir -p "${CUR_DIR}/${BUILD_FOLDER}"
-mkdir -p "${CUR_DIR}/${XCF_FOLDER}"
-mkdir -p "${ARCHIVES_PATH}"
+mkdir "${CUR_DIR}/${BUILD_FOLDER}"
+mkdir "${CUR_DIR}/${XCF_FOLDER}"
+mkdir "${ARCHIVES_PATH}"
 
 function build_framework {
     readonly DESTINATION=$1
     echo "Building ${PRODUCT_NAME} for ${DESTINATION}"
-    local SDK_FLAG=""
-    if [ "${DESTINATION}" = "iOS" ]; then
-      SDK_FLAG="-sdk iphoneos"
-    else
-      SDK_FLAG="-sdk iphonesimulator"
-    fi
-
-    xcodebuild build    -project "${PRODUCT_NAME}.xcodeproj" \
-                        -scheme "${SCHEMA_NAME}" \
-                        -configuration Release \
+    xcodebuild build    -scheme ${SCHEMA_NAME} \
                         -derivedDataPath "${FULL_BUILD_FOLDER}" \
-                        -destination 18.4/platform="${DESTINATION}" \
-                        ${SDK_FLAG} \
+                        -destination  generic/platform="${DESTINATION}" \
+                        -configuration release \
                         SKIP_INSTALL=NO \
                         BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
                         > /dev/null
 
     xcodebuild archive  -project "${PRODUCT_NAME}.xcodeproj" \
-                        -scheme "${SCHEMA_NAME}" \
-                        -configuration Release \
+                        -scheme ${SCHEMA_NAME} \
                         -derivedDataPath "${FULL_BUILD_FOLDER}" \
-                        -destination 18.4/platform="${DESTINATION}" \
-                        ${SDK_FLAG} \
+                        -destination  generic/platform="${DESTINATION}" \
                         -archivePath "${ARCHIVES_PATH}/${PRODUCT_NAME}-${DESTINATION// /_}.xcarchive" \
-                        SKIP_INSTALL=NO \
-                        BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
                         > /dev/null
 
 }
