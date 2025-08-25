@@ -47,7 +47,7 @@ function build_framework {
                         -scheme "${SCHEMA_NAME}" \
                         -configuration Release \
                         -derivedDataPath "${FULL_BUILD_FOLDER}" \
-                        -destination generic/platform="${DESTINATION}" \
+                        -destination 18.4/platform="${DESTINATION}" \
                         ${SDK_FLAG} \
                         SKIP_INSTALL=NO \
                         BUILD_LIBRARIES_FOR_DISTRIBUTION=YES \
@@ -57,7 +57,7 @@ function build_framework {
                         -scheme "${SCHEMA_NAME}" \
                         -configuration Release \
                         -derivedDataPath "${FULL_BUILD_FOLDER}" \
-                        -destination generic/platform="${DESTINATION}" \
+                        -destination 18.4/platform="${DESTINATION}" \
                         ${SDK_FLAG} \
                         -archivePath "${ARCHIVES_PATH}/${PRODUCT_NAME}-${DESTINATION// /_}.xcarchive" \
                         SKIP_INSTALL=NO \
