@@ -7,9 +7,6 @@ on:
     branches:
       - main
       - dev_test
-  push: # TODO, remove
-    branches: # TODO, remove
-      - release/2.3.0-rc4 # TODO, remove
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -21,7 +18,7 @@ permissions:
 
 jobs:
   build:
-    # TODO if: startsWith(github.head_ref, 'release/') && github.event.pull_request.merged == true
+    if: startsWith(github.head_ref, 'release/') && github.event.pull_request.merged == true
     runs-on: macos-15
     outputs:
       zip_file_name: ${{ steps.zip_file.outputs.zip_file_name }}
