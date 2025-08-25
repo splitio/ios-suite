@@ -30,12 +30,6 @@ jobs:
     - uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '16.4'
-    
-    - name: Install Xcode platforms (iOS & Simulator)
-      run: |
-        sudo xcodebuild -downloadPlatforms
-        xcodebuild -version
-        xcodebuild -showsdks
         
     - name: Extract version from branch name
       id: extract_version
