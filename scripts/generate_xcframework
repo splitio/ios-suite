@@ -1,5 +1,8 @@
 #!/bin/zsh
-clear
+set -euo pipefail
+if [ -t 1 ]; then
+  clear
+fi
 VERSION=$1
 CUR_DIR=$(pwd)
 PRODUCT_NAME=iOSSplitSuite
@@ -27,7 +30,7 @@ rm -rf "${CUR_DIR}/${XCF_FOLDER}"
 
 mkdir "${CUR_DIR}/${BUILD_FOLDER}"
 mkdir "${CUR_DIR}/${XCF_FOLDER}"
-mkdir "${ARCHIVE_PATH}"
+mkdir "${ARCHIVES_PATH}"
 
 function build_framework {
     readonly DESTINATION=$1
