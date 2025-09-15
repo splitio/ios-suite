@@ -33,7 +33,7 @@ jobs:
         action: test
         build-settings: ONLY_ACTIVE_ARCH=NO
         configuration: Debug
-        destination: "platform=iOS Simulator,OS=17.4,name=iPhone 15"
+        destination: "platform=iOS Simulator,OS=18.4,name=iPad Air 13-inch (M2)"
         project: iOSSplitSuite.xcodeproj
         scheme: iOSSplitSuiteTests
         output-formatter: 'xcbeautify'
