@@ -1,3 +1,6 @@
+2.3.0: (Sept 23, 2025)
+- Added new configuration for Fallback Treatments, which allows setting a treatment value and optional config to be returned in place of "control", either globally or by flag. Read more in our docs.
+
 2.2.3: (Aug 29, 2025)
 - Updated polling logic to stop and restart memberships data synchronization when not currently used in flags or rule based segments.
 
