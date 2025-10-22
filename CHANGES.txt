@@ -1,4 +1,4 @@
-2.3.2: (Sept 23, 2025)
+2.3.2: (Oct 22, 2025)
 - Fixed streaming reconnection after connection was interrupted.
 
 2.3.0: (Sept 23, 2025)
