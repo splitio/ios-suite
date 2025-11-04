@@ -12,6 +12,10 @@ let package = Package(
             name: "SplitSuite",
             targets: ["iOSSplitSuite"])
     ],
+    dependencies: [
+        .package(url: "https://github.com/splitio/ios-client.git", from: "3.4.2"),
+        .package(url: "https://github.com/splitio/ios-rum", from: "0.4.0"),
+    ],
     targets: [
         .binaryTarget(
             name: "iOSSplitSuite",

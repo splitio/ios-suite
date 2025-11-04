@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Split",
+        "repositoryURL": "https://github.com/splitio/ios-client.git",
+        "state": {
+          "branch": null,
+          "revision": "73b8b0d1e94f13383eee534cfea4ef657760f0ae",
+          "version": "3.4.2"
+        }
+      },
+      {
+        "package": "SplitRum",
+        "repositoryURL": "https://github.com/splitio/ios-rum",
+        "state": {
+          "branch": null,
+          "revision": "758eeb366e947c410e6935c8d954200f679d69ea",
+          "version": "0.4.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
