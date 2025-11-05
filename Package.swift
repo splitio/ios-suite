@@ -11,12 +11,11 @@ let package = Package(
         .library(
             name: "SplitSuite",
             targets: ["SplitSuiteWrapper"]
-        ),
-        .library(name: "Split", targets: ["Split"]),
+        )
     ],
     dependencies: [
-        .package(url: "https://github.com/splitio/ios-client.git", from: "3.4.2"),
-        .package(url: "https://github.com/splitio/ios-rum", from: "0.4.0"),
+        .package(name: "ios-client", url: "https://github.com/splitio/ios-client.git", from: "3.4.2"),
+        .package(name: "ios-rum", url: "https://github.com/splitio/ios-rum", from: "0.4.0"),
     ],
     targets: [
         .binaryTarget(
