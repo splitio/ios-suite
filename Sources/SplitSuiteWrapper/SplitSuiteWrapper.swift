@@ -1,3 +1,3 @@
 @_exported import iOSSplitSuite
-@_exported import Split
-@_exported import SplitRum 
+@_exported import ios-client
+@_exported import ios-rum
