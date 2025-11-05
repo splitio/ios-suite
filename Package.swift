@@ -11,7 +11,8 @@ let package = Package(
         .library(
             name: "SplitSuite",
             targets: ["SplitSuiteWrapper"]
-        )
+        ),
+        .library(name: "Split", targets: ["Split"]),
     ],
     dependencies: [
         .package(url: "https://github.com/splitio/ios-client.git", from: "3.4.2"),
