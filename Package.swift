@@ -10,7 +10,7 @@ let package = Package(
     products: [
         .library(
             name: "SplitSuite",
-            targets: ["SplitSuiteWrapper"]  // <-- este es el wrapper que expone todo
+            targets: ["SplitSuiteWrapper"]
         )
     ],
     dependencies: [
@@ -27,8 +27,8 @@ let package = Package(
             name: "SplitSuiteWrapper",
             dependencies: [
                 "iOSSplitSuite",
-                "Split",
-                "SplitRum"
+                "ios-client",
+                "ios-rum"
             ],
             path: "Sources/SplitSuiteWrapper"
         )
