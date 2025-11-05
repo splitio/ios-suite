@@ -27,7 +27,7 @@ let package = Package(
             name: "SplitSuiteWrapper",
             dependencies: [
                 "iOSSplitSuite",
-                "ios-client",
+                "ios-clienta",
                 "ios-rum"
             ],
             path: "Sources/SplitSuiteWrapper"
