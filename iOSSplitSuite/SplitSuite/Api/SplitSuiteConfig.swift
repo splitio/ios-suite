@@ -11,7 +11,7 @@ import Split
 
 public class SplitSuiteConfig {
 
-    private (set) var prefix: String? = nil
+    private(set) var prefix: String? = nil
 
     public init() {}
 
