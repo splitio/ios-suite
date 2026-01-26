@@ -631,7 +631,7 @@
 			repositoryURL = "https://github.com/splitio/ios-client";
 			requirement = {
 				kind = exactVersion;
-				version = 3.6.0-rc2;
+				version = 3.7.0-rc1;
 			};
 		};
 		C5D43E7F2CDE5C59007FEDE2 /* XCRemoteSwiftPackageReference "ios-rum" */ = {

@@ -96,6 +96,11 @@ class SplitSuiteSdkClient: SuiteSdkClient {
     func on(event: Split.SplitEvent, queue: DispatchQueue, execute action: @escaping Split.SplitAction) {
         client.on(event: event, queue: queue, execute: action)
     }
+    
+    var listener: SplitEventListener?
+    func addEventListener(listener: Split.SplitEventListener) {
+        client.addEventListener(listener: listener)
+    }
 
     public func track(trafficType: String, eventType: String) -> Bool {
         return client.track(trafficType: trafficType, eventType: eventType)

@@ -98,6 +98,11 @@ public class SplitClientMock: SplitClient {
     public func on(event: SplitEvent, queue: DispatchQueue, execute action: @escaping SplitAction) {
         recordCall(#function)
     }
+    
+    public var listener: SplitEventListener?
+    public func addEventListener(listener: SplitEventListener) {
+        recordCall(#function)
+    }
 
     public func track(trafficType: String, eventType: String, properties: [String : Any]?) -> Bool {
         recordCall(#function)
