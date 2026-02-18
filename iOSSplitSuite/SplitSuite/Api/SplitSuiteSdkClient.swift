@@ -97,7 +97,6 @@ class SplitSuiteSdkClient: SuiteSdkClient {
         client.on(event: event, queue: queue, execute: action)
     }
     
-    var listener: SplitEventListener?
     func addEventListener(listener: Split.SplitEventListener) {
         client.addEventListener(listener: listener)
     }

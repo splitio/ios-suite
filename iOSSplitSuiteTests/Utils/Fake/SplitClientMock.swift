@@ -99,7 +99,6 @@ public class SplitClientMock: SplitClient {
         recordCall(#function)
     }
     
-    public var listener: SplitEventListener?
     public func addEventListener(listener: SplitEventListener) {
         recordCall(#function)
     }
