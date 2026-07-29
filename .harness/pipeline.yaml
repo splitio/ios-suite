@@ -1,0 +1,46 @@
+pipeline:
+  name: ios-suite-create-tag-on-release
+  identifier: iossuitecreatetagonrelease
+  projectIdentifier: Harness_Split
+  orgIdentifier: PROD
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: githubdevops
+        repoName: ios-suite
+        build:
+          type: branch
+          spec:
+            branch: <+input>
+  stages:
+    - stage:
+        name: Create Tag
+        identifier: Create_Tag
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              size: flex
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Create and push tag
+                  identifier: Create_and_push_tag
+                  spec:
+                    shell: Bash
+                    command: |-
+                      BRANCH_NAME="<+trigger.sourceBranch>"
+                      VERSION=${BRANCH_NAME#release/}
+                      echo "Extracted version: $VERSION"
+                      git config --local user.email "action@github.com"
+                      git config --local user.name "GitHub Action"
+                      git tag -a "${VERSION}" -m "Release ${VERSION}"
+                      git push origin "${VERSION}"
