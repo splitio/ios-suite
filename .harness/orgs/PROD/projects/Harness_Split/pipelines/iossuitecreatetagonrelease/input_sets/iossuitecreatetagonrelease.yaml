@@ -1,0 +1,14 @@
+inputSet:
+  name: ios-suite-create-tag-on-release
+  identifier: iossuitecreatetagonrelease
+  orgIdentifier: PROD
+  projectIdentifier: Harness_Split
+  pipeline:
+    identifier: iossuitecreatetagonrelease
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.targetBranch>
