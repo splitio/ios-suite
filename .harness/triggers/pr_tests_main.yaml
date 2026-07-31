@@ -1,0 +1,30 @@
+trigger:
+  name: pr-tests-main
+  identifier: pr_tests_main
+  enabled: true
+  stagesToExecute: []
+  description: ""
+  tags: {}
+  orgIdentifier: PROD
+  projectIdentifier: Harness_Split
+  pipelineIdentifier: pr_tests
+  source:
+    type: Webhook
+    spec:
+      type: Harness
+      spec:
+        type: PullRequest
+        spec:
+          autoAbortPreviousExecutions: true
+          payloadConditions:
+            - key: targetBranch
+              operator: Equals
+              value: main
+          headerConditions: []
+          repoName: ios-suite-dev
+          actions:
+            - Create
+            - Update
+  pipelineBranchName: <+trigger.branch>
+  inputSetRefs:
+    - pr_tests_inputset
