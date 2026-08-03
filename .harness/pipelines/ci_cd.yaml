@@ -115,20 +115,16 @@ pipeline:
                       ./scripts/generate_xcframework <+execution.steps.extract_version.output.outputVariables.VERSION>
 
               - step:
-                  type: S3Upload
-                  name: Upload to S3
-                  identifier: upload_to_s3
+                  type: SaveCacheS3
+                  name: Save Cache to S3
+                  identifier: save_cache_to_s3
                   spec:
-                    # VERIFY: connectorRef below (aws_public_assets) must exist as an Aws-type
-                    # connector in project Harness_Split with iamRoleArn
-                    # arn:aws:iam::825951051969:role/gha-public-assets-role before this pipeline
-                    # can run. No such connector existed as of migration time (see plan doc) --
-                    # Build_xcframework's dockerhub-connectorRef pattern does NOT work for S3 auth.
-                    connectorRef: aws_public_assets
+                    connectorRef: artifacts
                     region: us-east-1
-                    bucket: split-public
-                    sourcePath: xcframework/<+execution.steps.extract_version.output.outputVariables.ZIP_NAME>
-                    target: ios-suite/<+execution.steps.extract_version.output.outputVariables.ZIP_NAME>
+                    bucket: split-fme-artifacts-stage-us-east-1
+                    key: xcframework-<+pipeline.sequenceId>
+                    sourcePaths:
+                      - xcframework
 
               - step:
                   type: Run
@@ -175,6 +171,60 @@ pipeline:
                         --body "This PR updates the Suite version to ${VERSION}." \
                         --base "$TARGET_BRANCH" \
                         --head "release/${VERSION}"
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: MarkAsFailure
+
+    - stage:
+        name: Upload to S3
+        identifier: Upload_to_S3
+        description: Restore the xcframework zip from cache and publish it to the public split-public S3 bucket
+        type: CI
+        when:
+          pipelineStatus: Success
+          condition: <+pipeline.variables.RELEASE_BRANCH>.startsWith("release/")
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: use1prod1cd
+              namespace: harness-delegate
+              serviceAccountName: use1-prod-1-public-assets
+              automountServiceAccountToken: false
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: RestoreCacheS3
+                  name: Restore Cache from S3
+                  identifier: restore_cache_from_s3
+                  spec:
+                    connectorRef: artifacts
+                    region: us-east-1
+                    bucket: split-fme-artifacts-stage-us-east-1
+                    key: xcframework-<+pipeline.sequenceId>
+
+              - step:
+                  type: Run
+                  name: Upload to S3
+                  identifier: upload_to_s3
+                  spec:
+                    connectorRef: dockerhub
+                    image: amazon/aws-cli:2.31.5
+                    shell: Sh
+                    envVariables:
+                      AWS_DEFAULT_REGION: us-east-1
+                    command: |
+                      ZIP_NAME="<+pipeline.stages.Build.spec.execution.steps.extract_version.output.outputVariables.ZIP_NAME>"
+                      aws s3 cp "xcframework/${ZIP_NAME}" "s3://split-public/ios-suite/${ZIP_NAME}" \
+                        --acl public-read --follow-symlinks --cache-control max-age=31536000,public
+        delegateSelectors:
+          - use1-prod-1-cd
         failureStrategies:
           - onFailure:
               errors:

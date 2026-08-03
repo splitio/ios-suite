@@ -15,7 +15,7 @@ trigger:
       spec:
         type: PullRequest
         spec:
-          autoAbortPreviousExecutions: false
+          autoAbortPreviousExecutions: true
           payloadConditions:
             - key: targetBranch
               operator: Equals
