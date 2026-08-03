@@ -377,29 +377,21 @@ fi
 echo "📤 Pushing branch to remote..."
 git push origin $RELEASE_BRANCH
 
-# Get the remote URL and extract the GitHub repo path
+# Get the remote URL and extract the Harness Code repo path
+# Expected format: https://git0.harness.io/<accountId>/<org>/<project>/<repo>.git
 REMOTE_URL=$(git config --get remote.origin.url)
 echo "🔍 Remote URL: $REMOTE_URL"
 
-# Handle different URL formats (SSH, HTTPS, etc)
-if [[ $REMOTE_URL == *"@github.com:"* ]]; then
-  # SSH format: git@github.com:org/repo.git
-  GITHUB_REPO=$(echo $REMOTE_URL | sed -E 's/.*github.com:([^\.]+)(\.git)?/\1/')
-elif [[ $REMOTE_URL == *"github.com/"* ]]; then
-  # HTTPS format: https://github.com/org/repo.git
-  GITHUB_REPO=$(echo $REMOTE_URL | sed -E 's/.*github.com\/([^\.]+)(\.git)?/\1/')
+if [[ $REMOTE_URL =~ git0\.harness\.io/([^/]+)/([^/]+)/([^/]+)/([^/.]+)(\.git)?$ ]]; then
+  HARNESS_ACCOUNT_ID="${BASH_REMATCH[1]}"
+  HARNESS_ORG="${BASH_REMATCH[2]}"
+  HARNESS_PROJECT="${BASH_REMATCH[3]}"
+  HARNESS_REPO="${BASH_REMATCH[4]}"
 else
-  # Fallback
-  GITHUB_REPO="splitio/ios-suite-dev"
+  handle_error "Could not parse Harness Code repo from remote URL: $REMOTE_URL"
 fi
 
-echo "🔍 Extracted GitHub repo: $GITHUB_REPO"
-
-# Fallback if extraction failed
-if [ -z "$GITHUB_REPO" ] || [ "$GITHUB_REPO" == "$REMOTE_URL" ]; then
-  echo "⚠️ Could not extract GitHub repo from URL. Using default."
-  GITHUB_REPO="splitio/ios-suite-dev"
-fi
+echo "🔍 Extracted Harness Code repo: $HARNESS_ORG/$HARNESS_PROJECT/$HARNESS_REPO"
 
 # Determine target branch based on RC status
 if [ "$IS_RC" = true ]; then
@@ -411,7 +403,7 @@ else
 fi
 
 # Create PR URL
-PR_URL="https://github.com/$GITHUB_REPO/compare/$TARGET_BRANCH...$RELEASE_BRANCH?expand=1"
+PR_URL="https://harness0.harness.io/ng/account/$HARNESS_ACCOUNT_ID/module/code/orgs/$HARNESS_ORG/projects/$HARNESS_PROJECT/repos/$HARNESS_REPO/pulls/compare/$TARGET_BRANCH...$RELEASE_BRANCH"
 echo ""
 echo "🎉 Release preparation completed successfully!"
 echo ""
@@ -434,5 +426,5 @@ fi
 echo ""
 echo "Next steps:"
 echo "1. Complete the pull request to merge $RELEASE_BRANCH into $TARGET_BRANCH"
-echo "2. After merging, the GitHub workflow will create and push the tag"
+echo "2. After merging, the ios_suite_dev_ci_cd Harness pipeline will create and push the tag"
 echo ""
