@@ -4,7 +4,7 @@ inputSet:
   orgIdentifier: PROD
   projectIdentifier: Harness_Split
   pipeline:
-    identifier: pr_tests
+    identifier: ios_suite_dev_pr_tests
     properties:
       ci:
         codebase:

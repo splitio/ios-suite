@@ -1,6 +1,6 @@
 pipeline:
-  name: pr-tests
-  identifier: pr_tests
+  name: ios-suite-dev_pr-tests
+  identifier: ios_suite_dev_pr_tests
   projectIdentifier: Harness_Split
   orgIdentifier: PROD
   tags: {}

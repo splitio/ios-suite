@@ -1,6 +1,6 @@
 pipeline:
-  name: ci-cd
-  identifier: ci_cd
+  name: ios-suite-dev_ci-cd
+  identifier: ios_suite_dev_ci_cd
   projectIdentifier: Harness_Split
   orgIdentifier: PROD
   tags: {}

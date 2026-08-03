@@ -7,7 +7,7 @@ trigger:
   tags: {}
   orgIdentifier: PROD
   projectIdentifier: Harness_Split
-  pipelineIdentifier: pr_tests
+  pipelineIdentifier: ios_suite_dev_pr_tests
   source:
     type: Webhook
     spec:
