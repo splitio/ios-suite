@@ -17,7 +17,7 @@ pipeline:
     - stage:
         name: Build
         identifier: Build
-        description: Build and tag the xcframework release, upload to S3, and open the Package.swift bump PR
+        description: Build and tag the xcframework release
         type: CI
         when:
           pipelineStatus: Success
@@ -125,52 +125,6 @@ pipeline:
                     key: xcframework-<+pipeline.sequenceId>
                     sourcePaths:
                       - xcframework
-
-              - step:
-                  type: Run
-                  name: Update Package.swift and Create PR
-                  identifier: update_package_swift
-                  spec:
-                    shell: Sh
-                    envVariables:
-                      GITHUB_TOKEN: <+secrets.getValue("github-devops-token")>
-                      GH_TOKEN: <+secrets.getValue("github-devops-token")>
-                    command: |
-                      set -euo pipefail
-                      VERSION="<+execution.steps.extract_version.output.outputVariables.VERSION>"
-                      ZIP_NAME="<+execution.steps.extract_version.output.outputVariables.ZIP_NAME>"
-
-                      command -v gh >/dev/null 2>&1 || brew install gh
-
-                      CHECKSUM=$(cat xcframework/checksum)
-
-                      if [[ "$VERSION" == *"-rc"* ]]; then
-                        TARGET_BRANCH="dev_test"
-                      else
-                        TARGET_BRANCH="main"
-                      fi
-
-                      git config --global user.name "Harness CI"
-                      git config --global user.email "actions@harness.io"
-
-                      rm -rf /tmp/ios-suite
-                      git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/splitio/ios-suite.git" /tmp/ios-suite
-                      cd /tmp/ios-suite
-                      git checkout -b "release/${VERSION}"
-
-                      sed -i -E "s|url: \"https://cdn\.split\.io/ios-suite/iOSSplitSuite_[0-9]+(\.[0-9]+)*(-rc[0-9]+)?\.zip\"|url: \"https://cdn.split.io/ios-suite/${ZIP_NAME}\"|g" Package.swift
-                      sed -i -E "s/checksum: \"[a-f0-9]+\"/checksum: \"${CHECKSUM}\"/g" Package.swift
-                      cat Package.swift
-
-                      git add Package.swift
-                      git commit -m "Update Suite version to ${VERSION}"
-                      git push origin "release/${VERSION}"
-
-                      gh pr create \
-                        --title "Update Suite version to ${VERSION}" \
-                        --body "This PR updates the Suite version to ${VERSION}." \
-                        --base "$TARGET_BRANCH" \
-                        --head "release/${VERSION}"
         failureStrategies:
           - onFailure:
               errors:
@@ -181,7 +135,7 @@ pipeline:
     - stage:
         name: Upload to S3
         identifier: Upload_to_S3
-        description: Restore the xcframework zip from cache and publish it to the public split-public S3 bucket
+        description: Restore the xcframework zip from cache, publish it to the public split-public S3 bucket, and open the Package.swift bump PR
         type: CI
         when:
           pipelineStatus: Success
@@ -223,6 +177,58 @@ pipeline:
                       ZIP_NAME="<+pipeline.stages.Build.spec.execution.steps.extract_version.output.outputVariables.ZIP_NAME>"
                       aws s3 cp "xcframework/${ZIP_NAME}" "s3://split-public/ios-suite/${ZIP_NAME}" \
                         --acl public-read --follow-symlinks --cache-control max-age=31536000,public
+
+              - step:
+                  type: Run
+                  name: Update Package.swift and Create PR
+                  identifier: update_package_swift
+                  spec:
+                    connectorRef: dockerhub
+                    image: ubuntu:22.04
+                    shell: Sh
+                    envVariables:
+                      GITHUB_TOKEN: <+secrets.getValue("github-devops-token")>
+                      GH_TOKEN: <+secrets.getValue("github-devops-token")>
+                    command: |
+                      set -euo pipefail
+                      VERSION="<+pipeline.stages.Build.spec.execution.steps.extract_version.output.outputVariables.VERSION>"
+                      ZIP_NAME="<+pipeline.stages.Build.spec.execution.steps.extract_version.output.outputVariables.ZIP_NAME>"
+
+                      apt-get update -qq && apt-get install -y -qq git curl gnupg >/dev/null
+                      curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+                      chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+                      echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list >/dev/null
+                      apt-get update -qq && apt-get install -y -qq gh >/dev/null
+
+                      CHECKSUM=$(cat xcframework/checksum)
+
+                      if [[ "$VERSION" == *"-rc"* ]]; then
+                        TARGET_BRANCH="dev_test"
+                      else
+                        TARGET_BRANCH="main"
+                      fi
+
+                      git config --global user.name "Harness CI"
+                      git config --global user.email "actions@harness.io"
+
+                      rm -rf /tmp/ios-suite
+                      git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/splitio/ios-suite.git" /tmp/ios-suite
+                      cd /tmp/ios-suite
+                      git checkout -b "release/${VERSION}"
+
+                      sed -i -E "s|url: \"https://cdn\.split\.io/ios-suite/iOSSplitSuite_[0-9]+(\.[0-9]+)*(-rc[0-9]+)?\.zip\"|url: \"https://cdn.split.io/ios-suite/${ZIP_NAME}\"|g" Package.swift
+                      sed -i -E "s/checksum: \"[a-f0-9]+\"/checksum: \"${CHECKSUM}\"/g" Package.swift
+                      cat Package.swift
+
+                      git add Package.swift
+                      git commit -m "Update Suite version to ${VERSION}"
+                      git push origin "release/${VERSION}"
+
+                      gh pr create \
+                        --title "Update Suite version to ${VERSION}" \
+                        --body "This PR updates the Suite version to ${VERSION}." \
+                        --base "$TARGET_BRANCH" \
+                        --head "release/${VERSION}"
         delegateSelectors:
           - use1-prod-1-cd
         failureStrategies:
