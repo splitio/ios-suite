@@ -25,5 +25,13 @@ trigger:
           actions:
             - Merge
   pipelineBranchName: <+trigger.branch>
-  inputSetRefs:
-    - ci_cd_inputset
+  inputYaml: |
+    pipeline:
+      identifier: ios_suite_dev_ci_cd
+      properties:
+        ci:
+          codebase:
+            build:
+              type: PR
+              spec:
+                number: <+trigger.prNumber>
