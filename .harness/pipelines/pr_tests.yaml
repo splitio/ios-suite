@@ -1,0 +1,61 @@
+pipeline:
+  name: ios-suite-dev_pr-tests
+  identifier: ios_suite_dev_pr_tests
+  projectIdentifier: Harness_Split
+  orgIdentifier: PROD
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        repoName: ios-suite-dev
+        build: <+input>
+  stages:
+    - stage:
+        name: Run Tests
+        identifier: run_tests
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: MacOS
+            arch: Arm64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Setup Xcode
+                  identifier: setup_xcode
+                  spec:
+                    shell: Sh
+                    command: |
+                      sudo xcode-select -s /Applications/Xcode_16.4.app
+                      xcodebuild -version
+              - step:
+                  type: Run
+                  name: Build iOS and Test
+                  identifier: build_and_test
+                  spec:
+                    shell: Sh
+                    command: |
+                      set -o pipefail
+                      # xcbeautify is not confirmed preinstalled on the Cloud macOS image; install defensively.
+                      command -v xcbeautify >/dev/null 2>&1 || brew install xcbeautify
+
+                      xcodebuild test \
+                        -project iOSSplitSuite.xcodeproj \
+                        -scheme iOSSplitSuiteTests \
+                        -configuration Debug \
+                        -destination "platform=iOS Simulator,OS=18.5,name=iPhone 16" \
+                        -sdk iphonesimulator \
+                        ONLY_ACTIVE_ARCH=NO \
+                        | xcbeautify
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: MarkAsFailure

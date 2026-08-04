@@ -1,0 +1,29 @@
+trigger:
+  name: ci-cd-merge-main
+  identifier: ci_cd_merge_main
+  enabled: true
+  stagesToExecute: []
+  description: Fires on PR merge into main; pipeline-level `when` gates actual release work to release/* source branches.
+  tags: {}
+  orgIdentifier: PROD
+  projectIdentifier: Harness_Split
+  pipelineIdentifier: ios_suite_dev_ci_cd
+  source:
+    type: Webhook
+    spec:
+      type: Harness
+      spec:
+        type: PullRequest
+        spec:
+          autoAbortPreviousExecutions: true
+          payloadConditions:
+            - key: targetBranch
+              operator: Equals
+              value: main
+          headerConditions: []
+          repoName: ios-suite-dev
+          actions:
+            - Merge
+  pipelineBranchName: <+trigger.branch>
+  inputSetRefs:
+    - ci_cd_inputset
