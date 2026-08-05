@@ -130,7 +130,8 @@ pipeline:
                     region: us-east-1
                     bucket: split-public
                     sourcePath: xcframework/<+execution.steps.extract_version.output.outputVariables.ZIP_NAME>
-                    target: ios-suite/<+execution.steps.extract_version.output.outputVariables.ZIP_NAME>
+                    target: ios-suite
+                    stripPrefix: xcframework/
 
               - step:
                   type: Run
