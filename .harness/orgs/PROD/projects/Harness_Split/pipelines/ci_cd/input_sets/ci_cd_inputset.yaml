@@ -1,0 +1,14 @@
+inputSet:
+  name: ci-cd-inputset
+  identifier: ci_cd_inputset
+  orgIdentifier: PROD
+  projectIdentifier: Harness_Split
+  pipeline:
+    identifier: ios_suite_dev_ci_cd
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>

@@ -1,0 +1,14 @@
+inputSet:
+  name: pr-tests-inputset
+  identifier: pr_tests_inputset
+  orgIdentifier: PROD
+  projectIdentifier: Harness_Split
+  pipeline:
+    identifier: ios_suite_dev_pr_tests
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>

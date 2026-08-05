@@ -1,0 +1,186 @@
+pipeline:
+  name: ios-suite-dev_ci-cd
+  identifier: ios_suite_dev_ci_cd
+  projectIdentifier: Harness_Split
+  orgIdentifier: PROD
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        repoName: ios-suite-dev
+        build: <+input>
+  variables:
+    - name: RELEASE_BRANCH
+      type: String
+      value: <+trigger.sourceBranch>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: Build and tag the xcframework release
+        type: CI
+        when:
+          pipelineStatus: Success
+          condition: <+pipeline.variables.RELEASE_BRANCH>.startsWith("release/")
+        variables:
+          - name: PLUGIN_ACL
+            type: String
+            value: public-read
+          - name: PLUGIN_CACHE_CONTROL
+            type: String
+            value: "max-age=31536000,public"
+        spec:
+          cloneCodebase: true
+          platform:
+            os: MacOS
+            arch: Arm64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Setup Xcode
+                  identifier: setup_xcode
+                  spec:
+                    shell: Sh
+                    command: |
+                      sudo xcode-select -s /Applications/Xcode_16.4.app
+                      xcodebuild -version
+
+              - step:
+                  type: Run
+                  name: Extract Version
+                  identifier: extract_version
+                  spec:
+                    shell: Sh
+                    command: |
+                      # release/X.Y.Z -> X.Y.Z (mirrors ci-cd.yml's sed 's/release\///')
+                      BRANCH_NAME="<+trigger.sourceBranch>"
+                      VERSION=$(echo "$BRANCH_NAME" | sed 's/release\///')
+                      ARTIFACT_NAME="iOSSplitSuite"
+                      ZIP_NAME="${ARTIFACT_NAME}_${VERSION}.zip"
+
+                      echo "Branch: $BRANCH_NAME"
+                      echo "Version: $VERSION"
+                      echo "Zip name: $ZIP_NAME"
+                    outputVariables:
+                      - name: VERSION
+                        type: String
+                        value: VERSION
+                      - name: ZIP_NAME
+                        type: String
+                        value: ZIP_NAME
+
+              - step:
+                  type: Run
+                  name: Create Tag
+                  identifier: create_tag
+                  spec:
+                    shell: Sh
+                    envVariables:
+                      GITHUB_TOKEN: <+secrets.getValue("github-devops-token")>
+                    command: |
+                      set -euo pipefail
+                      VERSION="<+execution.steps.extract_version.output.outputVariables.VERSION>"
+
+                      git config --global user.name "Harness CI"
+                      git config --global user.email "actions@harness.io"
+
+                      echo "Creating tag ${VERSION}"
+                      git tag -a "${VERSION}" -m "Release ${VERSION}"
+                      git push origin "${VERSION}"
+
+              - step:
+                  type: Run
+                  name: Extract SDK and RUM Versions
+                  identifier: extract_dependency_versions
+                  spec:
+                    shell: Sh
+                    command: |
+                      SDK_VERSION=$(cat iOSSplitSuite.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved | jq -r '.pins[] | select(.identity == "ios-client") | .state.version')
+                      echo "Found iOS SDK version: $SDK_VERSION"
+
+                      RUM_VERSION=$(cat iOSSplitSuite.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved | jq -r '.pins[] | select(.identity == "ios-rum") | .state.version')
+                      echo "Found iOS RUM version: $RUM_VERSION"
+                    outputVariables:
+                      - name: SDK_VERSION
+                        type: String
+                        value: SDK_VERSION
+                      - name: RUM_VERSION
+                        type: String
+                        value: RUM_VERSION
+
+              - step:
+                  type: Run
+                  name: Generate xcframework zip
+                  identifier: generate_xcframework
+                  spec:
+                    shell: Sh
+                    command: |
+                      ./scripts/generate_xcframework <+execution.steps.extract_version.output.outputVariables.VERSION>
+
+              - step:
+                  type: S3Upload
+                  name: Upload to S3
+                  identifier: upload_to_s3
+                  spec:
+                    connectorRef: publicassetsprod
+                    region: us-east-1
+                    bucket: split-public
+                    sourcePath: xcframework/<+execution.steps.extract_version.output.outputVariables.ZIP_NAME>
+                    target: ios-suite
+                    stripPrefix: xcframework/
+
+              - step:
+                  type: Run
+                  name: Update Package.swift and Create PR
+                  identifier: update_package_swift
+                  spec:
+                    shell: Sh
+                    envVariables:
+                      GITHUB_TOKEN: <+secrets.getValue("github-devops-token")>
+                      GH_TOKEN: <+secrets.getValue("github-devops-token")>
+                    command: |
+                      set -euo pipefail
+                      VERSION="<+execution.steps.extract_version.output.outputVariables.VERSION>"
+                      ZIP_NAME="<+execution.steps.extract_version.output.outputVariables.ZIP_NAME>"
+
+                      command -v gh >/dev/null || brew install gh >/dev/null
+
+                      CHECKSUM=$(cat xcframework/checksum)
+
+                      if [[ "$VERSION" == *"-rc"* ]]; then
+                        TARGET_BRANCH="dev_test"
+                      else
+                        TARGET_BRANCH="main"
+                      fi
+
+                      git config --global user.name "Harness CI"
+                      git config --global user.email "actions@harness.io"
+
+                      rm -rf /tmp/ios-suite
+                      git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/splitio/ios-suite.git" /tmp/ios-suite
+                      cd /tmp/ios-suite
+                      git checkout -b "release/${VERSION}"
+
+                      sed -i '' -E "s|url: \"https://cdn\.split\.io/ios-suite/iOSSplitSuite_[0-9]+(\.[0-9]+)*(-rc[0-9]+)?\.zip\"|url: \"https://cdn.split.io/ios-suite/${ZIP_NAME}\"|g" Package.swift
+                      sed -i '' -E "s/checksum: \"[a-f0-9]+\"/checksum: \"${CHECKSUM}\"/g" Package.swift
+                      cat Package.swift
+
+                      git add Package.swift
+                      git commit -m "Update Suite version to ${VERSION}"
+                      git push origin "release/${VERSION}"
+
+                      gh pr create \
+                        --title "Update Suite version to ${VERSION}" \
+                        --body "This PR updates the Suite version to ${VERSION}." \
+                        --base "$TARGET_BRANCH" \
+                        --head "release/${VERSION}"
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: MarkAsFailure
