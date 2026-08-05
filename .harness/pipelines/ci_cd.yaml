@@ -22,6 +22,13 @@ pipeline:
         when:
           pipelineStatus: Success
           condition: <+pipeline.variables.RELEASE_BRANCH>.startsWith("release/")
+        variables:
+          - name: PLUGIN_ACL
+            type: String
+            value: public-read
+          - name: PLUGIN_CACHE_CONTROL
+            type: String
+            value: "max-age=31536000,public"
         spec:
           cloneCodebase: true
           platform:
@@ -115,90 +122,31 @@ pipeline:
                       ./scripts/generate_xcframework <+execution.steps.extract_version.output.outputVariables.VERSION>
 
               - step:
-                  type: SaveCacheS3
-                  name: Save Cache to S3
-                  identifier: save_cache_to_s3
-                  spec:
-                    connectorRef: artifacts
-                    region: us-east-1
-                    bucket: split-fme-artifacts-stage-us-east-1
-                    key: xcframework-<+pipeline.sequenceId>
-                    sourcePaths:
-                      - xcframework
-        failureStrategies:
-          - onFailure:
-              errors:
-                - AllErrors
-              action:
-                type: MarkAsFailure
-
-    - stage:
-        name: Upload to S3
-        identifier: Upload_to_S3
-        description: Restore the xcframework zip from cache, publish it to the public split-public S3 bucket, and open the Package.swift bump PR
-        type: CI
-        when:
-          pipelineStatus: Success
-          condition: <+pipeline.variables.RELEASE_BRANCH>.startsWith("release/")
-        spec:
-          cloneCodebase: false
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: use1prod1cd
-              namespace: harness-delegate
-              serviceAccountName: use1-prod-1-public-assets
-              automountServiceAccountToken: false
-              nodeSelector: {}
-              os: Linux
-          execution:
-            steps:
-              - step:
-                  type: RestoreCacheS3
-                  name: Restore Cache from S3
-                  identifier: restore_cache_from_s3
-                  spec:
-                    connectorRef: artifacts
-                    region: us-east-1
-                    bucket: split-fme-artifacts-stage-us-east-1
-                    key: xcframework-<+pipeline.sequenceId>
-
-              - step:
-                  type: Run
+                  type: S3Upload
                   name: Upload to S3
                   identifier: upload_to_s3
                   spec:
-                    connectorRef: dockerhub
-                    image: amazon/aws-cli:2.31.5
-                    shell: Sh
-                    envVariables:
-                      AWS_DEFAULT_REGION: us-east-1
-                    command: |
-                      ZIP_NAME="<+pipeline.stages.Build.spec.execution.steps.extract_version.output.outputVariables.ZIP_NAME>"
-                      aws s3 cp "xcframework/${ZIP_NAME}" "s3://split-public/ios-suite/${ZIP_NAME}" \
-                        --acl public-read --follow-symlinks --cache-control max-age=31536000,public
+                    connectorRef: publicassetsprod
+                    region: us-east-1
+                    bucket: split-public
+                    sourcePath: xcframework/<+execution.steps.extract_version.output.outputVariables.ZIP_NAME>
+                    target: ios-suite/<+execution.steps.extract_version.output.outputVariables.ZIP_NAME>
 
               - step:
                   type: Run
                   name: Update Package.swift and Create PR
                   identifier: update_package_swift
                   spec:
-                    connectorRef: dockerhub
-                    image: ubuntu:22.04
                     shell: Sh
                     envVariables:
                       GITHUB_TOKEN: <+secrets.getValue("github-devops-token")>
                       GH_TOKEN: <+secrets.getValue("github-devops-token")>
                     command: |
                       set -euo pipefail
-                      VERSION="<+pipeline.stages.Build.spec.execution.steps.extract_version.output.outputVariables.VERSION>"
-                      ZIP_NAME="<+pipeline.stages.Build.spec.execution.steps.extract_version.output.outputVariables.ZIP_NAME>"
+                      VERSION="<+execution.steps.extract_version.output.outputVariables.VERSION>"
+                      ZIP_NAME="<+execution.steps.extract_version.output.outputVariables.ZIP_NAME>"
 
-                      apt-get update -qq && apt-get install -y -qq git curl gnupg >/dev/null
-                      curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-                      chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-                      echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list >/dev/null
-                      apt-get update -qq && apt-get install -y -qq gh >/dev/null
+                      command -v gh >/dev/null || brew install gh >/dev/null
 
                       CHECKSUM=$(cat xcframework/checksum)
 
@@ -216,8 +164,8 @@ pipeline:
                       cd /tmp/ios-suite
                       git checkout -b "release/${VERSION}"
 
-                      sed -i -E "s|url: \"https://cdn\.split\.io/ios-suite/iOSSplitSuite_[0-9]+(\.[0-9]+)*(-rc[0-9]+)?\.zip\"|url: \"https://cdn.split.io/ios-suite/${ZIP_NAME}\"|g" Package.swift
-                      sed -i -E "s/checksum: \"[a-f0-9]+\"/checksum: \"${CHECKSUM}\"/g" Package.swift
+                      sed -i '' -E "s|url: \"https://cdn\.split\.io/ios-suite/iOSSplitSuite_[0-9]+(\.[0-9]+)*(-rc[0-9]+)?\.zip\"|url: \"https://cdn.split.io/ios-suite/${ZIP_NAME}\"|g" Package.swift
+                      sed -i '' -E "s/checksum: \"[a-f0-9]+\"/checksum: \"${CHECKSUM}\"/g" Package.swift
                       cat Package.swift
 
                       git add Package.swift
@@ -229,8 +177,6 @@ pipeline:
                         --body "This PR updates the Suite version to ${VERSION}." \
                         --base "$TARGET_BRANCH" \
                         --head "release/${VERSION}"
-        delegateSelectors:
-          - use1-prod-1-cd
         failureStrategies:
           - onFailure:
               errors:
