@@ -6,8 +6,8 @@
       "kind": "remoteSourceControl",
       "location": "https://github.com/splitio/ios-client",
       "state": {
-        "revision": "9e2aafeb1fdda2d969a28a13f5484a6c25d3d539",
-        "version": "3.7.1"
+        "revision": "fedd2ad6e3b488824a7a2e066e8cbb0c228c36f7",
+        "version": "3.8.0-rc2"
       }
     },
     {
