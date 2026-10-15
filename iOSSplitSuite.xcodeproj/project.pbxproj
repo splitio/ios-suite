@@ -502,7 +502,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,7 +539,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -631,7 +631,7 @@
 			repositoryURL = "https://github.com/splitio/ios-client";
 			requirement = {
 				kind = exactVersion;
-				version = 3.8.0-rc2;
+				version = "3.8.0-rc2";
 			};
 		};
 		C5D43E7F2CDE5C59007FEDE2 /* XCRemoteSwiftPackageReference "ios-rum" */ = {
