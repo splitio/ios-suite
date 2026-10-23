@@ -15,8 +15,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "iOSSplitSuite",
-            url: "https://cdn.split.io/ios-suite/iOSSplitSuite_2.6.1-rc1.zip",
-            checksum: "bbb8395b56805fe91468908b6d0af189259b6e4e56c574f22f8b39d3cb40a05a"
+            url: "https://cdn.split.io/ios-suite/iOSSplitSuite_2.6.2-rc9.zip",
+            checksum: "562d87874606c08d6c3c3fd3ce4e3ed61388e66a5c5782194532682851f24c93"
         ),
     ]
 )
