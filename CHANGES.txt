@@ -1,3 +1,6 @@
+2.7.0: (Nov 5, 2026)
+- Updated SDK to 3.8.0.
+
 2.6.1: (Feb 19, 2026)
 - Updated SDK to 3.7.1
   - Improved impressions persistence and submission.
